@@ -9,6 +9,8 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+#TODO distinguishing REST API endpoints from ones that serve up web pages
+
 @app.route('/')
 def hello_world():
 	return "Hello World!"
