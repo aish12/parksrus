@@ -16,7 +16,7 @@ install:
     - pip install mypy
     - pip install pylint
     - pip install numpy
-    - pip list
+    - pip list --format=columns
 
 before_script:
     - date
