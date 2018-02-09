@@ -1,3 +1,6 @@
+"""
+configuration file
+"""
 import os
 
 class Config(object):
