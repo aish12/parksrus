@@ -67,7 +67,7 @@ status:
 	git remote -v
 	git status
 
-travis: parksrus-tests parksrus.html parksrus.log
+travis: parksrus-tests
 	make clean
 	ls -al
 	make run
