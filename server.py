@@ -1,20 +1,8 @@
 """
 endpoints for api and website
 """
-import os
-from flask import Flask, send_from_directory, request, jsonify
+from models import Photo, City, Park, app, db
 from flask_restless import APIManager
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
-from models import Photo, City, Park
-from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
-
-app = Flask(__name__, static_folder="../build/static")
-
-CORS(app)
-app.config.from_object(ProductionConfig)
-
-db = SQLAlchemy(app)
 
 manager = APIManager(app, flask_sqlalchemy_db=db)
 model_objects = [Park, Photo, City]
