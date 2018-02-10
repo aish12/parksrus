@@ -11,10 +11,7 @@ from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
 
 app = Flask(__name__, static_folder="../build/static")
 CORS(app)
-#app.config.from_object(os.environ['APP_SETTINGS'])
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#TODO change sql URL to env variable
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config.from_object(ProductionConfig)
 db = SQLAlchemy(app)
 #TODO distinguishing REST API endpoints from ones that serve up web pages
 
@@ -42,18 +39,6 @@ def serve_react(path):
 			return send_from_directory(REACT_FILES, 'index.html')
 	else:
 		return send_from_directory(REACT_FILES, 'index.html')
-
-@app.route('/city')
-def city_page():
-	return "Cities Page!"
-
-@app.route('/photos')
-def photo_page():
-	return "Photo Page!"
-
-@app.route('/park')
-def park_page():
-	return "Park Page!"
 
 @app.route('/park/<int:id>', methods=["GET"])
 def get_park_by_id(id):
