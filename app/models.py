@@ -16,12 +16,12 @@ class Park(db.Model):
 	city_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
 	state = db.Column(db.String())
 	country = db.Column(db.String())
-	review_data = db.Column(JSON)
+	review_data = db.Column(db.String())
 	phone_number = db.Column(db.String())
 	longitude = db.Column(db.String())
 	latitude = db.Column(db.String())
 	city = db.relationship('City',
-        backref=db.backref('parks', lazy=True))
+        backref=db.backref('parks', lazy='dynamic'))
 
 	def __init__(self, name, website, description, city_id, state, country, review_data, phone_number, longitude, latitude):
 
@@ -39,9 +39,11 @@ class Park(db.Model):
 	def __repr__(self):
 	        return '<Park %r>' % self.name
 
+	@property
 	def get_id():
 		return id
-	
+
+	@property
 	def get_name:
 		return self.name
 
@@ -49,6 +51,7 @@ class Park(db.Model):
 	def set_name(name):
 		self.name = name
 
+	@property
 	def get_website:
 		return self.website
 
@@ -56,6 +59,7 @@ class Park(db.Model):
 	def set_website(website):
 		self.website = website
 
+	@property
 	def get_description:
 		return self.description
 
@@ -63,6 +67,7 @@ class Park(db.Model):
 	def set_description(description):
 		self.description = description
 
+	@property
 	def get_city_id():
 		return self.city_id
 
@@ -70,6 +75,7 @@ class Park(db.Model):
 	def set_city_id(city_id):
 		self.city_id = city_id
 
+	@property
 	def get_state:
 		return self.state
 
@@ -77,6 +83,7 @@ class Park(db.Model):
 	def set_state(state):
 		self.state = state
 
+	@property
 	def get_country:
 		return self.country
 
@@ -84,6 +91,7 @@ class Park(db.Model):
 	def set_country(country):
 		self.country = country
 
+	@property
 	def get_review_data():
 		return self.review_data
 
@@ -91,6 +99,7 @@ class Park(db.Model):
 	def set_review_data(review_data):
 		self.review_data = review_data
 
+	@property
 	def get_phone_number:
 		return self.phone_number
 
@@ -98,6 +107,7 @@ class Park(db.Model):
 	def set_phone_number(phone_number):
 		self.phone_number = phone_number
 
+	@property
 	def get_longitude():
 		return self.longitude
 
@@ -105,6 +115,7 @@ class Park(db.Model):
 	def set_longitude(longitude):
 		self.longitude = longitude
 
+	@property
 	def get_latitude():
 		return self.latitude
 
@@ -120,14 +131,14 @@ class Photo(db.Model):
 	image_uri = db.Column(db.String(), nullable=False)
 	park_id = db.Column(db.Integer, db.ForeignKey('parks.id'))
 	city_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
-	tags = db.Column(JSON)
+	tags = db.Column(db.String())
 	date = db.Column(db.DateTime)
 	longitude = db.Column(db.String())
 	latitude = db.Column(db.String())
 	city = db.relationship('City',
-        backref=db.backref('photos', lazy=True))
+        backref=db.backref('photos', lazy='dynamic'))
 	park = db.relationship('Park',
-        backref=db.backref('photos', lazy=True))
+        backref=db.backref('photos', lazy='dynamic'))
 
 	def __init__(self, image_uri, park_id, tags, date, longitude, latitude):
 		self.image_uri = image_uri
@@ -137,6 +148,7 @@ class Photo(db.Model):
 		self.longitude = longitude
 		self.latitude = latitude
 
+	@property
 	def get_id():
 		return id
 
@@ -147,6 +159,7 @@ class Photo(db.Model):
 	def set_city_id(city_id):
 		self.city_id = city_id
 
+	@property
 	def get_park_id():
 		return self.park_id
 
@@ -154,6 +167,7 @@ class Photo(db.Model):
 	def set_park_id(park_id):
 		self.park_id = park_id
 
+	@property
 	def get_tags:
 		return self.tags
 
@@ -161,6 +175,7 @@ class Photo(db.Model):
 	def set_tags(tags):
 		self.tags = tags
 
+	@property
 	def get_date():
 		return self.date
 
@@ -168,6 +183,7 @@ class Photo(db.Model):
 	def set_date(date):
 		self.date = date
 
+	@property
 	def get_longitude():
 		return self.longitude
 
@@ -175,6 +191,7 @@ class Photo(db.Model):
 	def set_longitude(longitude):
 		self.longitude = longitude
 
+	@property
 	def get_latitude():
 		return self.latitude
 
@@ -206,6 +223,7 @@ class City(db.Model):
 	def __repr__(self):
 	        return '<City %r>' % self.name
 
+	@property
 	def get_id():
 		return id
 
@@ -216,6 +234,7 @@ class City(db.Model):
 	def set_name(name):
 		self.name = name
 
+	@property
 	def get_description:
 		return self.description
 
@@ -223,6 +242,7 @@ class City(db.Model):
 	def set_description(description):
 		self.description = description
 
+	@property
 	def get_num_parks():
 		return self.num_parks
 
@@ -230,6 +250,7 @@ class City(db.Model):
 	def set_num_parks(num_parks):
 		self.num_parks = num_parks
 
+	@property
 	def get_state:
 		return self.state
 
@@ -237,6 +258,7 @@ class City(db.Model):
 	def set_state(state):
 		self.state = state
 
+	@property
 	def get_country:
 		return self.country
 
@@ -244,6 +266,7 @@ class City(db.Model):
 	def set_country(country):
 		self.country = country
 
+	@property
 	def get_longitude():
 		return self.longitude
 
@@ -251,6 +274,7 @@ class City(db.Model):
 	def set_longitude(longitude):
 		self.longitude = longitude
 
+	@property
 	def get_latitude():
 		return self.latitude
 

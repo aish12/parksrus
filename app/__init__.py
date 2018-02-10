@@ -2,11 +2,15 @@
 endpoints for api and website
 """
 import os
-from flask import Flask
+from flask import Flask, send_from_directory, request, jsonify
+from flask_restless import APIManager
 from flask_sqlalchemy import SQLAlchemy
-import models
+from flask_cors import CORS
+from models import Photo, City, Park
+from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../build/static")
+CORS(app)
 #app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #TODO change sql URL to env variable
@@ -14,13 +18,30 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 db = SQLAlchemy(app)
 #TODO distinguishing REST API endpoints from ones that serve up web pages
 
-@app.route('/')
-def hello_world():
-	return "Hello World!"
+manager = APIManager(app, flask_sqlalchemy_db=db)
+model_objects = [Park, Photo, City]
 
-@app.route('/<name>')
-def hello_world_name(name):
-	return "Hello {}!".format(name)
+db.create_all()
+
+kwargs = {
+	'methods': frozenset(['GET', 'POST', 'PATCH']),
+    'allow_functions': True,
+    'results_per_page': 8}
+}
+
+for model in model_objects:
+	manager.create_api(model, **kwargs)
+
+@app.route('/', defaults={'path':''})
+@app.route('/<path:path>')
+def serve_react(path):
+	if path != "":
+		if os.path.exists(os.path.join(REACT_FILES, 'index.html')):
+			return send_from_directory(REACT_FILES, path)
+		else:
+			return send_from_directory(REACT_FILES, 'index.html')
+	else:
+		return send_from_directory(REACT_FILES, 'index.html')
 
 @app.route('/city')
 def city_page():
