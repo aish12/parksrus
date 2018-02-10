@@ -1,10 +1,7 @@
 """
 models for database
 """
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.postgresql import JSON
-from api import db
+from app import db
 
 class Park(db.Model):
 	__tablename__ = 'parks'

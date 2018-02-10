@@ -13,7 +13,6 @@ app = Flask(__name__, static_folder="../build/static")
 CORS(app)
 app.config.from_object(ProductionConfig)
 db = SQLAlchemy(app)
-#TODO distinguishing REST API endpoints from ones that serve up web pages
 
 manager = APIManager(app, flask_sqlalchemy_db=db)
 model_objects = [Park, Photo, City]
@@ -42,14 +41,17 @@ def serve_react(path):
 
 @app.route('/park/<int:id>', methods=["GET"])
 def get_park_by_id(id):
+	park = session.query(Park).get(id)
 	return "Park {}".format(id)
 
 @app.route('/city/<int:id>', methods=["GET"])
 def get_city_by_id(id):
+	city = session.query(City).get(id)
 	return "City {}".format(id)
 
 @app.route('/photos/<int:id>', methods=["GET"])
 def get_photo_by_id(id):
+	photo = session.query(Photo).get(id)
 	return "Photo {}".format(id)
 
 if __name__ == '__main__':
