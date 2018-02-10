@@ -1,4 +1,3 @@
-
 .DEFAULT_GOAL := all
 
 PYLINT_VERSION = $(shell pylint --version | grep Python)
@@ -12,23 +11,24 @@ FILES1 :=                                 \
 	api.py 								  \
 	config.py                     		  \
 	models.py                             \
+	server.py				\
 	.travis.yml                           \
-	parksrus-tests					      \
-	parksrus-tests/aish12-RunCollatz.out   \
+	parksrus-tests/RunParks.in		\
+	parksrus-tests/RunParks.out		\
 
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-RunCollatz.pyx: Collatz.py RunCollatz.py .pylintrc
-	-mypy      RunCollatz.py
-	-$(PYLINT) --reports=yes --disable=RP0001 --disable=RP0002 --disable=RP0003 --disable=RP0101 --disable=RP0401 --disable=RP0701 --disable=RP0801 RunCollatz.py
-	./RunCollatz.py < RunCollatz.in > RunCollatz.tmp
-	-diff RunCollatz.tmp RunCollatz.out
+RunParksTests.pyx: DummyTest.py RunParksTests.py .pylintrc
+	-mypy      RunParksTests.py
+	-$(PYLINT) --reports=yes --disable=RP0001 --disable=RP0002 --disable=RP0003 --disable=RP0101 --disable=RP0401 --disable=RP0701 --disable=RP0801 RunParksTests.py
+	./RunParksTests.py < RunParks.in > RunParks.tmp
+	-diff RunParks.tmp RunParks.out
 
-TestCollatz.pyx: Collatz.py TestCollatz.py .pylintrc
-	-mypy      TestCollatz.py
-	-$(PYLINT) --reports=yes --disable=RP0001 --disable=RP0002 --disable=RP0003 --disable=RP0101 --disable=RP0401 --disable=RP0701 --disable=RP0801 TestCollatz.py
-	-coverage  run    --branch TestCollatz.py
+TestParks.pyx: DummyTest.py TestParks.py .pylintrc
+	-mypy      TestParks.py
+	-$(PYLINT) --reports=yes --disable=RP0001 --disable=RP0002 --disable=RP0003 --disable=RP0101 --disable=RP0401 --disable=RP0701 --disable=RP0801 TestParks.py
+	-coverage  run    --branch TestParks.py
 	-coverage  report -m
 
 all:
@@ -52,7 +52,7 @@ docker:
 format:
 	autopep8 -i *.py
 
-run: RunCollatz.pyx TestCollatz.pyx
+run: RunParksTests.pyx TestParks.pyx
 
 scrub:
 	make clean
