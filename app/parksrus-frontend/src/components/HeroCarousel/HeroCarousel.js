@@ -7,7 +7,7 @@ class HeroCarousel extends React.Component {
   render() {
     return (
       <Carousel className="Carousel"
-        indicators={false}
+        indicators={true}
         controls={false}
         interval={4000}>
         {this.props.children.map(child => (

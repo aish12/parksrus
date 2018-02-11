@@ -3,6 +3,10 @@
     height: 4em;
 }
 
+.container {
+    width: 100%;
+}
+
 #brand {
     font-family: 'Comfortaa';
     font-weight: bold;
