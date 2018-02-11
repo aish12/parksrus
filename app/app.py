@@ -4,6 +4,7 @@ endpoints for api and website
 from models import Photo, City, Park, app, db, send_from_directory, jsonify, request, Flask
 from flask_restless import APIManager
 from config import REACT_FILES, BASE_DIR
+import os
 
 manager = APIManager(app, flask_sqlalchemy_db=db)
 model_objects = [Park, Photo, City]
