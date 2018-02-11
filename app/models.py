@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
 
-app = Flask(__name__, static_folder="../build/static")
+app = Flask(__name__, static_folder="parksrus-frontend/build/static")
 
 CORS(app)
 app.config.from_object(ProductionConfig)
@@ -76,7 +76,6 @@ class Park(db.Model):
 	def get_city_id(self):
 		return self.city_id
 
-	@city_id.setter
 	def set_city_id(self, city_id):
 		self.city_id = city_id
 
@@ -84,7 +83,6 @@ class Park(db.Model):
 	def get_state(self):
 		return self.state
 
-	@state.setter
 	def set_state(self, state):
 		self.state = state
 
@@ -92,7 +90,6 @@ class Park(db.Model):
 	def get_country(self):
 		return self.country
 
-	@state.setter
 	def set_country(self, country):
 		self.country = country
 

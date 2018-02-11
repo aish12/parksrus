@@ -1,8 +1,10 @@
 """
 endpoints for api and website
 """
-from models import Photo, City, Park, app, db
+from models import Photo, City, Park, app, db, send_from_directory, jsonify, request, Flask
 from flask_restless import APIManager
+from config import REACT_FILES, BASE_DIR
+import os
 
 manager = APIManager(app, flask_sqlalchemy_db=db)
 model_objects = [Park, Photo, City]
@@ -46,3 +48,5 @@ def get_photo_by_id(id):
 
 if __name__ == '__main__':
 	app.run(port = 5000, use_reloader=True, threaded=True)
+
+#test-2
