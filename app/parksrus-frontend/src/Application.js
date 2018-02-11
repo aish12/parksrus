@@ -19,10 +19,10 @@ class Application extends Component {
                   heroUrl="./images/hero_2.jpg"
                   heroHeader="travel">
               </Hero>
-              {/*<Hero*/}
-                  {/*heroUrl="./images/hero_3.jpg"*/}
-                  {/*heroHeader="experience">*/}
-              {/*</Hero>*/}
+              <Hero
+                  heroUrl="./images/hero_3.jpg"
+                  heroHeader="experience">
+              </Hero>
             </HeroCarousel>
           </Page>
         </div>
