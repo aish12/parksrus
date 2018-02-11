@@ -1,0 +1,11 @@
+.NavigationBar {
+    margin-bottom: 0;
+    height: 4em;
+}
+
+#brand {
+    font-family: 'Comfortaa';
+    font-weight: bold;
+    font-size: 16pt;
+}
+
