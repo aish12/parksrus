@@ -55,7 +55,6 @@ class Park(db.Model):
 	def get_name(self):
 		return self.name
 
-	@name.setter
 	def set_name(self, name):
 		self.name = name
 
@@ -63,7 +62,6 @@ class Park(db.Model):
 	def get_website(self):
 		return self.website
 
-	@website.setter
 	def set_website(self, website):
 		self.website = website
 
@@ -71,7 +69,6 @@ class Park(db.Model):
 	def get_description(self):
 		return self.description
 
-	@description.setter
 	def set_description(self, description):
 		self.description = description
 
@@ -103,7 +100,6 @@ class Park(db.Model):
 	def get_review_data(self):
 		return self.review_data
 
-	@review_data.setter
 	def set_review_data(self, review_data):
 		self.review_data = review_data
 
@@ -111,7 +107,6 @@ class Park(db.Model):
 	def get_phone_number(self):
 		return self.phone_number
 
-	@phone_number.setter
 	def set_phone_number(self, phone_number):
 		self.phone_number = phone_number
 
@@ -119,7 +114,6 @@ class Park(db.Model):
 	def get_longitude(self):
 		return self.longitude
 
-	@longitude.setter
 	def set_longitude(self, longitude):
 		self.longitude = longitude
 
@@ -127,7 +121,6 @@ class Park(db.Model):
 	def get_latitude(self):
 		return self.latitude
 
-	@latitude.setter
 	def set_latitude(self, latitude):
 		self.latitude = latitude
 
@@ -163,7 +156,6 @@ class Photo(db.Model):
 	def get_city_id(self):
 		return self.city_id
 
-	@city_id.setter
 	def set_city_id(self, city_id):
 		self.city_id = city_id
 
@@ -171,7 +163,6 @@ class Photo(db.Model):
 	def get_park_id(self):
 		return self.park_id
 
-	@park_id.setter
 	def set_park_id(self, park_id):
 		self.park_id = park_id
 
@@ -179,7 +170,6 @@ class Photo(db.Model):
 	def get_tags(self):
 		return self.tags
 
-	@tags.setter
 	def set_tags(self, tags):
 		self.tags = tags
 
@@ -187,7 +177,6 @@ class Photo(db.Model):
 	def get_date(self):
 		return self.date
 
-	@date.setter
 	def set_date(self, date):
 		self.date = date
 
@@ -195,7 +184,6 @@ class Photo(db.Model):
 	def get_longitude(self):
 		return self.longitude
 
-	@longitude.setter
 	def set_longitude(self, longitude):
 		self.longitude = longitude
 
@@ -203,7 +191,6 @@ class Photo(db.Model):
 	def get_latitude(self):
 		return self.latitude
 
-	@latitude.setter
 	def set_latitude(self, latitude):
 		self.latitude = latitude
 
@@ -238,7 +225,6 @@ class City(db.Model):
 	def get_name(self):
 		return self.name
 
-	@name.setter
 	def set_name(self, name):
 		self.name = name
 
@@ -246,7 +232,6 @@ class City(db.Model):
 	def get_description(self):
 		return self.description
 
-	@description.setter
 	def set_description(self, description):
 		self.description = description
 
@@ -254,7 +239,6 @@ class City(db.Model):
 	def get_num_parks(self):
 		return self.num_parks
 
-	@num_parks.setter
 	def set_num_parks(self, num_parks):
 		self.num_parks = num_parks
 
@@ -262,7 +246,6 @@ class City(db.Model):
 	def get_state(self):
 		return self.state
 
-	@state.setter
 	def set_state(self, state):
 		self.state = state
 
@@ -270,7 +253,6 @@ class City(db.Model):
 	def get_country(self):
 		return self.country
 
-	@state.setter
 	def set_country(self, country):
 		self.country = country
 
@@ -278,7 +260,6 @@ class City(db.Model):
 	def get_longitude(self):
 		return self.longitude
 
-	@longitude.setter
 	def set_longitude(self, longitude):
 		self.longitude = longitude
 
@@ -286,6 +267,5 @@ class City(db.Model):
 	def get_latitude(self):
 		return self.latitude
 
-	@latitude.setter
 	def set_latitude(self, latitude):
 		self.latitude = latitude
