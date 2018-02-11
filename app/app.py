@@ -31,21 +31,6 @@ def serve_react(path):
 	else:
 		return send_from_directory(REACT_FILES, 'index.html')
 
-@app.route('/park/<int:id>', methods=["GET"])
-def get_park_by_id(id):
-	park = session.query(Park).get(id)
-	return "Park {}".format(id)
-
-@app.route('/city/<int:id>', methods=["GET"])
-def get_city_by_id(id):
-	city = session.query(City).get(id)
-	return "City {}".format(id)
-
-@app.route('/photos/<int:id>', methods=["GET"])
-def get_photo_by_id(id):
-	photo = session.query(Photo).get(id)
-	return "Photo {}".format(id)
-
 if __name__ == '__main__':
 	app.run(port = 5000, use_reloader=True, threaded=True)
 
