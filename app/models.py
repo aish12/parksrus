@@ -1,7 +1,18 @@
 """
 models for database
 """
-from app import db
+import os
+from flask import Flask, send_from_directory, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
+
+app = Flask(__name__, static_folder="../build/static")
+
+CORS(app)
+app.config.from_object(ProductionConfig)
+
+db = SQLAlchemy(app)
 
 class Park(db.Model):
 	__tablename__ = 'parks'
@@ -37,87 +48,80 @@ class Park(db.Model):
 	        return '<Park %r>' % self.name
 
 	@property
-	def get_id():
+	def get_id(self):
 		return id
 
 	@property
-	def get_name:
+	def get_name(self):
 		return self.name
 
-	@name.setter
-	def set_name(name):
+	def set_name(self, name):
 		self.name = name
 
 	@property
-	def get_website:
+	def get_website(self):
 		return self.website
 
-	@website.setter
-	def set_website(website):
+	def set_website(self, website):
 		self.website = website
 
 	@property
-	def get_description:
+	def get_description(self):
 		return self.description
 
-	@description.setter
-	def set_description(description):
+	def set_description(self, description):
 		self.description = description
 
 	@property
-	def get_city_id():
+	def get_city_id(self):
 		return self.city_id
 
 	@city_id.setter
-	def set_city_id(city_id):
+	def set_city_id(self, city_id):
 		self.city_id = city_id
 
 	@property
-	def get_state:
+	def get_state(self):
 		return self.state
 
 	@state.setter
-	def set_state(state):
+	def set_state(self, state):
 		self.state = state
 
 	@property
-	def get_country:
+	def get_country(self):
 		return self.country
 
 	@state.setter
-	def set_country(country):
+	def set_country(self, country):
 		self.country = country
 
 	@property
-	def get_review_data():
+	def get_review_data(self):
 		return self.review_data
 
-	@review_data.setter
-	def set_review_data(review_data):
+	def set_review_data(self, review_data):
 		self.review_data = review_data
 
 	@property
-	def get_phone_number:
+	def get_phone_number(self):
 		return self.phone_number
 
-	@phone_number.setter
-	def set_phone_number(phone_number):
+	def set_phone_number(self, phone_number):
 		self.phone_number = phone_number
 
 	@property
-	def get_longitude():
+	def get_longitude(self):
 		return self.longitude
 
-	@longitude.setter
-	def set_longitude(longitude):
+	def set_longitude(self, longitude):
 		self.longitude = longitude
 
 	@property
-	def get_latitude():
+	def get_latitude(self):
 		return self.latitude
 
-	@latitude.setter
-	def set_latitude(latitude):
+	def set_latitude(self, latitude):
 		self.latitude = latitude
 
 
@@ -149,51 +153,45 @@ class Photo(db.Model):
 	def get_id():
 		return id
 
-	def get_city_id():
+	def get_city_id(self):
 		return self.city_id
 
-	@city_id.setter
-	def set_city_id(city_id):
+	def set_city_id(self, city_id):
 		self.city_id = city_id
 
 	@property
-	def get_park_id():
+	def get_park_id(self):
 		return self.park_id
 
-	@park_id.setter
-	def set_park_id(park_id):
+	def set_park_id(self, park_id):
 		self.park_id = park_id
 
 	@property
-	def get_tags:
+	def get_tags(self):
 		return self.tags
 
-	@tags.setter
-	def set_tags(tags):
+	def set_tags(self, tags):
 		self.tags = tags
 
 	@property
-	def get_date():
+	def get_date(self):
 		return self.date
 
-	@date.setter
-	def set_date(date):
+	def set_date(self, date):
 		self.date = date
 
 	@property
-	def get_longitude():
+	def get_longitude(self):
 		return self.longitude
 
-	@longitude.setter
-	def set_longitude(longitude):
+	def set_longitude(self, longitude):
 		self.longitude = longitude
 
 	@property
-	def get_latitude():
+	def get_latitude(self):
 		return self.latitude
 
-	@latitude.setter
-	def set_latitude(latitude):
+	def set_latitude(self, latitude):
 		self.latitude = latitude
 
 class City(db.Model):
@@ -221,60 +219,53 @@ class City(db.Model):
 	        return '<City %r>' % self.name
 
 	@property
-	def get_id():
+	def get_id(self):
 		return id
 
-		def get_name:
+	def get_name(self):
 		return self.name
 
-	@name.setter
-	def set_name(name):
+	def set_name(self, name):
 		self.name = name
 
 	@property
-	def get_description:
+	def get_description(self):
 		return self.description
 
-	@description.setter
-	def set_description(description):
+	def set_description(self, description):
 		self.description = description
 
 	@property
-	def get_num_parks():
+	def get_num_parks(self):
 		return self.num_parks
 
-	@num_parks.setter
-	def set_num_parks(num_parks):
+	def set_num_parks(self, num_parks):
 		self.num_parks = num_parks
 
 	@property
-	def get_state:
+	def get_state(self):
 		return self.state
 
-	@state.setter
-	def set_state(state):
+	def set_state(self, state):
 		self.state = state
 
 	@property
-	def get_country:
+	def get_country(self):
 		return self.country
 
-	@state.setter
-	def set_country(country):
+	def set_country(self, country):
 		self.country = country
 
 	@property
-	def get_longitude():
+	def get_longitude(self):
 		return self.longitude
 
-	@longitude.setter
-	def set_longitude(longitude):
+	def set_longitude(self, longitude):
 		self.longitude = longitude
 
 	@property
-	def get_latitude():
+	def get_latitude(self):
 		return self.latitude
 
-	@latitude.setter
-	def set_latitude(latitude):
+	def set_latitude(self, latitude):
 		self.latitude = latitude
