@@ -1,0 +1,49 @@
+.Avatar {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    margin-bottom: 1em;
+}
+
+.Name {
+    text-align: center;
+    font-weight: bold;
+}
+
+.Paragraph {
+    font-size: 10pt;
+}
+
+.Header {
+    font-weight: bold;
+}
+
+.Badge {
+    text-align: center;
+    border-radius: 50%;
+    margin: 1em;
+    line-height: 24pt;
+    height: 40px;
+    width: 40px;
+    font-size: 12pt;
+}
+
+.Commits {
+    background-color: #2ec4b6;
+}
+
+.Issues {
+    background-color: #e71d36;
+}
+
+.UnitTests {
+    background-color: #ff9f1c;
+}
+
+.GithubStats {
+    display: flex;
+    flex-flow: row;
+    margin: 0 auto;
+}
