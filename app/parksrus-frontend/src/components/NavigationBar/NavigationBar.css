@@ -1,6 +1,7 @@
 .NavigationBar {
     margin-bottom: 0;
     height: 4em;
+    display: unset;
 }
 
 .container {

@@ -1,0 +1,14 @@
+.ContainerContent {
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 4em;
+    justify-content: center;
+}
+
+.ContainerHeader {
+    text-align: center;
+}
+
+#ToolContent {
+    flex-wrap: wrap;
+}

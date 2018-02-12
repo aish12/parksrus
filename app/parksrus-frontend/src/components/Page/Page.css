@@ -1,9 +1,9 @@
 .PageContent {
-    position: absolute;
     top: 4em;
-    bottom: 4em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 5em;
+    position: relative;
 }

@@ -1,0 +1,27 @@
+.ProjectDescription {
+    background-color: #2ec4b6;
+    margin-top: 4em;
+    margin-bottom: 4em;
+}
+
+.Container {
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 4em;
+}
+
+.Panel {
+    padding: 4em;
+}
+
+.Description {
+    font-size: 18pt;
+    font-style: italic;
+    text-align: justify;
+    padding: 1em;
+}
+
+.DescriptionHeader {
+    font-weight: bold;
+    text-align: center;
+}

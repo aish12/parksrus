@@ -1,0 +1,15 @@
+.DataCard {
+    height: auto;
+    padding: 2em;
+    margin: 3em;
+}
+
+.Link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.Link:hover {
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,16 @@
+.ProjectStatistics {
+    display: flex;
+    flex-direction: row;
+}
+
+.Statistic {
+    font-size: 84pt;
+}
+
+.StatisticsPanel {
+    text-align: center;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-bottom: 1em;
+    margin: 4em;
+}
