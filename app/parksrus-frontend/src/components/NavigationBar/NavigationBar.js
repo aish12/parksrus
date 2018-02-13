@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, Collapse } from 'react-bootstrap'
+import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import './NavigationBar.css'
@@ -26,7 +26,7 @@ class NavigationBar extends Component {
                 <Link to="/cities">Cities</Link>
               </NavItem>
               <NavItem eventKey={4}>
-                <Link to="/images">Images</Link>
+                <Link to="/snapshots">Snapshots</Link>
               </NavItem>
             </Nav>
           </Navbar.Collapse>

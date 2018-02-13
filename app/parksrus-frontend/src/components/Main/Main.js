@@ -5,7 +5,7 @@ import SplashPage from '../Pages/SplashPage/SplashPage';
 import AboutPage from '../Pages/AboutPage/AboutPage';
 import ParksPage from '../Pages/ParksPage/ParksPage';
 import CitiesPage from '../Pages/CitiesPage/CitiesPage';
-import ImagesPage from '../Pages/ImagesPage/ImagesPage';
+import SnapshotsPage from '../Pages/SnapshotsPage/SnapshotsPage';
 
 class Main extends Component {
   render() {
@@ -15,7 +15,7 @@ class Main extends Component {
           <Route path='/about' component={AboutPage}/>
           <Route path='/paths' component={ParksPage}/>
           <Route path='/cities' component={CitiesPage}/>
-          <Route path='/images' component={ImagesPage}/>
+          <Route path='/snapshots' component={SnapshotsPage}/>
         </Switch>
     );
   }

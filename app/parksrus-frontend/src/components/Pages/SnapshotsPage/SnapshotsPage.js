@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './ImagesPage.css';
+import './SnapshotsPage.css';
 
 import Page from '../../Page/Page'
 
-class ImagesPage extends Component {
+class SnapshotsPage extends Component {
   render() {
     return (
         <div>
@@ -15,4 +15,4 @@ class ImagesPage extends Component {
   }
 }
 
-export default ImagesPage;
+export default SnapshotsPage;
