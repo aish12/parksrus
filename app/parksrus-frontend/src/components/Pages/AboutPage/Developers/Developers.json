@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Aishwarya Shashidhar",
+    "githubID": "",
+    "githubUsername": "aish12",
+    "avatarUrl": "./images/avatars/aish.jpg",
+    "biography": "Aish Shashidhar is a Junior majoring in Computer Science at The University of Texas at Austin. She loves hiking andteaching, and is also a henna artist.",
+    "responsibilities": "Back-End Developer"
+  },
+  {
+    "name": "Benjamin Chen",
+    "githubID": "",
+    "githubUsername": "b-chen",
+    "avatarUrl": "./images/avatars/ben.jpg",
+    "biography": "Benjamin Chen is Junior majoring in Computer Science at UT Austin. His interests outside of academics include videogames and fishing. ",
+    "responsibilities": "Front-End Developer"
+  },
+  {
+    "name": "Daniel Zheng",
+    "githubID": "",
+    "githubUsername": "danielczheng",
+    "avatarUrl": "./images/avatars/daniel.png",
+    "biography": "Daniel Zheng is a Junior studying Computer Science at the University of Texas Austin. Aside from academia, he enjoys spending his time playing videogames, and watching the occasional show or movie. He also has a newfound passion for playing squash (the sport, not the vegetable).",
+    "responsibilities": "Front-End Developer"
+  },
+  {
+    "name": "Denalex Orakwue",
+    "githubID": "",
+    "githubUsername": "chimdindudenalexorakwue",
+    "avatarUrl": "./images/avatars/denalex.jpg",
+    "biography": "Denalex Orakwue is a Junior majoring in Computer Science at The University of Texas at Austin.",
+    "responsibilities": "Back-End Developer"
+  },
+  {
+    "name": "Trenton Beckendorff",
+    "githubID": "",
+    "githubUsername": "trentonbeckendorff",
+    "avatarUrl": "./images/avatars/trenton.jpg",
+    "biography": "Trenton Beckendorff is an emerging technologist pursuing a degree in Computer Science from The University of Texas at Austin.",
+    "responsibilities": "Front-End Developer"
+  }
+]

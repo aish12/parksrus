@@ -15,7 +15,7 @@ class DeveloperCard extends Component {
           <img src={this.props.avatarUrl} className="Avatar"/>
           <h4 className="Name">{this.props.name}</h4>
           <h6 className="Header">Biography</h6>
-          <p className="Paragraph">{this.props.bio}</p>
+          <p className="Paragraph">{this.props.biography}</p>
           <h6 className="Header">Responsibilites</h6>
           <p className="Paragraph">{this.props.responsibilities}</p>
           <div className="GithubStats">

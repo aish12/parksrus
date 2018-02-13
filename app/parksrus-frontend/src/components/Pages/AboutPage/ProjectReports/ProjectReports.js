@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ProjectReports.css';
 
-import { Panel, Glyphicon } from 'react-bootstrap'
+import { Panel } from 'react-bootstrap'
 
 class ProjectReports extends Component {
   render() {
