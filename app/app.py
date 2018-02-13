@@ -33,5 +33,3 @@ def serve_react(path):
 
 if __name__ == '__main__':
 	app.run(port = 5000, use_reloader=True, threaded=True)
-
-#test-2
