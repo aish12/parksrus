@@ -26,6 +26,7 @@ for model in model_objects:
 
 # serve the React app
 @app.route('/', defaults={'path': ''})
+@app.route("/<string:path>")
 @app.route('/<path:path>')
 def serve_react(path):
     if path != "":
