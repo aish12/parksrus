@@ -25,7 +25,6 @@ for model in model_objects:
     manager.create_api(model, **kwargs)
 
 # serve the React app
-'''
 @app.route('/', defaults={'path': ''})
 @app.route("/<string:path>")
 @app.route('/<path:path>')
@@ -37,13 +36,6 @@ def serve_react(path):
             return send_from_directory(REACT_FILES, 'index.html')
     else:
         return send_from_directory(REACT_FILES, 'index.html')
-'''
-
-@app.route('/', defaults={'path': ''})
-@app.route("/<string:path>")
-@app.route('/<path:path>')
-def serve_react(path):
-    return render_template('./parksrus-frontend/build/index.html')
 
 # run on port 5000
 if __name__ == '__main__':
