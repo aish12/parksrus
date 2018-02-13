@@ -17,3 +17,8 @@
 .ReportLink {
     text-align: center;
 }
+
+.ReportLogo {
+    height: 64px;
+    width: 64px;
+}

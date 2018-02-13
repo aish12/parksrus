@@ -11,13 +11,13 @@ class ProjectReports extends Component {
           <div className="ContainerContent">
             <a href="" className="Link">
               <Panel className="ProjectReport">
-                <Glyphicon glyph="book" />
+                <img className="ReportLogo" src="./images/api_logos/gitbook.svg" />
                 <h4>Technical Report</h4>
               </Panel>
             </a>
             <a href="http://github.com/aish12/parksrus" className="Link">
               <Panel className="ProjectReport">
-                <img src="./images/api_logos/github.png"/>
+                <img className="ReportLogo" src="./images/api_logos/github.png"/>
                 <h4>Github Repository</h4>
               </Panel>
             </a>

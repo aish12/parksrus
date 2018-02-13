@@ -1,6 +1,7 @@
 .ProjectStatistics {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .Statistic {

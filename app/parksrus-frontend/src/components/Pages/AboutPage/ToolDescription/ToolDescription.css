@@ -12,3 +12,9 @@
 #ToolContent {
     flex-wrap: wrap;
 }
+
+@media (max-width: 480px) {
+    .ContainerContent {
+        flex-wrap: wrap;
+    }
+}
