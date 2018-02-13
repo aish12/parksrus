@@ -2,7 +2,7 @@
 models for database
 """
 import os
-from flask import Flask, send_from_directory, request, jsonify
+from flask import Flask, send_from_directory, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
