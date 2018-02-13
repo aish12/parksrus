@@ -66,6 +66,7 @@ function getRepositoryIssues() {
 
 function addContributions(developers, commits, issues) {
   console.assert(developers.size === commits.length);
+  developers.forEach(dev => dev.issues = 0);
   commits.forEach(function attributeCommits(commit) {
     console.assert(commit.hasOwnProperty('author'));
     console.assert(commit.author.hasOwnProperty('id'));
@@ -80,8 +81,6 @@ function addContributions(developers, commits, issues) {
     const githubID = issue.user.id;
     if ('issues' in developers.get(githubID)) {
       developers.get(githubID).issues++;
-    } else {
-      developers.get(githubID).issues = 1;
     }
     console.assert(developers.get(githubID).issues > 0);
   });

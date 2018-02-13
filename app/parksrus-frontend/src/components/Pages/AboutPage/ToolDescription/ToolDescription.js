@@ -49,6 +49,24 @@ class ToolDescription extends Component {
                       logoUrl=""
                       apiUrl="http://github.com/facebook/create-react-app">
             </DataCard>
+            <DataCard apiName="Postman"
+                      apiDescription="RESTful Client"
+                      logoUrl=""
+                      apiUrl="">
+
+            </DataCard>
+            <DataCard apiName="Slack"
+                      apiDescription="Real-time Communication"
+                      logoUrl=""
+                      apiUrl="http://slack.com">
+
+            </DataCard>
+            <DataCard apiName="NameCheap"
+                      apiDescription="Domain Name Registrar"
+                      logoUrl=""
+                      apiUrl="http://namecheap.com">
+
+            </DataCard>
           </div>
         </div>
     );

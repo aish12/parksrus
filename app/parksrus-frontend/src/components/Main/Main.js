@@ -13,7 +13,7 @@ class Main extends Component {
         <Switch>
           <Route exact path='/' component={SplashPage}/>
           <Route path='/about' component={AboutPage}/>
-          <Route path='/paths' component={ParksPage}/>
+          <Route path='/parks' component={ParksPage}/>
           <Route path='/cities' component={CitiesPage}/>
           <Route path='/snapshots' component={SnapshotsPage}/>
         </Switch>
