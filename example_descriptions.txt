@@ -1,0 +1,45 @@
+Parks:
+
+{
+    "city": null,
+    "city_id": null,
+    "country": "US",
+    "description": "Walt Disney World, officially known as the Walt Disney World Resort, is an entertainment complex in Bay Lake and Lake Buena Vista, Florida, near Orlando and Kissimmee, Florida.",
+    "id": 1,
+    "latitude": "28.417839",
+    "longitude": "-81.581235",
+    "name": "Walt Disney World",
+    "phone_number": null,
+    "photos": [],
+    "review_data": null,
+    "state": "Florida",
+    "website": "https://disneyworld.disney.go.com"
+}
+
+Cities:
+{
+  "country": "US", 
+  "description": "Large city in Texas", 
+  "id": 1, 
+  "latitude": "-95.366302", 
+  "longitude": "29.761993", 
+  "name": "Houston", 
+  "num_parks": 20, 
+  "parks": [], 
+  "photos": [], 
+  "state": "Texas"
+}
+
+Images:
+{
+  "city": null, 
+  "city_id": null, 
+  "date": null, 
+  "id": 1, 
+  "image_uri": "https://imagesvc.timeincapp.com/v3/mm/image?url=http%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2F1489421976%2Fwalt-disney-world-magic-kingdom-DISGUIDE0317.jpg%3Fitok%3DMo9pR1c1&w=800&q=85", 
+  "latitude": null, 
+  "longitude": null, 
+  "park": null, 
+  "park_id": null, 
+  "tags": "#fun, #disney, #park"
+}
