@@ -1,7 +1,7 @@
 """
 endpoints for api and website
 """
-from models import Photo, City, Park, app, db, send_from_directory, jsonify, request, Flask
+from models import Photo, City, Park, app, db, send_from_directory, jsonify, request, Flask, render_template
 from flask_restless import APIManager
 from config import REACT_FILES
 import os
