@@ -61,7 +61,7 @@ function getRepositoryCommits() {
 }
 
 function getRepositoryIssues() {
-  return axios.get('http://api.github.com/repos/aish12/parksrus/issues');
+  return axios.get('http://api.github.com/repos/aish12/parksrus/issues?state=all');
 }
 
 function addContributions(developers, commits, issues) {
