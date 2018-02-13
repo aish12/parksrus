@@ -2,6 +2,8 @@
     height: auto;
     padding: 2em;
     margin: 3em;
+    min-width: 200px;
+    text-align: center;
 }
 
 .Link {

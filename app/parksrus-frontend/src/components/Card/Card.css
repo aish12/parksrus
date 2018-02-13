@@ -2,7 +2,8 @@
     margin: 1em;
     padding: 1em;
     width: 300px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     height: 600px;
     overflow: auto;
 }
