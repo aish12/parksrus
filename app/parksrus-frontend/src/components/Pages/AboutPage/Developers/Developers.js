@@ -29,8 +29,11 @@ class Developers extends Component {
             > </DeveloperCard>
             <DeveloperCard avatarUrl="./images/avatars/daniel.png"
                            name="Daniel Zheng"
-                           bio=""
-                           responsibilities="Developer"
+                           bio="Daniel Zheng is a Junior studying Computer Science at the
+                                University of Texas Austin. Aside from academia, he enjoys spending his time
+                                playing videogames, and watching the occasional show or movie. He also has a
+                                newfound passion for playing squash (the sport, not the vegetable)."
+                           responsibilities="Front-End Developer"
                            commits={6}
                            unittests={7}
                            issues={8}
