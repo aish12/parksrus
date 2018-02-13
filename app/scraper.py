@@ -4,7 +4,7 @@ Script that will scrape API's to gather info for database
 
 from googleplaces import GooglePlaces, types, lang
 
-API_KEY = os.environ['GOOGLE_PLACES_KEY']
+GOOGLE_API_KEY = os.environ['GOOGLE_PLACES_KEY']
 
 def city_wide_search(latitude, longitude):
 
