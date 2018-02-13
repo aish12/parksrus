@@ -10,44 +10,44 @@ class ToolDescription extends Component {
           <h1 className="ContainerHeader">Our Tools</h1>
           <div id="ToolContent" className="ContainerContent">
             <DataCard apiName="Flask"
-                      apiDescription=""
+                      apiDescription="Web Server"
                       logoUrl=""
-                      apiUrl="">
+                      apiUrl="http://flask.pocoo.org">
             </DataCard>
             <DataCard apiName="React-Bootstrap"
-                      apiDescription=""
+                      apiDescription="Component Framework"
                       logoUrl=""
-                      apiUrl="">
+                      apiUrl="http://react-bootstrap.github.io">
             </DataCard>
             <DataCard apiName="React"
-                      apiDescription=""
+                      apiDescription="UI Framework"
                       logoUrl=""
-                      apiUrl="">
+                      apiUrl="http://reactjs.org">
             </DataCard>
             <DataCard apiName="Amazon AWS EC2"
-                      apiDescription=""
+                      apiDescription="Server Hosting"
                       logoUrl=""
-                      apiUrl="">
+                      apiUrl="http://aws.amazon.com/ec2">
             </DataCard>
             <DataCard apiName="TravisCI"
-                      apiDescription=""
+                      apiDescription="Continuous Integration"
                       logoUrl=""
-                      apiUrl="">
+                      apiUrl="http://travis-ci.org">
             </DataCard>
             <DataCard apiName="Nginx"
-                      apiDescription=""
+                      apiDescription="Reverse-Proxy"
                       logoUrl=""
-                      apiUrl="">
+                      apiUrl="http://nginx.com">
             </DataCard>
             <DataCard apiName="Gunicorn"
-                      apiDescription=""
+                      apiDescription="WSGI HTTP Server"
                       logoUrl=""
-                      apiUrl="">
+                      apiUrl="http://gunicorn.org">
             </DataCard>
             <DataCard apiName="Create-React-App"
-                      apiDescription=""
+                      apiDescription="React Scaffolding"
                       logoUrl=""
-                      apiUrl="">
+                      apiUrl="http://github.com/facebook/create-react-app">
             </DataCard>
           </div>
         </div>

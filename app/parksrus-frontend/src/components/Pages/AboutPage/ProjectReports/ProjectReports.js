@@ -9,7 +9,7 @@ class ProjectReports extends Component {
         <div className="ProjectReports">
           <h1 className="ContainerHeader">Report & Repository</h1>
           <div className="ContainerContent">
-            <a href="" className="Link">
+            <a href="http://gitbook.com/book/chimdindudenalexorakwue/parksr-us-technical-report" className="Link">
               <Panel className="ProjectReport">
                 <img className="ReportLogo" src="./images/api_logos/gitbook.svg" />
                 <h4>Technical Report</h4>
