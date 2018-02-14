@@ -29,10 +29,11 @@ class Park(db.Model):
     phone_number = db.Column(db.String())
     longitude = db.Column(db.String())
     latitude = db.Column(db.String())
+    image_uri = db.Column(db.String())
     city = db.relationship('City',
                            backref=db.backref('parks', lazy='dynamic'))
 
-    def __init__(self, name, website, description, city_id, state, country, review_data, phone_number, longitude, latitude):
+    def __init__(self, name, website, description, city_id, state, country, review_data, phone_number, longitude, latitude, image_uri):
 
         self.name = name
         self.website = website
@@ -44,6 +45,7 @@ class Park(db.Model):
         self.phone_number = phone_number
         self.longitude = longitude
         self.latitude = latitude
+        self.image_uri = image_uri
 
     def __repr__(self):
         return '<Park %r>' % self.name
@@ -204,8 +206,9 @@ class City(db.Model):
     description = db.Column(db.String())
     state = db.Column(db.String())
     country = db.Column(db.String())
+    image_uri = db.Column(db.String())
 
-    def __init__(self, name, num_parks, description, state, country, longitude, latitude):
+    def __init__(self, name, num_parks, description, state, country, longitude, latitude, image_uri):
         self.name = name
         self.num_parks = num_parks
         self.description = description
@@ -213,6 +216,7 @@ class City(db.Model):
         self.country = country
         self.longitude = longitude
         self.latitude = latitude
+        self.image_uri = image_uri
 
     def __repr__(self):
         return '<City %r>' % self.name
