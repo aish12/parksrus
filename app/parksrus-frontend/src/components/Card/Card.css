@@ -40,6 +40,12 @@
     overflow: hidden;
 }
 
+@media(max-width: 480px) {
+    .GridCard {
+        width: 300px;
+    }
+}
+
 .PageCard {
     width: 600px;
 }

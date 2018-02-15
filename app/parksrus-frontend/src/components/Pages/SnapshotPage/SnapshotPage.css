@@ -21,37 +21,3 @@
 .SnapshotDescriptionPanel {
     padding: 5em;
 }
-
-.DescriptionPanel {
-    display: flex;
-    flex-direction: row;
-}
-
-.DescriptionContent {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.DescriptionContent h1 {
-    font-family: 'Comfortaa';
-}
-
-.DescriptionParagraph {
-    font-size: 18pt;
-    text-align: justify;
-    padding: 3em;
-    padding-right: 2em;
-    padding-bottom: 2em;
-    padding-left: 2em;
-    padding-top: 1em;
-}
-
-.MapWrapper {
-    height: 600px;
-    width: 100%;
-}
-
-.MapWrapper > div {
-    width: 100% !important;
-}

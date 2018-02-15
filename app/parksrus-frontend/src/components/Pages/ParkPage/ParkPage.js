@@ -65,7 +65,7 @@ class ParkPage extends React.Component {
                 </Panel>
               </div>
               <PageSection header={"Explore the Park"}>
-                <div className="ParkMapWrapper">
+                <div className="MapWrapper">
                   <GoogleMapReact bootstrapURLKeys={{ key: "AIzaSyBFObWyqlbpObdkdNE0k4JwX9AB66cTGKw"}}
                                   defaultCenter={location}
                                   defaultZoom={15} />
