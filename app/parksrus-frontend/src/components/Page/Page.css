@@ -1,6 +1,11 @@
+.Page {
+    display: -ms-inline-flexbox;
+    height: 100%;
+}
+
 .PageContent {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 5em;

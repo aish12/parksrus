@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import './ProjectDescription.css'
 
-import { Panel } from 'react-bootstrap'
+import ParagraphCard from '../../../ParagraphCard/ParagraphCard'
+import PageSection from '../../../PageSection/PageSection'
 
 class ProjectDescription extends Component {
   render() {
+    const description = "We connect theme park enthusiasts," +
+        " trendy urbanites, and travel aficionados through a comprehensive web" +
+        " application that offers information on nearby amusement parks, rich" +
+        " social media of visitors' experiences at the parks, and " +
+        " descriptions of their host cities.";
     return (
-        <div className="ProjectDescription">
-          <div className="Container">
-            <Panel className="Panel">
-              <h1 className="DescriptionHeader">The Project</h1>
-              <p className="Description">Our platform, <b>parksr.us</b>, aims to connect theme park enthusiasts,
-                trendy urbanites, and travel aficionados through a comprehensive
-                web application that offers information on nearby amusement parks,
-                rich social media of visitors' experiences at the parks, and
-                descriptions of their host cities.</p>
-            </Panel>
-          </div>
-        </div>
+        <PageSection backgroundColor={"#2ec4b6"}
+                     color={"#ffffff"}>
+          <ParagraphCard header={"We Connect Experiences"}
+                         content={description}/>
+        </PageSection>
     );
   }
 }

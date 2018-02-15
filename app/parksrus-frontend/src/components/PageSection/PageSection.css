@@ -1,0 +1,16 @@
+.PageSection {
+    width: 100%;
+    padding: 4em;
+}
+
+.SectionHeader {
+    text-align: center;
+    padding-bottom: 0.5em;
+}
+
+.SectionContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}

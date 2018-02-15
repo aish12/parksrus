@@ -11,7 +11,7 @@ class DeveloperCard extends Component {
     const unittestsTooltip = <Tooltip id="unittestsTooltip">Unit Tests</Tooltip>;
 
     return (
-        <Card>
+        <Card classes={"DeveloperCard"}>
           <img src={this.props.avatarUrl} className="Avatar"/>
           <h4 className="Name">{this.props.name}</h4>
           <h6 className="Header">Biography</h6>

@@ -1,0 +1,96 @@
+.ParkHero {
+    width: 100%;
+    height: 600px;
+}
+
+.ParkImage {
+    height: 100%;
+    width: 100%;
+}
+
+.ParkTitle {
+    text-align: center;
+    padding-top: 3em;
+}
+
+.ParkDescription {
+    width: 100%;
+    padding: 5em;
+}
+
+.ParkDescriptionPanel {
+    padding: 5em;
+}
+
+.DescriptionPanel {
+    display: flex;
+    flex-direction: row;
+}
+
+.DescriptionContent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.DescriptionContent h1 {
+    font-family: 'Comfortaa';
+}
+
+.DescriptionParagraph {
+    font-size: 18pt;
+    text-align: justify;
+    padding: 3em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+    padding-left: 2em;
+    padding-top: 1em;
+}
+
+.ParkMapWrapper {
+    height: 600px;
+    width: 100%;
+}
+
+.ParkMapWrapper > div {
+    width: 100% !important;
+}
+
+.ParkContactButton {
+    width: 100px;
+    height: 100px;
+    font-size: 32pt;
+    line-height: 70pt;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+}
+
+.ParkContact {
+    display: flex;
+    justify-content: center;
+    background-color: #2ec4b6;
+    padding: 4em;
+}
+
+.ParkRating {
+    display: flex;
+    justify-content: center;
+    padding: 4em;
+    text-align: center;
+    background-color: #e71d36;
+}
+
+.Rating {
+    font-size: 84pt;
+}
+
+.ParkSnapshots {
+    text-align: center;
+}
+
+.Grid {
+    justify-content: center;
+    display: flex;
+    flex-flow: row;
+}

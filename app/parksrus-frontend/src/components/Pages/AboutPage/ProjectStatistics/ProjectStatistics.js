@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import PageSection from '../../../PageSection/PageSection'
 import { Panel } from 'react-bootstrap'
 
 import './ProjectStatistics.css'
@@ -55,7 +56,7 @@ class ProjectStatistics extends Component {
 
   render() {
     return (
-        <div className="ProjectStatistics">
+        <PageSection>
           <Panel className="StatisticsPanel">
             <h1 className="Statistic">{this.state.commits}</h1>
             <p>Total Commits</p>
@@ -68,7 +69,7 @@ class ProjectStatistics extends Component {
             <h1 className="Statistic">{this.state.unittests}</h1>
             <p>Total Unit Tests</p>
           </Panel>
-        </div>
+        </PageSection>
     );
   }
 }

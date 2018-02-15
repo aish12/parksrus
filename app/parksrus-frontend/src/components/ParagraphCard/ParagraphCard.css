@@ -1,0 +1,27 @@
+.ParagraphCard {
+    min-width: 400px;
+    text-align: center;
+    padding: 4em;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.ParagraphCard p {
+    font-size: 18pt;
+    padding: 1em;
+}
+
+.ParagraphCard h {
+    font-size: 24pt;
+}
+
+@media (max-width: 480px) {
+    .ParagraphCard {
+        min-width: 300px;
+        padding: 1em;
+    }
+
+    .ParagraphCard p {
+        font-size: 10pt;
+    }
+}

@@ -1,0 +1,61 @@
+.CityHero {
+    width: 100%;
+    height: 600px;
+}
+
+.CityImage {
+    height: 100%;
+    width: 100%;
+}
+
+.CityTitle {
+    text-align: center;
+    padding-top: 3em;
+}
+
+.CityDescription {
+    width: 100%;
+    padding: 5em;
+}
+
+.CityDescriptionPanel {
+    padding: 5em;
+}
+
+.DescriptionPanel {
+    display: flex;
+    flex-direction: row;
+}
+
+.DescriptionContent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.DescriptionContent h1 {
+    font-family: 'Comfortaa';
+}
+
+.DescriptionParagraph {
+    font-size: 18pt;
+    text-align: justify;
+    padding: 3em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+    padding-left: 2em;
+    padding-top: 1em;
+}
+
+.MapWrapper {
+    height: 600px;
+    width: 100%;
+}
+
+.MapWrapper > div {
+    width: 100% !important;
+}
+
+.Snapshots {
+    text-align: center;
+}

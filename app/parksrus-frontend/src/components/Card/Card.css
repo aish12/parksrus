@@ -1,9 +1,45 @@
 .Card {
     margin: 1em;
-    padding: 1em;
-    width: 300px;
     display: flex;
     flex-direction: column;
-    height: 600px;
     overflow: auto;
+}
+
+.CardHeader {
+    font-size: 20pt;
+    font-family: 'Comfortaa', serif;
+}
+
+.CardImage {
+    height: 350px;
+    width: 100%;
+}
+
+.CardContent {
+    padding-left: 0.5em;
+}
+
+.CardSubtitle {
+    padding-left: 1em;
+}
+
+.CardLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.CardLink:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.GridCard {
+    height: 450px;
+    width: 350px;
+    margin: 1em;
+    overflow: hidden;
+}
+
+.PageCard {
+    width: 600px;
 }
