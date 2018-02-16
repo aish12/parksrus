@@ -64,7 +64,7 @@ class SnapshotPage extends React.Component {
                 <div className="MapWrapper">
                   <GoogleMapReact bootstrapURLKeys={{ key: "AIzaSyBFObWyqlbpObdkdNE0k4JwX9AB66cTGKw"}}
                                   defaultCenter={location}
-                                  defaultZoom={15} />
+                                  defaultZoom={10} />
                 </div>
               </PageSection>
               <PageSection header={"Explore the Park"}>
