@@ -89,7 +89,7 @@ class ParkPage extends React.Component {
                 <Button className="ParkContactButton" href={"tel:" + park.phone_number}>
                   <Glyphicon glyph="phone"/>
                 </Button>
-                <Button className="ParkContactButton" href={"http://" + park.website}>
+                <Button className="ParkContactButton" href={park.website}>
                   <Glyphicon glyph="globe" />
                 </Button>
               </PageSection>
