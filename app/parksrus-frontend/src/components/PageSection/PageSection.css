@@ -1,0 +1,22 @@
+.PageSection {
+    width: 100%;
+    padding: 4em;
+}
+
+@media(max-width: 480px) {
+    .PageSection {
+        padding: 0;
+    }
+}
+
+.SectionHeader {
+    text-align: center;
+    padding-bottom: 0.5em;
+}
+
+.SectionContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}

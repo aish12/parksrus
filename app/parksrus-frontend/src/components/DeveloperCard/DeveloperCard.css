@@ -1,3 +1,10 @@
+.DeveloperCard {
+    width: 300px;
+    height: 600px;
+    padding: 1em;
+    justify-content: space-between;
+}
+
 .Avatar {
     border-radius: 50%;
     width: 200px;
@@ -45,5 +52,5 @@
 .GithubStats {
     display: flex;
     flex-flow: row;
-    margin: 0 auto;
+    justify-content: center;
 }

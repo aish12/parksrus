@@ -134,7 +134,7 @@ class Developers extends Component {
     if (error) {
       console.error(error)
     }
-    return devProfiles;
+    return <div className="Developers">{devProfiles}</div>;
   }
 }
 
