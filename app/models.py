@@ -208,7 +208,7 @@ class City(db.Model):
     country = db.Column(db.String())
     image_uri = db.Column(db.String())
 
-    def __init__(self, name, num_parks, description, state, country, longitude, latitude, image_uri):
+    def __init__(self, name, description, state, country, longitude, latitude, image_uri, num_parks=0):
         self.name = name
         self.num_parks = num_parks
         self.description = description

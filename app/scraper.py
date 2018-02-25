@@ -4,14 +4,78 @@ Script that will scrape API's to gather info for database
 
 from googleplaces import GooglePlaces, types, lang
 from models import Photo, City, Park, db
+import re
+import requests
+import os
 
 GOOGLE_API_KEY = os.environ['GOOGLE_PLACES_KEY']
 
 google_places = GooglePlaces(GOOGLE_API_KEY)
 
 
-def city_wide_search(latitude, longitude):
-    return
+def search_for_city(name):
+    query_result = google_places.nearby_search(location=name)
+
+    place = query_result.places[0]
+    place.get_details()
+    photo = None
+
+    # debugging
+    #print (place.name)
+    #print (place.formatted_address)
+    #print (place.geo_location)
+    #print (place.place_id)
+
+    longitude = place.geo_location['lng']
+    latitude = place.geo_location['lat']
+    #print(longitude)
+    #print(latitude)
+    #print (place.details)  # A dict matching the JSON response from Google.
+
+    photo = place.photos[0]
+    # 'maxheight' or 'maxwidth' is required
+    photo.get(maxheight=500, maxwidth=500)
+    # MIME-type, e.g. 'image/jpeg'
+    photo.mimetype
+    # Image URL
+    photo.url
+    # Original filename (optional)
+    photo.filename
+    # Raw image data
+    photo.data
+
+    #print(photo.url)
+
+    return (place.name, longitude, latitude, photo.url)
+
+def get_wikipedia_description(name):
+    url = "https://en.wikipedia.org/w/api.php"
+
+    name = format_name_for_wikipedia(name)
+
+    querystring = {"action":"query","prop":"extracts","exintro":"","explaintext":"","format":"json","redirects":"","titles":name}
+
+    headers = {
+        'cache-control': "no-cache",
+        'postman-token': "e569a537-1dd2-a750-c10d-69c760cbc90a"
+        }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    json_data = response.json()
+
+    description = json_data["query"]["pages"].values()[0]["extract"]
+    n = 1  # run at least once
+    while n:
+        description, n = re.subn(r'\([^()]*\)', '', description)
+    description = description.replace("  ", " ")
+    description = description.replace(")", "")
+    return description
+
+def format_name_for_wikipedia(name):
+    name = name.replace(" ", "_")
+    name = name.replace("\n", "")
+    return name
 
 
 def search_parks_in_city(latitude, longitude):
@@ -48,10 +112,8 @@ def search_parks_in_city(latitude, longitude):
             url = photo.url
 
 
-def search_parks_in_city(city, country):
-    loc_string = city + ', ' + country
-
-    query_result = google_places.nearby_search(location=loc_string,
+def search_parks_in_city(name):
+    query_result = google_places.nearby_search(location=name,
                                                radius=50000, types=[types.TYPE_AMUSEMENT_PARK])
 
     # iterate over query results to get more detailed info
@@ -62,34 +124,49 @@ def search_parks_in_city(city, country):
 	"""
 
 
-def get_coordinates(city):
-    """
-    Gets coordinates of a city based on its name
-    """
-    return
-
-
-def get_coordinates(city, country):
-    """
-    Gets coordinates of a city based on name and country
-    """
-    return
-
-
-def get_coordinates_park(park):
-    """
-    Gets coordinates of an amusement park based on its name
-    """
-    return
-
-
 def add_park_to_database():
     return
 
 
-def add_photo_to_database():
+def add_snapshot_to_database():
     return
 
 
 def add_city_to_database():
     return
+
+def cities_scrape():
+    cities_list = []
+    with open("cities.txt", "r") as cities:
+        for line in cities:
+            cities_list.append(line)
+
+    #print(cities_list)
+    x = 0
+    for city in cities_list:
+        #search_for_city(city)
+        x += 1
+        if x == 3:
+            break
+
+        name, longitude, latitude, uri = search_for_city(city)
+        description = get_wikipedia_description(name)
+        state = city.split(",")[1]
+        state = state[1:]
+
+        print(name)
+        print(longitude)
+        print(latitude)
+        print(uri)
+        print(description)
+        print(state)
+
+        city_model = City(name=name, longitude=longitude, latitude=latitude, image_uri=uri, description=description, state=state, country="United States")
+
+        print(city_model)
+
+        print("\n\n\n\n\n")
+
+
+if __name__ == '__main__':
+    cities_scrape()
