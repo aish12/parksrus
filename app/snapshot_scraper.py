@@ -12,16 +12,10 @@ twitter_stream = TwitterStream(auth=oauth)
 twitter = Twitter(auth=oauth)
 
 
-
-#twitter.search.tweets(q='#disney', geocode=result_)
-
-
-
-
-it = twitter_stream.statuses.sample()
-
 tweet_count = 5
-for tweet in it:
+it = twitter.search.tweets(q='disney&filter:images',count=1, include_entities=True)
+print (it)
+for tweet in it['statuses']:
 	tweet_count -= 1
 	print (json.dumps(tweet))
 	if tweet_count <= 0:
