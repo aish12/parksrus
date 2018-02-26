@@ -3,7 +3,7 @@ Script that will scrape API's to gather info for database
 """
 
 from googleplaces import GooglePlaces, types, lang
-from models import Photo, City, Park, db
+from models import Snapshot, City, Park, db
 import re
 import requests
 import os
@@ -14,6 +14,10 @@ google_places = GooglePlaces(GOOGLE_API_KEY)
 
 
 def search_for_city(name):
+    """
+    Get city data from the Google Places API
+    """
+
     query_result = google_places.nearby_search(location=name)
 
     place = query_result.places[0]
@@ -49,6 +53,10 @@ def search_for_city(name):
     return (place.name, longitude, latitude, photo.url)
 
 def get_wikipedia_description(name):
+    """
+    get description of a city from the Wikipedia api
+    """
+
     url = "https://en.wikipedia.org/w/api.php"
 
     name = format_name_for_wikipedia(name)
@@ -132,8 +140,8 @@ def add_snapshot_to_database():
     return
 
 
-def add_city_to_database():
-    return
+def add_city_to_database(city):
+    db.session.merge(city)
 
 def cities_scrape():
     cities_list = []
@@ -141,10 +149,9 @@ def cities_scrape():
         for line in cities:
             cities_list.append(line)
 
-    #print(cities_list)
+
     x = 0
     for city in cities_list:
-        #search_for_city(city)
         x += 1
         if x == 3:
             break
@@ -165,7 +172,9 @@ def cities_scrape():
 
         print(city_model)
 
-        print("\n\n\n\n\n")
+        #add_city_to_database(city)
+
+        print("\n\n")
 
 
 if __name__ == '__main__':
