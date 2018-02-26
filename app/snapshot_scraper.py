@@ -34,7 +34,9 @@ def init_cities():
 
 def get_images(names_list):
 	filters = " filter:images" #need to figure out how to add safe filter
+	imgs_dict = {}
 	for name in names_list:
+		images = []
 		it = twitter.search.tweets(q=name+filters,count=15, include_entities=True)
 		num_entries = it['search_metadata']['count']
 		#print (num_entries)
@@ -45,20 +47,30 @@ def get_images(names_list):
 				#print ("More images exist!!")
 				entities = cur_json['entities']
 				if 'media' in entities:
-					print (entities['media'][0]['media_url_https'])
+					url = entities['media'][0]['media_url_https']
+					if url not in images:
+						images.append(url)
+						print url
 				else:
 					#print "media doesn't exist?"
 					if 'retweeted_status' in cur_json:
 						retweeted_status = cur_json['retweeted_status']
 						if 'media' in retweeted_status:
-							print (['entities']['media'][0]['media_url'])
+							url = ['entities']['media'][0]['media_url']
+							if url not in images:
+								images.append(url)
+								print url
 			else:
-				#print cur_json
-				print (it['statuses'][i]['retweeted_status']['entities']['media'][0]['media_url'])
+				url = it['statuses'][i]['retweeted_status']['entities']['media'][0]['media_url']
+				if url not in images:
+					images.append(url)
+					print url
+		imgs_dict[name] = images
+	return imgs_dict
 
 
 parks_list = init_parks()
 cities_list = init_cities()
 
-get_images(parks_list)
-get_images(cities_list)
+parks_images = get_images(parks_list)
+cities_images = get_images(cities_list)
