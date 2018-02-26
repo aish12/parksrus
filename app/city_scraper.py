@@ -144,6 +144,10 @@ def add_city_to_database(city):
     db.session.merge(city)
 
 def cities_scrape():
+    """
+    scrape cities from seed file
+    """
+
     cities_list = []
     with open("cities.txt", "r") as cities:
         for line in cities:
@@ -153,7 +157,7 @@ def cities_scrape():
     x = 0
     for city in cities_list:
         x += 1
-        if x == 3:
+        if x == 10:
             break
 
         name, longitude, latitude, uri = search_for_city(city)
@@ -167,14 +171,11 @@ def cities_scrape():
         print(uri)
         print(description)
         print(state)
+        print("\n\n")
 
         city_model = City(name=name, longitude=longitude, latitude=latitude, image_uri=uri, description=description, state=state, country="United States")
 
-        print(city_model)
-
         #add_city_to_database(city)
-
-        print("\n\n")
 
 
 if __name__ == '__main__':
