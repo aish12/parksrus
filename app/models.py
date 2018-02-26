@@ -10,7 +10,13 @@ from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
 app = Flask(__name__, static_folder="/parksrus-frontend/build/static")
 
 CORS(app)
-app.config.from_object(ProductionConfig)
+
+if os.environ['DB_MODE'] == 'TESTING':
+    app.config.from_object(TestingConfig)
+elif os.environ['DB_MODE'] == 'DEVELOPMENT':
+    app.config.from_object(DevelopmentConfig)
+else:
+    app.config.from_object(ProductionConfig)
 
 db = SQLAlchemy(app)
 
@@ -125,8 +131,8 @@ class Park(db.Model):
         self.latitude = latitude
 
 
-class Photo(db.Model):
-    __tablename__ = 'photos'
+class Snapshot(db.Model):
+    __tablename__ = 'snapshots'
 
     id = db.Column(db.Integer, primary_key=True)
     image_uri = db.Column(db.String(), nullable=False)
@@ -137,9 +143,9 @@ class Photo(db.Model):
     longitude = db.Column(db.String())
     latitude = db.Column(db.String())
     city = db.relationship('City',
-                           backref=db.backref('photos', lazy='dynamic'))
+                           backref=db.backref('snapshots', lazy='dynamic'))
     park = db.relationship('Park',
-                           backref=db.backref('photos', lazy='dynamic'))
+                           backref=db.backref('snapshots', lazy='dynamic'))
 
     def __init__(self, image_uri, park_id, tags, date, longitude, latitude):
         self.image_uri = image_uri
@@ -208,7 +214,7 @@ class City(db.Model):
     country = db.Column(db.String())
     image_uri = db.Column(db.String())
 
-    def __init__(self, name, num_parks, description, state, country, longitude, latitude, image_uri):
+    def __init__(self, name, description, state, country, longitude, latitude, image_uri, num_parks=0):
         self.name = name
         self.num_parks = num_parks
         self.description = description

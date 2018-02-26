@@ -1,14 +1,14 @@
 """
 endpoints for api and website
 """
-from models import Photo, City, Park, app, db, send_from_directory, jsonify, request, Flask, render_template
+from models import Snapshot, City, Park, app, db, send_from_directory, jsonify, request, Flask, render_template
 from flask_restless import APIManager
 from config import REACT_FILES
 import os
 
 # API manager to create API's with flask_restless
 manager = APIManager(app, flask_sqlalchemy_db=db)
-model_objects = [Park, Photo, City]
+model_objects = [Park, Snapshot, City]
 
 # create tables for each model
 db.create_all()
