@@ -175,7 +175,7 @@ def cities_scrape():
 
         city_model = City(name=name, longitude=longitude, latitude=latitude, image_uri=uri, description=description, state=state, country="United States")
 
-        add_city_to_database(city)
+        add_city_to_database(city_model)
 
 
 if __name__ == '__main__':
