@@ -154,12 +154,7 @@ def cities_scrape():
         for line in cities:
             cities_list.append(line)
 
-    x = 0
     for city in cities_list:
-        x += 1
-        if x == 10:
-            break
-
         name, longitude, latitude, uri = search_for_city(city)
         description = get_wikipedia_description(name)
         state = city.split(",")[1]
