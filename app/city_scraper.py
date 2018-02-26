@@ -142,6 +142,7 @@ def add_snapshot_to_database():
 
 def add_city_to_database(city):
     db.session.merge(city)
+    db.session.commit()
 
 def cities_scrape():
     """
