@@ -11,34 +11,54 @@ oauth = OAuth(access_token, access_secret, consumer_key, consumer_secret)
 twitter_stream = TwitterStream(auth=oauth)
 twitter = Twitter(auth=oauth)
 
-parks_list = []
-with open("parks.txt", "r") as parks:
-	count = 3
-	for line in parks:
-		if count >= 1:
-			parks_list.append(line)
-			count -= 1
+num_file_entries = 3
+def init_parks():
+	parks_list = []
+	with open("parks.txt", "r") as parks:
+		count = num_file_entries
+		for line in parks:
+			if count >= 1:
+				parks_list.append(line)
+				count -= 1
+	return parks_list
 
-filters = " filter:images" #need to figure out how to add safe filter
-for park in parks_list:
-	it = twitter.search.tweets(q=park+filters,count=15, include_entities=True)
-	num_entries = it['search_metadata']['count']
-	#print (num_entries)
-	print (park)
-	for i in range (num_entries):
-		cur_json = it['statuses'][i]
-		if 'entities' in cur_json:
-			#print ("More images exist!!")
-			entities = cur_json['entities']
-			if 'media' in entities:
-				print (entities['media'][0]['media_url_https'])
+def init_cities():
+	cities_list = []
+	with open("cities.txt", "r") as cities:
+		count = num_file_entries
+		for line in cities:
+			if count >= 1:
+				cities_list.append(line)
+				count -= 1
+	return cities_list
+
+def get_images(names_list):
+	filters = " filter:images" #need to figure out how to add safe filter
+	for name in names_list:
+		it = twitter.search.tweets(q=name+filters,count=15, include_entities=True)
+		num_entries = it['search_metadata']['count']
+		#print (num_entries)
+		print (name)
+		for i in range (num_entries):
+			cur_json = it['statuses'][i]
+			if 'entities' in cur_json:
+				#print ("More images exist!!")
+				entities = cur_json['entities']
+				if 'media' in entities:
+					print (entities['media'][0]['media_url_https'])
+				else:
+					#print "media doesn't exist?"
+					if 'retweeted_status' in cur_json:
+						retweeted_status = cur_json['retweeted_status']
+						if 'media' in retweeted_status:
+							print (['entities']['media'][0]['media_url'])
 			else:
-				#print "media doesn't exist?"
-				if 'retweeted_status' in cur_json:
-					retweeted_status = cur_json['retweeted_status']
-					if 'media' in retweeted_status:
-						print (['entities']['media'][0]['media_url'])
-		else:
-			#print cur_json
-			print (it['statuses'][i]['retweeted_status']['entities']['media'][0]['media_url'])
-	#print (it['extended_entities'])
+				#print cur_json
+				print (it['statuses'][i]['retweeted_status']['entities']['media'][0]['media_url'])
+
+
+parks_list = init_parks()
+cities_list = init_cities()
+
+get_images(parks_list)
+get_images(cities_list)
