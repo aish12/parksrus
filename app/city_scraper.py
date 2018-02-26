@@ -50,7 +50,7 @@ def search_for_city(name):
 
     #print(photo.url)
 
-    return (place.name, longitude, latitude, photo.url)
+    return (str(place.name), str(longitude), str(latitude), str(photo.url))
 
 def get_wikipedia_description(name):
     """
@@ -153,7 +153,6 @@ def cities_scrape():
         for line in cities:
             cities_list.append(line)
 
-
     x = 0
     for city in cities_list:
         x += 1
@@ -163,7 +162,7 @@ def cities_scrape():
         name, longitude, latitude, uri = search_for_city(city)
         description = get_wikipedia_description(name)
         state = city.split(",")[1]
-        state = state[1:]
+        state = state[1:-1]
 
         print(name)
         print(longitude)
