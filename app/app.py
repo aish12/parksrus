@@ -17,7 +17,7 @@ db.create_all()
 kwargs = {
     'methods': frozenset(['GET', 'POST', 'PATCH']),
     'allow_functions': True,
-    'results_per_page': 8
+    'results_per_page': 10
 }
 
 # create API endpoint for each model
