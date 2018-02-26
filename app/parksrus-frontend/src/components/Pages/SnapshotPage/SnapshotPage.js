@@ -23,7 +23,7 @@ class SnapshotPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://parksr.us/api/photos/' + this.state.snapshot.id).then(response => {
+    axios.get('/api/photos/' + this.state.snapshot.id).then(response => {
       console.assert(response.hasOwnProperty('data'));
 
       this.setState({

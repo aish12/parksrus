@@ -11,7 +11,7 @@ class GridPage extends React.Component {
     this.state = {
       entities: [],
       endpoint: this.props.endpoint,
-      apiPath: "http://parksr.us/api/" + this.props.endpoint,
+      apiPath: "/api/" + this.props.endpoint,
       imageHeight: this.props.imageHeight
     }
   }

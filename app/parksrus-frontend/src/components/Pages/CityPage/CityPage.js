@@ -23,7 +23,7 @@ class CityPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://parksr.us/api/cities/' + this.state.city.id).then(response => {
+    axios.get('/api/cities/' + this.state.city.id).then(response => {
       console.assert(response.hasOwnProperty('data'));
 
       this.setState({

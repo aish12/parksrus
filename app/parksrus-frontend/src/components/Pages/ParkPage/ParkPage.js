@@ -24,7 +24,7 @@ class ParkPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://parksr.us/api/parks/' + this.state.park.id).then(response => {
+    axios.get('/api/parks/' + this.state.park.id).then(response => {
       console.assert(response.hasOwnProperty('data'));
 
       this.setState({
