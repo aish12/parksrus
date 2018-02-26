@@ -11,12 +11,15 @@ oauth = OAuth(access_token, access_secret, consumer_key, consumer_secret)
 twitter_stream = TwitterStream(auth=oauth)
 twitter = Twitter(auth=oauth)
 
+parks_list = []
+with open("parks.txt", "r") as parks:
+	count = 1
+	for line in parks:
+		if count >= 1:
+			parks_list.append(line)
+			count -= 1
 
-tweet_count = 5
-it = twitter.search.tweets(q='disney&filter:images',count=1, include_entities=True)
-print (it)
-for tweet in it['statuses']:
-	tweet_count -= 1
-	print (json.dumps(tweet))
-	if tweet_count <= 0:
-		break
+filters = "&filter:images"
+for park in parks_list:
+	it = twitter.search.tweets(q=park+filters,count=1, include_entities=True)
+	print (it['statuses'][0]['retweeted_status']['entities']['media'][0]['media_url'])
