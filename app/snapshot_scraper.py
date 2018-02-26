@@ -13,13 +13,32 @@ twitter = Twitter(auth=oauth)
 
 parks_list = []
 with open("parks.txt", "r") as parks:
-	count = 1
+	count = 3
 	for line in parks:
 		if count >= 1:
 			parks_list.append(line)
 			count -= 1
 
-filters = "&filter:images"
+filters = " filter:images" #need to figure out how to add safe filter
 for park in parks_list:
-	it = twitter.search.tweets(q=park+filters,count=1, include_entities=True)
-	print (it['statuses'][0]['retweeted_status']['entities']['media'][0]['media_url'])
+	it = twitter.search.tweets(q=park+filters,count=15, include_entities=True)
+	num_entries = it['search_metadata']['count']
+	#print (num_entries)
+	print (park)
+	for i in range (num_entries):
+		cur_json = it['statuses'][i]
+		if 'entities' in cur_json:
+			#print ("More images exist!!")
+			entities = cur_json['entities']
+			if 'media' in entities:
+				print (entities['media'][0]['media_url_https'])
+			else:
+				#print "media doesn't exist?"
+				if 'retweeted_status' in cur_json:
+					retweeted_status = cur_json['retweeted_status']
+					if 'media' in retweeted_status:
+						print (['entities']['media'][0]['media_url'])
+		else:
+			#print cur_json
+			print (it['statuses'][i]['retweeted_status']['entities']['media'][0]['media_url'])
+	#print (it['extended_entities'])
