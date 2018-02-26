@@ -9,6 +9,14 @@ access_secret = "3PT5ReYjfq4koviz3w8pFBAvG8djj41gBJk4LhcXyG4dx"
 oauth = OAuth(access_token, access_secret, consumer_key, consumer_secret)
 
 twitter_stream = TwitterStream(auth=oauth)
+twitter = Twitter(auth=oauth)
+
+
+
+#twitter.search.tweets(q='#disney', geocode=result_)
+
+
+
 
 it = twitter_stream.statuses.sample()
 
