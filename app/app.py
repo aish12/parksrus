@@ -25,7 +25,8 @@ for model in model_objects:
     manager.create_api(model, **kwargs)
 
 # API subdomain
-@app.route("/<path:path>", subdomain="api"):
+@app.route("/<path:path>", subdomain="api")
+def serve_api(path):
     headers = {
         'cache-control': "no-cache",
         }
