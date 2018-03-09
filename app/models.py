@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
 
-app = Flask(__name__, static_folder="/parksrus-frontend/build/static")
+app = Flask(__name__, static_folder="/parksrus-frontend/build/static", subdomain_matching=True)
 
 CORS(app)
 

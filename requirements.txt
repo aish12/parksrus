@@ -1,1 +1,6 @@
 twitter==1.18.0
+pip
+psycop2
+postgresql
+postgresql-contrib
+nginx
