@@ -3,7 +3,6 @@ endpoints for api and website
 """
 from models import Snapshot, City, Park, app, db, send_from_directory, jsonify, request, Flask, render_template
 from flask_restless import APIManager
-from flask import Blueprint
 from config import REACT_FILES
 import os
 
@@ -25,6 +24,7 @@ kwargs = {
 for model in model_objects:
     manager.create_api(model, **kwargs)
 
+"""
 # API subdomain
 @app.route("/<path:path>", subdomain="api")
 def serve_api(path):
@@ -36,6 +36,7 @@ def serve_api(path):
     response = requests.request("GET", url,headers=headers)
     json_data = response.json()
     return json_data
+"""
 
 # serve the React app
 @app.route('/', defaults={'path': ''})
