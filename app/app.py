@@ -3,6 +3,7 @@ endpoints for api and website
 """
 from models import Snapshot, City, Park, app, db, send_from_directory, jsonify, request, Flask, render_template
 from flask_restless import APIManager
+from flask import Blueprint
 from config import REACT_FILES
 import os
 
@@ -48,6 +49,7 @@ def serve_react(path):
             return send_from_directory(REACT_FILES, 'index.html')
     else:
         return send_from_directory(REACT_FILES, 'index.html')
+
 
 # run on port 5000
 if __name__ == '__main__':

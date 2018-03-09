@@ -20,6 +20,7 @@ class Config(object):
 
 class ProductionConfig(Config):
     DEBUG = False
+    SERVER_NAME = 'parksr.us'
 
 
 class DevelopmentConfig(Config):
