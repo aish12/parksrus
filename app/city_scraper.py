@@ -65,7 +65,6 @@ def get_wikipedia_description(name):
 
     headers = {
         'cache-control': "no-cache",
-        'postman-token': "e569a537-1dd2-a750-c10d-69c760cbc90a"
         }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -84,61 +83,6 @@ def format_name_for_wikipedia(name):
     name = name.replace(" ", "_")
     name = name.replace("\n", "")
     return name
-
-
-def search_parks_in_city(latitude, longitude):
-    coordinate_dict = {}
-    coordinate_dict['lat'] = latitude
-    coordinate_dict['lng'] = longitude
-
-    query_result = google_places.nearby_search(lat_lng=coordinate_dict,
-                                               radius=50000, types=[types.TYPE_AMUSEMENT_PARK])
-
-    # iterate over query results to get more detailed info
-
-    for place in query_result.places:
-        place.get_details()
-        photo = None
-
-        # debugging
-        print (place.name)
-        print (place.geo_location)
-        print (place.place_id)
-        print (place.details)  # A dict matching the JSON response from Google.
-        print (place.local_phone_number)
-        print (place.international_phone_number)
-        print (place.website)
-        print (place.url)
-
-        if len(place.photos) > 0:
-            photo = place.photos[0]
-
-        if photo == None:
-            continue
-        else:
-            photo.get(maxheight=500, maxwidth=500)
-            url = photo.url
-
-
-def search_parks_in_city(name):
-    query_result = google_places.nearby_search(location=name,
-                                               radius=50000, types=[types.TYPE_AMUSEMENT_PARK])
-
-    # iterate over query results to get more detailed info
-
-    """
-	if query_result.has_next_page_token:
-	    query_result_next_page = google_places.nearby_search(pagetoken=query_result.next_page_token)
-	"""
-
-
-def add_park_to_database():
-    return
-
-
-def add_snapshot_to_database():
-    return
-
 
 def add_city_to_database(city):
     db.session.merge(city)
@@ -171,7 +115,6 @@ def cities_scrape():
         city_model = City(name=name, longitude=longitude, latitude=latitude, image_uri=uri, description=description, state=state, country="United States")
 
         add_city_to_database(city_model)
-
 
 if __name__ == '__main__':
     cities_scrape()

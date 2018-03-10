@@ -39,7 +39,7 @@ class Park(db.Model):
     city = db.relationship('City',
                            backref=db.backref('parks', lazy='dynamic'))
 
-    def __init__(self, name, website, description, city_id, state, country, review_data, phone_number, longitude, latitude, image_uri):
+    def __init__(self, name, website, review_data, phone_number, longitude, latitude, image_uri, description="", city_id=0, state="", country=""):
 
         self.name = name
         self.website = website
