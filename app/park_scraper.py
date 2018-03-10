@@ -2,7 +2,7 @@
 scraper to get park data for each city in the database
 """
 from googleplaces import GooglePlaces, types, lang
-from models import Park, db, app
+from models import Park, City, db, app
 from flask import jsonify
 import re
 import requests
