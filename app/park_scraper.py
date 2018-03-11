@@ -30,6 +30,10 @@ def search_parks(location_name):
         place.get_details()
         lon = place.geo_location['lng']
         lat = place.geo_location['lat']
+        
+        if len(place.photos) < 1:
+            continue
+
         photo = place.photos[0]
         photo.get(maxheight=500, maxwidth=500)
 
