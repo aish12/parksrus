@@ -8,6 +8,7 @@ import re
 import requests
 import os
 import json
+import time
 
 GOOGLE_API_KEY = os.environ['GOOGLE_PLACES_KEY']
 
@@ -30,7 +31,7 @@ def search_parks(location_name):
         place.get_details()
         lon = place.geo_location['lng']
         lat = place.geo_location['lat']
-        
+
         if len(place.photos) < 1:
             continue
 
@@ -47,6 +48,7 @@ def search_parks(location_name):
         park = Park(name=park_name, longitude=str(lon), latitude=str(lat), phone_number=park_phone_number, review_data=str(place.rating), image_uri = str(photo.url), website = website)
 
         park_list.append(park)
+        time.sleep(1)
 
     return park_list
 
@@ -54,14 +56,17 @@ def get_parks_for_cities():
     cities = db.session.query(City).all()
 
     for city in cities:
-        print (city)
-        park_list = search_parks(city.name + ", " + city.state)
-        for park in park_list:
-            park.set_city_id(city.id)
-            park.set_state(city.state)
-            park.set_country(city.country)
-            db.session.merge(park)
-            db.session.commit()
+        if len(db.session.query(Park).filter_by(Park.city.has(id=city.id))) == 0:
+            print (city)
+            park_list = search_parks(city.name + ", " + city.state)
+            for park in park_list:
+                park.set_city_id(city.id)
+                park.set_state(city.state)
+                park.set_country(city.country)
+                db.session.merge(park)
+                db.session.commit()
+            time.sleep(1)
+
 
 
 
