@@ -56,7 +56,7 @@ def get_parks_for_cities():
     cities = db.session.query(City).all()
 
     for city in cities:
-        if len(db.session.query(Park).filter_by(Park.city.has(id=city.id))) == 0:
+        if len(db.session.query(Park).filter(Park.city_id == city.id)) == 0:
             print (city)
             park_list = search_parks(city.name + ", " + city.state)
             for park in park_list:
