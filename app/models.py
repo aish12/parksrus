@@ -27,8 +27,8 @@ class Park(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False)
     website = db.Column(db.String())
-    description = db.Column(db.String())
     city_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
+    address = db.Column(db.String())
     state = db.Column(db.String())
     country = db.Column(db.String())
     review_data = db.Column(db.String())
@@ -39,14 +39,14 @@ class Park(db.Model):
     city = db.relationship('City',
                            backref=db.backref('parks', lazy='dynamic'))
 
-    def __init__(self, name, website, review_data, phone_number, longitude, latitude, image_uri, description="", city_id=0, state="", country=""):
+    def __init__(self, name, website, review_data, phone_number, longitude, latitude, image_uri, address="", city_id=0, state="", country=""):
 
         self.name = name
         self.website = website
-        self.description = description
         self.city_id = city_id
         self.state = state
         self.country = country
+        self.address = address
         self.review_data = review_data
         self.phone_number = phone_number
         self.longitude = longitude
@@ -75,18 +75,18 @@ class Park(db.Model):
         self.website = website
 
     @property
-    def get_description(self):
-        return self.description
-
-    def set_description(self, description):
-        self.description = description
-
-    @property
     def get_city_id(self):
         return self.city_id
 
     def set_city_id(self, city_id):
         self.city_id = city_id
+
+    @property
+    def get_address(self):
+        return self.address
+
+    def set_address(self, address):
+        self.address = address
 
     @property
     def get_state(self):
@@ -135,6 +135,7 @@ class Snapshot(db.Model):
     __tablename__ = 'snapshots'
 
     id = db.Column(db.Integer, primary_key=True)
+    views = db.Column(db.Integer)
     image_uri = db.Column(db.String(), nullable=False)
     park_id = db.Column(db.Integer, db.ForeignKey('parks.id'))
     city_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
@@ -147,11 +148,11 @@ class Snapshot(db.Model):
     park = db.relationship('Park',
                            backref=db.backref('snapshots', lazy='dynamic'))
 
-    def __init__(self, image_uri, park_id, tags, date, longitude, latitude):
+    def __init__(self, image_uri, tags, date, longitude="", latitude="", park_id=0, city_id=0, views=0):
+        self.views = views
         self.image_uri = image_uri
         self.city_id = city_id
         self.park_id = park_id
-        self.state = state
         self.longitude = longitude
         self.latitude = latitude
 

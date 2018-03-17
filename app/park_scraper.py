@@ -44,8 +44,9 @@ def search_parks(location_name):
         park_name = place.name.encode("UTF8")
         park_phone_number = place.international_phone_number.encode("UTF8")
         website = place.website.encode("UTF8")
+        address = place.formatted_address.encode("UTF8")
         
-        park = Park(name=park_name, longitude=str(lon), latitude=str(lat), phone_number=park_phone_number, review_data=str(place.rating), image_uri = str(photo.url), website = website)
+        park = Park(name=park_name, address=address, longitude=str(lon), latitude=str(lat), phone_number=park_phone_number, review_data=str(place.rating), image_uri = str(photo.url), website = website)
 
         park_list.append(park)
         time.sleep(1)
@@ -75,6 +76,7 @@ def main():
     for park in park_list:
         print(park.name)
         print(park.website)
+        print(park.address)
         print(park.description)
         print(park.review_data)
         print(park.longitude)
