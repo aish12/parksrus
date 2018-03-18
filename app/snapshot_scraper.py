@@ -38,6 +38,7 @@ def get_images(names_list):
         id_count = 0
 	for name in names_list:
 		images = []
+                jsons = []
 		it = twitter.search.tweets(q=name+filters,count=5, include_entities=True)
 		num_entries = it['search_metadata']['count']
 		#print (num_entries)
@@ -47,15 +48,18 @@ def get_images(names_list):
                         id_count += 1
                         cur_json = it['statuses'][i]
                         #print cur_json
+                        sql_json['location'] = cur_json['user']['location']
 			if 'entities' in cur_json:
 				#print ("More images exist!!")
 				entities = cur_json['entities']
                                 sql_json['tags'] = entities['hashtags']
+                                print cur_json['user']
 				if 'media' in entities:
 					url = entities['media'][0]['media_url_https']
 					if url not in images:
 						images.append(url)
 						sql_json['url'] = url
+                                                jsons.append(sql_json)
 				else:
 					#print "media doesn't exist?"
 					if 'retweeted_status' in cur_json:
@@ -65,14 +69,18 @@ def get_images(names_list):
 							if url not in images:
 								images.append(url)
 								sql_json['url'] = url
+                                                                jsons.append(sql_json)
+
 
 			else:
 				url = it['statuses'][i]['retweeted_status']['entities']['media'][0]['media_url']
 				if url not in images:
 					images.append(url)
 				        sql_json['url'] = url
+                                        jsons.append(sql_json)
+
 	                print sql_json
-		imgs_dict[name] = images
+		imgs_dict[name] = jsons
 	return imgs_dict
 
 
