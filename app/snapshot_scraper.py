@@ -35,22 +35,27 @@ def init_cities():
 def get_images(names_list):
 	filters = " filter:images" #need to figure out how to add safe filter
 	imgs_dict = {}
+        id_count = 0
 	for name in names_list:
 		images = []
-		it = twitter.search.tweets(q=name+filters,count=15, include_entities=True)
+		it = twitter.search.tweets(q=name+filters,count=5, include_entities=True)
 		num_entries = it['search_metadata']['count']
 		#print (num_entries)
 		print (name)
 		for i in range (num_entries):
-			cur_json = it['statuses'][i]
+			sql_json = {"id": id_count, "date": None, "url": None, "longitude": None, "latitude": None, "tags": [], "city_id": 0, "park_id": 0}
+                        id_count += 1
+                        cur_json = it['statuses'][i]
+                        #print cur_json
 			if 'entities' in cur_json:
 				#print ("More images exist!!")
 				entities = cur_json['entities']
+                                sql_json['tags'] = entities['hashtags']
 				if 'media' in entities:
 					url = entities['media'][0]['media_url_https']
 					if url not in images:
 						images.append(url)
-						print url
+						sql_json['url'] = url
 				else:
 					#print "media doesn't exist?"
 					if 'retweeted_status' in cur_json:
@@ -59,12 +64,14 @@ def get_images(names_list):
 							url = ['entities']['media'][0]['media_url']
 							if url not in images:
 								images.append(url)
-								print url
+								sql_json['url'] = url
+
 			else:
 				url = it['statuses'][i]['retweeted_status']['entities']['media'][0]['media_url']
 				if url not in images:
 					images.append(url)
-					print url
+				        sql_json['url'] = url
+	                print sql_json
 		imgs_dict[name] = images
 	return imgs_dict
 
