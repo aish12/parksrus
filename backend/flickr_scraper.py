@@ -1,3 +1,6 @@
+"""
+Snapshot scraper with the Flickr API
+"""
 import re
 import requests
 import os
@@ -102,5 +105,5 @@ def test():
     print(s)
 
 if __name__ == '__main__':
-    # main()
-    test()
+    main()
+    #test()
