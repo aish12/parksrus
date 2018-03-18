@@ -7,7 +7,7 @@ import os
 BASE_DIR = os.path.abspath(os.path.dirname('__file__'))
 
 # append path BASE_DIR to parksrus-frontend/build to get absolute path
-REACT_FILES = os.path.join(BASE_DIR, 'parksrus-frontend/build')
+REACT_FILES = os.path.join(BASE_DIR, '../frontend/parksrus-frontend/build')
 
 
 class Config(object):
