@@ -34,22 +34,25 @@ def get_photos_geo(lat, lon, max_num=1):
 
     photos = json_data['rsp']['photos']['photo']
     for photo in photos:
+
+        try:
+            id = photo['@id']
+            farm = photo['@farm']
+            server = photo['@server']
+            secret = photo['@secret']
+
+            image_uri = construct_uri(id, farm, server, secret)
+            tags, date, views = get_photo_metadata(id)
+
+            datetime_obj = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
+
+            s = Snapshot(image_uri=image_uri, views=views, date=datetime_obj, tags=tags)
+
+            snapshot_list.append(s)
+        except:
+            continue
+
         counter = counter + 1
-        #print photo
-
-        id = photo['@id']
-        farm = photo['@farm']
-        server = photo['@server']
-        secret = photo['@secret']
-
-        image_uri = construct_uri(id, farm, server, secret)
-        tags, date, views = get_photo_metadata(id)
-
-        datetime_obj = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
-
-        s = Snapshot(image_uri=image_uri, views=views, date=datetime_obj, tags=tags)
-
-        snapshot_list.append(s)
 
         if counter == max_num:
             break
@@ -79,9 +82,6 @@ def get_photo_metadata(id):
 
     tags = ','.join(tag_list)
 
-    print(tags)
-    print(views)
-    print(date)
     return (tags, date, views)
 
 def main():
