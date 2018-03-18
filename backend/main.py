@@ -24,20 +24,6 @@ kwargs = {
 for model in model_objects:
     manager.create_api(model, **kwargs)
 
-"""
-# API subdomain
-@app.route("/<path:path>", subdomain="api")
-def serve_api(path):
-    headers = {
-        'cache-control': "no-cache",
-        }
-
-    url = "www.parksr.us/api" + path
-    response = requests.request("GET", url,headers=headers)
-    json_data = response.json()
-    return json_data
-"""
-
 # serve the React app
 @app.route('/', defaults={'path': ''})
 @app.route("/<string:path>")
