@@ -23,18 +23,8 @@ def search_for_city(name):
     place = query_result.places[0]
     place.get_details()
     photo = None
-
-    # debugging
-    #print (place.name)
-    #print (place.formatted_address)
-    #print (place.geo_location)
-    #print (place.place_id)
-
     longitude = place.geo_location['lng']
     latitude = place.geo_location['lat']
-    #print(longitude)
-    #print(latitude)
-    #print (place.details)  # A dict matching the JSON response from Google.
 
     photo = place.photos[0]
     # 'maxheight' or 'maxwidth' is required
@@ -47,8 +37,6 @@ def search_for_city(name):
     photo.filename
     # Raw image data
     photo.data
-
-    #print(photo.url)
 
     return (str(place.name), str(longitude), str(latitude), str(photo.url))
 

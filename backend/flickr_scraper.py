@@ -17,12 +17,11 @@ def construct_uri(id, farm, server, secret):
 def image_search(lat, lon):
     return get_photos_geo(lat, lon)
 
-
 def get_photos_geo(lat, lon, max_num=1):
     snapshot_list = []
     url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search'
     querystring = {"api_key": FLICKR_API_KEY, "lat":
-        lat, "lon": lon, "radius": "1", "format": "rest"}
+        lat, "lon": lon, "radius": "0.1", "format": "rest"}
     headers = {'cache-control': "no-cache", }
     response = requests.request("GET", url, headers=headers, params=querystring)
     
@@ -101,8 +100,11 @@ def main():
 
 def test():
     # image search for universal studios
-    s = get_photos_geo('34.13811680000001', '-118.3533783', 10)
-    print(s)
+    # s = get_photos_geo('34.13811680000001', '-118.3533783', 10)
+
+    s = get_photos_geo('47.6236791', '-122.5174713', 10)
+    for snap in s:
+        print(snap.image_uri)
 
 if __name__ == '__main__':
     main()
