@@ -30,7 +30,6 @@
     "google-map-react": "0.31.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "npm": "^5.7.1",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -52,7 +51,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "mocha --reporter spec testSetup.js \"src/components/*.spec.js\""
+    "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -95,12 +94,5 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "devDependencies": {
-    "enzyme": "^3.3.0",
-    "expect": "^23.0.0-alpha.0",
-    "jsdom": "^9.11.0",
-    "mocha": "^5.0.4",
-    "react-addons-test-utils": "^15.6.2"
   }
 }
