@@ -31,7 +31,11 @@ def get_photos_geo(lat, lon, max_num=1):
 
     counter = 0
 
-    photos = json_data['rsp']['photos']['photo']
+    try:
+        photos = json_data['rsp']['photos']['photo']
+    except:
+        return []
+
     for photo in photos:
 
         try:
@@ -45,7 +49,7 @@ def get_photos_geo(lat, lon, max_num=1):
 
             if val == None:
                 continue
-                
+
             tags, date, views = val
 
             datetime_obj = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
