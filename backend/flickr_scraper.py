@@ -41,14 +41,19 @@ def get_photos_geo(lat, lon, max_num=1):
             secret = photo['@secret']
 
             image_uri = construct_uri(id, farm, server, secret)
-            tags, date, views = get_photo_metadata(id)
+            val = get_photo_metadata(id)
+
+            if val == None:
+                continue
+                
+            tags, date, views = val
 
             datetime_obj = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
 
             s = Snapshot(image_uri=image_uri, views=views, date=datetime_obj, tags=tags)
 
             snapshot_list.append(s)
-        except:
+        except Exception as e:
             continue
 
         counter = counter + 1
@@ -59,29 +64,33 @@ def get_photos_geo(lat, lon, max_num=1):
     return snapshot_list
 
 def get_photo_metadata(id):
-    tag_list = []
-    url = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo'
-    querystring = {"api_key":FLICKR_API_KEY, "photo_id":id, "format":"rest"}
 
-    headers = {'cache-control': "no-cache",}
+    try:
+        tag_list = []
+        url = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo'
+        querystring = {"api_key":FLICKR_API_KEY, "photo_id":id, "format":"rest"}
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    xml = xmltodict.parse(response.content)
-    json_string= json.dumps(xml)
-    json_data = json.loads(json_string)
+        headers = {'cache-control': "no-cache",}
 
-    metadata = json_data['rsp']['photo']
+        response = requests.request("GET", url, headers=headers, params=querystring)
+        xml = xmltodict.parse(response.content)
+        json_string= json.dumps(xml)
+        json_data = json.loads(json_string)
 
-    tags = metadata['tags']['tag']
-    views = metadata['@views']
-    date = metadata['dates']['@taken']
+        metadata = json_data['rsp']['photo']
 
-    for tag in tags:
-        tag_list.append(tag['#text'].encode("UTF8"))
+        tags = metadata['tags']['tag']
+        views = metadata['@views']
+        date = metadata['dates']['@taken']
 
-    tags = ','.join(tag_list)
+        for tag in tags:
+            tag_list.append(tag['#text'].encode("UTF8"))
 
-    return (tags, date, views)
+        tags = ','.join(tag_list)
+
+        return (tags, date, views)
+    except Exception as e:
+        return None
 
 def main():
     parks = db.session.query(Park).all()
