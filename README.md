@@ -16,7 +16,7 @@ Amusement Parks
 - Reviews
 - Website
 - Phone Number
-- Description
+- Address
 - Images
 
 Cities
@@ -27,8 +27,9 @@ Cities
 - Number of Parks
 - Description
 
-Images
+Snapshots
 - Amusement Park
 - City
 - Hashtags
 - Date
+- Views

@@ -155,6 +155,8 @@ class Snapshot(db.Model):
         self.park_id = park_id
         self.longitude = longitude
         self.latitude = latitude
+        self.tags = tags
+        self.date = date
 
     @property
     def get_id():
