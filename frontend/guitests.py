@@ -25,8 +25,17 @@ class SeleniumTests(unittest.TestCase):
 	def test_parks_instance(self):
 		driver = self.driver
 		driver.get(self.site)
+
+		driver.find_element_by_link_text('Parks').click()
+		self.assertEqual("http://parksr.us/parks", driver.current_url)
+
+		time.sleep(1)
+
+		park_instance = driver.find_element_by_xpath("//*[@id="root"]/div/div/div/div[1]/div/div[1]/a")
+
+		park_instance.click()
+		self.assertEqual("http://parksr.us/parks/1", driver.current_url)
 		
-		pass
 
 	def test_cities_page(self):
 		driver = self.driver
@@ -38,7 +47,16 @@ class SeleniumTests(unittest.TestCase):
 	def test_cities_instance(self):
 		driver = self.driver
 		driver.get(self.site)
-		pass
+		
+		driver.find_element_by_link_text('Cities').click()
+		self.assertEqual("http://parksr.us/cities", driver.current_url)
+
+		time.sleep(1)
+
+		city_instance = driver.find_element_by_xpath("//*[@id="root"]/div/div/div/div[1]/div/div[1]/a")
+
+		city_instance.click()
+		self.assertEqual("http://parksr.us/cities/1", driver.current_url)
 
 	def test_snapshots_page(self):
 		driver = self.driver
@@ -50,7 +68,16 @@ class SeleniumTests(unittest.TestCase):
 	def test_snapshots_instance(self):
 		driver = self.driver
 		driver.get(self.site)
-		pass
+		
+		driver.find_element_by_link_text('Snapshots').click()
+		self.assertEqual("http://parksr.us/snapshots", driver.current_url)
+
+		time.sleep(1)
+
+		snapshot_instance = driver.find_element_by_xpath("//*[@id="root"]/div/div/div/div[1]/div/div[1]/a")
+
+		snapshot_instance.click()
+		self.assertEqual("http://parksr.us/snapshots/1", driver.current_url)
 
 	def test_about_page():
 		driver = self.driver
@@ -59,10 +86,29 @@ class SeleniumTests(unittest.TestCase):
 		driver.find_element_by_link_text('About').click()
 		self.assertEqual("http://parksr.us/about", driver.current_url)
 
-	def test_navigation(self):
+	def test_navigation_bar(self):
 		driver = self.driver
 		driver.get(self.site)
-		pass
+
+		time.sleep(1)
+
+		driver.find_element_by_link_text('Parks').click()
+		self.assertEqual("http://parksr.us/parks", driver.current_url)
+
+		time.sleep(1)
+
+		driver.find_element_by_link_text('Cities').click()
+		self.assertEqual("http://parksr.us/cities", driver.current_url)
+
+		time.sleep(1)
+
+		driver.find_element_by_link_text('Snapshots').click()
+		self.assertEqual("http://parksr.us/snapshots", driver.current_url)
+
+		time.sleep(1)
+
+		driver.find_element_by_link_text('About').click()
+		self.assertEqual("http://parksr.us/about", driver.current_url)
 
 	def test_pagination(self):
 		driver = self.driver
