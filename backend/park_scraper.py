@@ -32,7 +32,7 @@ def search_parks(location_name):
         photo = place.photos[0]
         photo.get(maxheight=500, maxwidth=500)
 
-        if place.international_phone_number == None or place.website == None or place.formatted_address == None:
+        if place.international_phone_number == None or place.website == None or place.address == None:
             continue
 
         park_name = place.name.encode("UTF8")

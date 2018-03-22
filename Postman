@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "0bf8a972-2469-e1b9-b5a1-7cc10434fa60",
+		"name": "Parks R Us",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api.parksr.us/parks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "979c407d-e7db-4d12-a696-fdc39c2bd5b9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body contains 'num_results'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"num_results\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Returns at least 3 Results\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.objects.length).to.gt(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.parksr.us/parks",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"parks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/snapshots",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e41e989c-e6e8-4690-839b-03718720536e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body contains 'num_results'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"num_results\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Returns at least 3 Results\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.objects.length).to.gt(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.parksr.us/snapshots",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"snapshots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "06c6e606-4792-4343-a72c-fe5b3d19dd3e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body contains 'num_results'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"num_results\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Returns at least 3 Results\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.objects.length).to.gt(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.parksr.us/cities",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"cities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/parks/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88c8cd71-8bc5-484c-aae8-f872fd187e48",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(1);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.parksr.us/parks/1",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"parks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/snapshots/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0a947d6-d52b-4251-ab9a-06c0e35350df",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Test id match\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(1);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.parksr.us/snapshots/1",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"snapshots",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/cities/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0725e1f-5f85-4ece-bf62-7c4b91a8bc72",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Test id match\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(1);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.parksr.us/cities/1",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"cities",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/snapshots/432423",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "89a28cfe-1722-4990-bf7a-ee715693b611",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"{}\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.parksr.us/snapshots/432423",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"snapshots",
+						"432423"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
