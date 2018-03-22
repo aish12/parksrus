@@ -50,7 +50,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "mocha --reporter spec testSetup.js \"./src/Application.test.js\" --require ignore-styles --require babel-polyfill --require babel-core"
+    "test": "mocha --reporter spec testSetup.js \"./src/tests.js\" --require ignore-styles --require babel-polyfill --require babel-core"
   },
   "jest": {
     "collectCoverageFrom": [
