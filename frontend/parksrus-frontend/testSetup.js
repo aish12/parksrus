@@ -22,9 +22,16 @@ require('babel-register')();
 require.extensions['.css'] = function () {return null};
 // Configure JSDOM and set global variables
 // to simulate a browser environment for tests.
-var jsdom = require('jsdom').jsdom;
+
+var jsdom = require('jsdom');
+
+const { JSDOM } = jsdom;
+
+const { document } = (new JSDOM('')).window;
+global.document = document;
+
 var exposedProperties = ['window', 'navigator', 'document'];
-global.document = jsdom('');
+
 global.navigator = { userAgent: 'node.js' };
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach((property) => {
@@ -33,4 +40,19 @@ Object.keys(document.defaultView).forEach((property) => {
         global[property] = document.defaultView[property];
     }
 });
+
+// Slider needs this
+window.matchMedia = window.matchMedia || function() {
+    return {
+        matches : false,
+        addListener : function() {},
+        removeListener: function() {}
+    };
+};
+
+// setup adapter
+var enzyme = require('enzyme');
+var Adapter = require('enzyme-adapter-react-16');
+enzyme.configure({ adapter: new Adapter() });
+
 documentRef = document;

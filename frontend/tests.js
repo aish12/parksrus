@@ -8,10 +8,12 @@
 //   ReactDOM.unmountComponentAtNode(div);
 // });
 
-import React from 'react';
-import { expect, assert } from 'chai';
+import React from './parksrus-frontend/node_modules/react';
+import { expect, assert } from './parksrus-frontend/node_modules/chai';
 import { configure, mount, shallow } from 'enzyme';
-import AboutPage from './components/Pages/AboutPage/AboutPage';
+import AboutPage from './parksrus-frontend/src/components/Pages/AboutPage/AboutPage';
+import Adapter from './parksrus-frontend/node_modules/enzyme-adapter-react-16';
+configure({ adapter: new Adapter() });
 
 describe('AboutPage Component', () => {
     // TODO: fix token syntaxerror; jsx not recognized
