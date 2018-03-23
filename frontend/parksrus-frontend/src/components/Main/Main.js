@@ -16,9 +16,12 @@ class Main extends Component {
         <Switch>
           <Route exact path='/' component={SplashPage}/>
           <Route exact path='/about' component={AboutPage}/>
-          <Route exact path='/parks' component={ParksPage}/>
+          <Route exact path='/parks/' component={ParksPage}/>
           <Route exact path='/cities' component={CitiesPage}/>
           <Route exact path='/snapshots' component={SnapshotsPage}/>
+          <Route path="/parks/pages/:page" component={ParksPage} />
+          <Route path="/cities/pages/:page" component={CitiesPage} />
+          <Route path="/snapshots/pages/:page" component={SnapshotsPage} />
           <Route path="/parks/:id" component={ParkPage} />
           <Route path="/cities/:id" component={CityPage} />
           <Route path="/snapshots/:id" component={SnapshotPage} />

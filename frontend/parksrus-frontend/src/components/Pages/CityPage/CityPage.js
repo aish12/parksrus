@@ -23,7 +23,7 @@ class CityPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/cities/' + this.state.city.id).then(response => {
+    axios.get("http://parksr.us" + '/api/cities/' + this.state.city.id).then(response => {
       console.assert(response.hasOwnProperty('data'));
 
       this.setState({
@@ -68,18 +68,18 @@ class CityPage extends React.Component {
                 </div>
               </PageSection>
               <PageSection header={"Snapshots"}>
-                {/*<CardGrid entities={city.photos}*/}
-                          {/*endpoint={'photos'}*/}
-                          {/*imageHeight={'450px'}/>*/}
+                <CardGrid entities={city.snapshots}
+                          endpoint={'photos'}
+                          imageHeight={'450px'}/>
               </PageSection>
               <PageSection header={"Nearby Park Attractions"}>
-                {/*<Card classes={"CityCard"} key={city.parks[0].id}>*/}
-                  {/*<Link to={'/parks/' + city.parks[0].id} className={"CardLink"}>*/}
-                    {/*<img src={city.parks[0].image_uri} className="CardImage" style={{height: "500px"}}/>*/}
-                    {/*<h1 className={["CardContent", "CardHeader"].join(' ')}>{city.parks[0].name}</h1>*/}
-                    {/*<p className={["CardContent", "CardSubtitle"].join(' ')}>{city.parks[0].state}</p>*/}
-                  {/*</Link>*/}
-                {/*</Card>*/}
+                <Card classes={"CityCard"} key={city.parks[0].id}>
+                  <Link to={'/parks/' + city.parks[0].id} className={"CardLink"}>
+                    <img src={city.parks[0].image_uri} className="CardImage" style={{height: "500px"}}/>
+                    <h1 className={["CardContent", "CardHeader"].join(' ')}>{city.parks[0].name}</h1>
+                    <p className={["CardContent", "CardSubtitle"].join(' ')}>{city.parks[0].state}</p>
+                  </Link>
+                </Card>
               </PageSection>
             </Page>
           </div>

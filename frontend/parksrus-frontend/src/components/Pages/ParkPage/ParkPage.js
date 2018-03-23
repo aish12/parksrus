@@ -24,7 +24,7 @@ class ParkPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/parks/' + this.state.park.id).then(response => {
+    axios.get("http://parksr.us" + '/api/parks/' + this.state.park.id).then(response => {
       console.assert(response.hasOwnProperty('data'));
 
       this.setState({
@@ -57,9 +57,12 @@ class ParkPage extends React.Component {
               <div className="ParkDescription">
                 <Panel className="DescriptionPanel">
                   <div className="DescriptionContent">
-                    <h1>About the Park</h1>
-                    <p className="DescriptionParagraph">{park.description}</p>
+                    <h1>Address</h1>
+                    <p className="DescriptionParagraph">{park.address}</p>
                   </div>
+                </Panel>
+                <Panel className="DescriptionPanel">
+
                   <StatisticCard statistic={park.review_data}
                                  description={"Avg. User Rating"} />
                 </Panel>
@@ -72,7 +75,7 @@ class ParkPage extends React.Component {
                 </div>
               </PageSection>
               <PageSection header={"Snapshots"}>
-                <CardGrid entities={park.photos}
+                <CardGrid entities={park.snapshots}
                            endpoint={'photos'}
                            imageHeight={'450px'}/>
               </PageSection>

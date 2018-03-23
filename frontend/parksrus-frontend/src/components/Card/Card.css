@@ -15,6 +15,10 @@
     width: 100%;
 }
 
+.Card:hover .CardImage {
+    height: 300px;
+}
+
 .CardContent {
     padding-left: 0.5em;
 }

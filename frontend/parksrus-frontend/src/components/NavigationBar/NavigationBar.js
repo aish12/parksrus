@@ -20,13 +20,13 @@ class NavigationBar extends Component {
                 <Link to="/about">About</Link>
               </NavItem>
               <NavItem eventKey={2}>
-                <Link to="/parks">Parks</Link>
+                <Link to="/parks/pages/1">Parks</Link>
               </NavItem>
               <NavItem eventKey={3}>
-                <Link to="/cities">Cities</Link>
+                <Link to="/cities/pages/1">Cities</Link>
               </NavItem>
               <NavItem eventKey={4}>
-                <Link to="/snapshots">Snapshots</Link>
+                <Link to="/snapshots/pages/1">Snapshots</Link>
               </NavItem>
             </Nav>
           </Navbar.Collapse>

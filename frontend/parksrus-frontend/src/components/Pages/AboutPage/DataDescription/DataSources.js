@@ -1,13 +1,18 @@
 export default [
   {
+    "name": "Flickr",
+    "description": "The Flickr API enables us to collect social media that provides snapshots of amusement park visitors' experiences.",
+    "url": "https://flickr.com/services/api"
+  },
+  {
     "name": "Twitter",
     "description": "The Twitter Search API enables us to collect social media that provides snapshots of amusement park visitors' experiences.",
     "url": "https://developer.twitter.com/"
   },
   {
-    "name": "Yelp",
-    "description": "Yelp Fusion provides listings and ratings of amusement parks and exciting venues for travelers in cities.",
-    "url": "https://www.yelp.com/fusion"
+    "name": "Wikipedia",
+    "description": "The Wikipedia API provides detailed descriptions of each city in our database, such as a summary of what the city is known for, famous landmarks, and other interesting details.",
+    "url": "https://www.mediawiki.org/wiki/API:Main_page"
   },
   {
     "name": "Google Maps",

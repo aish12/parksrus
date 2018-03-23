@@ -11,9 +11,7 @@ class CardGrid extends Component {
       imageHeight = this.props.imageHeight;
     }
     let endpoint = this.props.endpoint;
-    if (endpoint === 'photos') {
-      endpoint = 'snapshots'
-    }
+
     let cardGrid = this.props.entities.map(entity =>
         <Card key={entity.id}
               classes={"GridCard"}>
@@ -21,6 +19,12 @@ class CardGrid extends Component {
             <img src={entity.image_uri} className="CardImage" style={{height: imageHeight}}/>
             {entity.name && <h1 className={["CardContent", "CardHeader"].join(' ')}>{entity.name}</h1>}
             {entity.state && <p className={["CardContent", "CardSubtitle"].join(' ')}>{entity.state}</p>}
+            <div className={["CardContent", "CardHover"]} >
+            {entity.num_parks && <p>Total Parks: {entity.num_parks}</p>}
+            {entity.views && <p>View Count: {entity.views}</p>}
+            {entity.tags && <p>Hashtags: {entity.tags}</p>}
+            {entity.review_data && <p>Rating: {entity.review_data}</p>}
+            </div>
           </Link>
         </Card>
     );
