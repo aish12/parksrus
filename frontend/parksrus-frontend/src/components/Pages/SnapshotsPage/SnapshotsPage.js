@@ -18,7 +18,7 @@ class SnapshotsPage extends React.Component {
   render() {
     return (
         <GridPage endpoint="snapshots"
-                  imageHeight={"450px"}
+                  imageHeight={"300px"}
                   page={this.state.page}/>
     );
   }

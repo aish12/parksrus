@@ -69,7 +69,7 @@ class CityPage extends React.Component {
               </PageSection>
               <PageSection header={"Snapshots"}>
                 <CardGrid entities={city.snapshots}
-                          endpoint={'photos'}
+                          endpoint={'snapshots'}
                           imageHeight={'450px'}/>
               </PageSection>
               <PageSection header={"Nearby Park Attractions"}>

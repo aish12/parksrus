@@ -32,9 +32,11 @@
     color: inherit;
 }
 
-.CardLink:hover {
+.CardLink {
     text-decoration: none;
     color: inherit;
+    text-align: center;
+    word-wrap: break-word;
 }
 
 .GridCard {

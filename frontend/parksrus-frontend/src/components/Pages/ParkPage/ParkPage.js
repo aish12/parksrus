@@ -76,7 +76,7 @@ class ParkPage extends React.Component {
               </PageSection>
               <PageSection header={"Snapshots"}>
                 <CardGrid entities={park.snapshots}
-                           endpoint={'photos'}
+                           endpoint={'snapshots'}
                            imageHeight={'450px'}/>
               </PageSection>
               <PageSection header={"Urban Attractions"}>

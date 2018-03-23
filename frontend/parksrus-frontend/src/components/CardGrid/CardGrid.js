@@ -24,6 +24,7 @@ class CardGrid extends Component {
             {entity.views && <p>View Count: {entity.views}</p>}
             {entity.tags && <p>Hashtags: {entity.tags}</p>}
             {entity.review_data && <p>Rating: {entity.review_data}</p>}
+            {entity.park && entity.park.name && <p>{entity.park.name}</p>}
             </div>
           </Link>
         </Card>
