@@ -44,4 +44,14 @@ export default [
     "description": "RESTful Client",
     "url": "http://getpostman.com"
   },
+  {
+    "name": "Mocha",
+    "description": "JavaScript Testing",
+    "url": "https://mochajs.org/"
+  },
+  {
+    "name": "Selenium",
+    "description": "UI Testing",
+    "url": "https://www.seleniumhq.org/"
+  },
 ];
