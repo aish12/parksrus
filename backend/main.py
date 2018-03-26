@@ -6,6 +6,7 @@ from flask_restless import APIManager
 from config import REACT_FILES
 import os
 import flask_whooshalchemyplus as whooshalchemy
+from flask_restless.views import API, get_relations
 
 # API manager to create API's with flask_restless
 manager = APIManager(app, flask_sqlalchemy_db=db)
