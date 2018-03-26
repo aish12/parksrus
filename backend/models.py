@@ -5,7 +5,8 @@ import os
 from flask import Flask, send_from_directory, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
+from config import REACT_FILES, BASE_DIR, ProductionConfig, 
+from flask_restless.views import API, get_relations
 
 app = Flask(__name__, static_folder="../frontend/parksrus-frontend/build/static")
 
@@ -17,12 +18,16 @@ elif os.environ['DB_MODE'] == 'DEVELOPMENT':
     app.config.from_object(DevelopmentConfig)
 else:
     app.config.from_object(ProductionConfig)
+    
+
+app.config['WHOOSH_BASE'] = os.path.join(BASE_DIR, 'whoosh_index')
 
 db = SQLAlchemy(app)
 
 
 class Park(db.Model):
     __tablename__ = 'parks'
+    __searchable__ = ['name', 'state']
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False)
@@ -133,6 +138,7 @@ class Park(db.Model):
 
 class Snapshot(db.Model):
     __tablename__ = 'snapshots'
+    __searchable__ = ['tags']
 
     id = db.Column(db.Integer, primary_key=True)
     views = db.Column(db.Integer)
@@ -206,6 +212,7 @@ class Snapshot(db.Model):
 
 class City(db.Model):
     __tablename__ = 'cities'
+    __searchable__ = ['name', 'state', 'description']
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False)
