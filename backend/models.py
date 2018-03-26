@@ -5,7 +5,7 @@ import os
 from flask import Flask, send_from_directory, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from config import REACT_FILES, BASE_DIR, ProductionConfig, 
+from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
 from flask_restless.views import API, get_relations
 
 app = Flask(__name__, static_folder="../frontend/parksrus-frontend/build/static")
