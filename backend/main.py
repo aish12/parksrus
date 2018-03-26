@@ -15,7 +15,7 @@ model_objects = [Park, Snapshot, City]
 db.create_all()
 
 for model in model_objects:
-    whooshalchemy.whoos_index(app, model)
+    whooshalchemy.whoosh_index(app, model)
 
 # arguments for API (methods allowed, pagination, etc)
 kwargs = {
