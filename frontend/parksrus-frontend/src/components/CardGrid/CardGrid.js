@@ -5,6 +5,11 @@ import Card from '../Card/Card'
 import { Link } from 'react-router-dom'
 
 class CardGrid extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+
   render() {
     let imageHeight = "350px";
     if (this.props.hasOwnProperty('imageHeight')) {

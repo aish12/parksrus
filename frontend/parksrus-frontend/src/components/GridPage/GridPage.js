@@ -11,79 +11,81 @@ import axios from 'axios'
 class GridPage extends React.Component {
   constructor(props) {
     super(props);
+    let curPage = parseInt(this.props.page);
+    let path = this.getAPIPath(this.props.endpoint, curPage);
     this.state = {
       entities: [],
-      endpoint: this.props.endpoint,
-      page: parseInt(this.props.page),
-      apiPath: "http://parksr.us" + "/api/" + this.props.endpoint + "?page=" + this.props.page,
-      imageHeight: this.props.imageHeight,
+      page: curPage,
+      apiPath: path,
       pagination: []
     }
   }
 
-  getPages(page, numPages, pageRange) {
-    console.log(page)
-    let pages = [];
-    pages.push(<Pagination.First><Link to={'/' + this.state.endpoint + '/pages/' + 1}/>{"<<"}</Pagination.First>);
-    pages.push(<Pagination.Prev><Link to={'/' + this.state.endpoint + '/pages/' + (page - 1)}/>{"<"}</Pagination.Prev>);
+  getAPIPath(endpoint, curPage) {
+    const BASE_URL = "http://parksr.us/api/";
+    return BASE_URL + this.props.endpoint + "?page=" + curPage;
+  }
+
+  getPagination(curPage, numPages, pageRange) {
+    let endpoint = this.props.endpoint;
+    let pagination = [];
+    pagination.push(<Pagination.First><Link to={'/' + endpoint + '/pages/' + 1}/>{"<<"}</Pagination.First>);
+    pagination.push(<Pagination.Prev><Link to={'/' + endpoint + '/pages/' + (curPage - 1)}/>{"<"}</Pagination.Prev>);
     if (numPages > 0) {
       let className = "";
-      if (page == 1) {
+      if (curPage == 1) {
         className = "active";
       }
     }
-    if (page >= 5) {
-      pages.push(<Pagination.Ellipsis />);
+    if (curPage >= 5) {
+      pagination.push(<Pagination.Ellipsis />);
     }
-    if (page > 1) {
-      let prevPage = page - pageRange;
+    if (curPage > 1) {
+      let prevPage = curPage - pageRange;
       let pRange = 0;
 
-      while (prevPage != page && pRange < pageRange) {
+      while (prevPage != curPage && pRange < pageRange) {
         console.log(prevPage > 0)
         let k = prevPage;
-        pages.push(<Pagination.Item><Link to={'/' + this.state.endpoint + '/pages/' + prevPage}>{prevPage}</Link></Pagination.Item>)
+        pagination.push(<Pagination.Item><Link to={'/' + endpoint + '/pages/' + prevPage}>{prevPage}</Link></Pagination.Item>)
         prevPage += 1;
         pRange += 1;
       }
     }
-    if (page > 1) {
-      pages.push(<Pagination.Item className={"active"}><Link to={'/' + this.state.endpoint + '/pages/' + page}>{page}</Link></Pagination.Item>);
+    if (curPage > 1) {
+      pagination.push(<Pagination.Item className={"active"}><Link to={'/' + endpoint + '/pages/' + curPage}>{curPage}</Link></Pagination.Item>);
     }
-    if (page < numPages) {
-      let nextPage = page + 1;
+    if (curPage < numPages) {
+      let nextPage = curPage + 1;
       let pRange = 0;
       while (nextPage != numPages && pRange < pageRange) {
         let k = nextPage;
-        pages.push(<Pagination.Item><Link to={'/' + this.state.endpoint + '/pages/' + nextPage}>{nextPage}</Link></Pagination.Item>);
+        pagination.push(<Pagination.Item><Link to={'/' + endpoint + '/pages/' + nextPage}>{nextPage}</Link></Pagination.Item>);
         nextPage += 1;
         pRange += 1;
       }
     }
-    if (numPages - page >= 5) {
-      pages.push(<Pagination.Ellipsis />);
+    if (numPages - curPage >= 5) {
+      pagination.push(<Pagination.Ellipsis />);
     }
-    if (page != numPages) {
-      pages.push(<Pagination.Item><Link to={'/' + this.state.endpoint + '/pages/' + numPages}>{numPages}</Link></Pagination.Item>);
+    if (curPage != numPages) {
+      pagination.push(<Pagination.Item><Link to={'/' + endpoint + '/pages/' + numPages}>{numPages}</Link></Pagination.Item>);
     }
-    pages.push(<Pagination.Next><Link to={'/' + this.state.endpoint + '/pages/' + (page + 1)}>></Link></Pagination.Next>);
-    pages.push(<Pagination.Last><Link to={'/' + this.state.endpoint + '/pages/' + numPages}>>></Link></Pagination.Last>);
-    return pages;
+    pagination.push(<Pagination.Next><Link to={'/' + endpoint + '/pages/' + (curPage + 1)}>></Link></Pagination.Next>);
+    pagination.push(<Pagination.Last><Link to={'/' + endpoint + '/pages/' + numPages}>>></Link></Pagination.Last>);
+    return pagination;
   }
 
-  getData() {
-    console.log('Get Data')
-    axios.get(this.state.apiPath).then(response => {
+  getData(curPage, apiPath) {
+    axios.get(apiPath).then(response => {
       console.assert(response.hasOwnProperty('data'));
       console.assert(response.data.hasOwnProperty('objects'));
-      let p = this.state.page;
-      let pagination = this.getPages(p, response.data.total_pages, 2);
+      let pagination = this.getPagination(curPage, response.data.total_pages, 2);
       this.setState({
         entities: response.data.objects,
         numPages: response.data.total_pages,
         pagination: pagination
       });
-      console.log(pagination);
     }).catch(error => {
       console.error(error);
       this.setState({
@@ -92,46 +94,31 @@ class GridPage extends React.Component {
     })
   }
 
-  componentDidUpdate(props) {
-    console.log(props);
-    console.log(this.props)
-  }
-
   componentDidMount() {
-    this.getData();
+    this.getData(this.state.page, this.state.apiPath);
   }
 
   componentWillReceiveProps(props) {
     this.props = props;
-    // this.setState({
-    //   page: this.props.page,
-    //   apiPath: "http://parksr.us" + "/api/" + this.props.endpoint + "?page=" + this.props.page,
-    //   pagination: []
-    // });
-    console.log(this.props);
+    let curPage = parseInt(this.props.page);
+    let path = this.getAPIPath(this.props.endpoint, curPage);
     this.setState(
         {
-          page: parseInt(this.props.page),
+          page: curPage,
           pagination: [],
-          apiPath: "http://parksr.us" + "/api/" + this.props.endpoint + "?page=" + this.props.page
+          apiPath: path
         });
-    this.getData();
+    this.getData(curPage, path);
   }
 
   render() {
-    let endpoint = this.state.endpoint;
-    let page = this.state.page;
-    let numPages = this.state.numPages;
-
-    //TODO: Rename photos endpoint to snapshots for consistency.
     return (
         <div>
           <Page>
             <CardGrid entities={this.state.entities}
-                      endpoint={endpoint}
+                      endpoint={this.props.endpoint}
                       page={this.state.page}
-                      imageHeight={this.state.imageHeight}/>
-
+                      imageHeight={this.props.imageHeight}/>
             <Pagination classes={"Pagination"}>
               {this.state.pagination}
             </Pagination>
