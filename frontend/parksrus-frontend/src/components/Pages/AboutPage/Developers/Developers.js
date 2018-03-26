@@ -99,7 +99,7 @@ class Developers extends Component {
     };
   };
 
-  componentDidMount() {
+  componentWillMount() {
     const scope = this;
     axios.all([getRepositoryCommits(), getRepositoryIssues()])
     .then(axios.spread(function(commits, issues) {
