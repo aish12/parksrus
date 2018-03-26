@@ -28,15 +28,14 @@
 }
 
 .CardLink {
-    text-decoration: none;
-    color: inherit;
-}
-
-.CardLink {
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     text-align: center;
     word-wrap: break-word;
+}
+
+.CardLink p {
+    color: inherit;
 }
 
 .GridCard {
@@ -54,4 +53,8 @@
 
 .PageCard {
     width: 600px;
+}
+
+a {
+    text-decoration: none;
 }
