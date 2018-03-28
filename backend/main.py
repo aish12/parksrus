@@ -27,18 +27,17 @@ kwargs = {
 for model in model_objects:
     manager.create_api(model, **kwargs)
 
-
-with app.app_context():
-    #whooshalchemy.init_app(app)
-    whooshalchemy.index_all(app)
-
 for model in model_objects:
     whooshalchemy.whoosh_index(app, model)
+
+with app.app_context():
+    whooshalchemy.init_app(app)
+    whooshalchemy.index_all(app)
 
 # search method
 def search(model, query_val):
     #response = model.query.whoosh_search(query_val).all()
-    response = db.session.query(City).whoosh_search(query_val).all()
+    response = model.query.whoosh_search(query_val).all()
     return str(response)
     """
     api = API(db.session, model)
