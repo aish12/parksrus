@@ -14,19 +14,21 @@ class Config(object):
     # get database url from environmental variable
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    DEBUG = False
+    DEBUG = True
     TESTING = False
 
 
 class ProductionConfig(Config):
-    DEBUG = False
-    #SERVER_NAME = 'parksr.us'
+    DEBUG = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class TestingConfig(Config):
     TESTING = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True

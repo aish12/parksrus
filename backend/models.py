@@ -20,7 +20,7 @@ else:
     app.config.from_object(ProductionConfig)
     
 
-#app.config['WHOOSH_BASE'] = os.path.join(BASE_DIR, 'whoosh_index')
+app.config['WHOOSH_BASE'] = os.path.join(BASE_DIR, 'whoosh_index')
 
 db = SQLAlchemy(app)
 
