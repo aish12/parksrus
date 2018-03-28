@@ -27,8 +27,10 @@ kwargs = {
 for model in model_objects:
     manager.create_api(model, **kwargs)
 
-whooshalchemy.init_app(app)
-whooshalchemy.index_all(app)
+
+with app.app_context():
+    #whooshalchemy.init_app(app)
+    whooshalchemy.index_all(app)
 
 for model in model_objects:
     whooshalchemy.whoosh_index(app, model)
