@@ -36,14 +36,10 @@ with app.app_context():
 
 # search method
 def search(model, query_val):
-    #response = model.query.whoosh_search(query_val).all()
     response = model.query.whoosh_search(query_val).all()
-    return str(response)
-    """
     api = API(db.session, model)
     dictionary = dict((r, {}) for r in get_relations(model))
     return jsonify(api._paginated(response, dictionary))
-    """
 
 # search endpoints
 
