@@ -12,7 +12,7 @@
 
 .CardImage {
     height: 350px;
-    width: 100%;
+    min-width: 100%;
 }
 
 .Card:hover .CardImage {
@@ -29,7 +29,7 @@
 
 .CardLink {
     text-decoration: none !important;
-    color: inherit;
+    color: black !important;
     text-align: center;
     word-wrap: break-word;
 }

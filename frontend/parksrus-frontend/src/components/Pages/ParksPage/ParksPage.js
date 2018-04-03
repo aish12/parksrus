@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import states from '../../GridPage/states_list.json'
 import GridPage from '../../GridPage/GridPage'
 
 class ParksPage extends React.Component {
@@ -16,9 +17,24 @@ class ParksPage extends React.Component {
   }
 
   render() {
+    let stateOptions = []
+    states.forEach(state => {
+      stateOptions.push({"value": state, "label": state})
+    });
+    console.log(stateOptions)
+    let filterables = {
+      "state": {
+        "multi": true,
+        "options": stateOptions,
+        "op": "like",
+        "field": "state"
+      }
+    }
     return (
         <GridPage endpoint="parks"
-                  page={this.state.page} />
+                  page={this.state.page}
+                  filterables={filterables}
+        />
     );
   }
 }

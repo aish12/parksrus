@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import Select from 'react-select'
 
 import './GridPage.css';
+import 'react-select/dist/react-select.css'
 
 import Page from '../Page/Page'
 import CardGrid from '../CardGrid/CardGrid'
@@ -21,9 +23,25 @@ class GridPage extends React.Component {
     }
   }
 
-  getAPIPath(endpoint, curPage) {
+  buildQuery(newSelectedOptions) {
+    let s = [];
+    if (newSelectedOptions) {
+      for (let i in Object.keys(newSelectedOptions)) {
+        let key = Object.keys(newSelectedOptions)[i];
+        let filter = this.props.filterables[key];
+        for (let j in newSelectedOptions[key]) {
+          let selection = newSelectedOptions[key][j]["value"];
+          s.push({"name": filter.field, "op": filter.op, "val": selection})
+        }
+      }
+    }
+
+    return JSON.stringify({"filters": s})
+  }
+
+  getAPIPath(endpoint, curPage, newSelectedOptions) {
     const BASE_URL = "http://parksr.us/api/";
-    return BASE_URL + this.props.endpoint + "?page=" + curPage;
+    return BASE_URL + this.props.endpoint + "?q=" + this.buildQuery(newSelectedOptions) + "&page=" + curPage;
   }
 
   getPagination(curPage, numPages, pageRange) {
@@ -111,10 +129,29 @@ class GridPage extends React.Component {
     this.getData(curPage, path);
   }
 
+  handleChange(filterable, selectedOptions) {
+    this.setState({ [filterable]: selectedOptions });
+    let newSelectedOptions = { [filterable]: selectedOptions };
+    let path = this.getAPIPath(this.props.endpoint, this.state.page, newSelectedOptions);
+    this.setState({ apiPath: path });
+    this.getData(1, path);
+  }
+
   render() {
+    let selections = Object.keys(this.props.filterables).map(selection => this.props.filterables[selection])
+    let selects = selections.map(filterable =>
+      <Select
+          name={filterable.field}
+          value={this.state[filterable.field]}
+          onChange={this.handleChange.bind(this, filterable.field)}
+          options={filterable.options}
+          multi={filterable.multi}>
+      </Select>
+    );
     return (
         <div>
           <Page>
+            <div>{selects}</div>
             <CardGrid entities={this.state.entities}
                       endpoint={this.props.endpoint}
                       page={this.state.page}

@@ -73,13 +73,8 @@ class CityPage extends React.Component {
                           imageHeight={'450px'}/>
               </PageSection>
               <PageSection header={"Nearby Park Attractions"}>
-                <Card classes={"CityCard"} key={city.parks[0].id}>
-                  <Link to={'/parks/' + city.parks[0].id} className={"CardLink"}>
-                    <img src={city.parks[0].image_uri} className="CardImage" style={{height: "500px"}}/>
-                    <h1 className={["CardContent", "CardHeader"].join(' ')}>{city.parks[0].name}</h1>
-                    <p className={["CardContent", "CardSubtitle"].join(' ')}>{city.parks[0].state}</p>
-                  </Link>
-                </Card>
+                <CardGrid entities={city.parks}
+                          endpoint={'parks'}/>
               </PageSection>
             </Page>
           </div>

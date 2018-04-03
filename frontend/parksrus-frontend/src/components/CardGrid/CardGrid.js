@@ -29,7 +29,7 @@ class CardGrid extends Component {
             {entity.views && <div><h3>{entity.views}</h3><p>Views</p></div>}
             {entity.tags && <div><h3>Tags</h3><p>{entity.tags}</p></div>}
             {entity.review_data && <div><h3>{entity.review_data}</h3><p>Avg. Rating</p></div>}
-            {entity.park && entity.park.name && <p>{entity.park.name}</p>}
+            {entity.park && entity.park.name && <div><h3>Location</h3><p>{entity.park.name}</p></div>}
             </div>
           </Link>
         </Card>
