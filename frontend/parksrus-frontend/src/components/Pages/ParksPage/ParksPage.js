@@ -29,7 +29,7 @@ class ParksPage extends React.Component {
         "op": "like",
         "field": "state"
       }
-    }
+    };
     return (
         <GridPage endpoint="parks"
                   page={this.state.page}
