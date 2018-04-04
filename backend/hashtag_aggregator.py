@@ -16,7 +16,7 @@ def get_tags():
 
 def main():
 	tags = list(get_tags())
-	with open("tags.json", "w") as outfile:
+	with open("tags.json", "w+") as outfile:
 		json.dump(tags, outfile)
 
 if __name__ == '__main__':
