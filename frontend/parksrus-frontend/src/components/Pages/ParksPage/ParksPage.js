@@ -17,10 +17,11 @@ class ParksPage extends React.Component {
   }
 
   render() {
-    let stateOptions = []
+    let stateOptions = [];
     states.forEach(state => {
       stateOptions.push({"value": state, "label": state})
     });
+
     console.log(stateOptions)
     let filterables = {
       "state": {
@@ -30,10 +31,12 @@ class ParksPage extends React.Component {
         "field": "state"
       }
     };
+    let sortables = ['review_data'];
     return (
         <GridPage endpoint="parks"
                   page={this.state.page}
                   filterables={filterables}
+                  sortables={sortables}
         />
     );
   }

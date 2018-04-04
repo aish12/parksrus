@@ -5,3 +5,14 @@ a {
 .active a a {
     color: white;
 }
+
+.Filter {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 1em;
+}
+
+.Sort {
+    width: 100px;
+    margin-left: 25%;
+}

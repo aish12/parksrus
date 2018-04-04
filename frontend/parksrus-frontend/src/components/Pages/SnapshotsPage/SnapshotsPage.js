@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import GridPage from '../../GridPage/GridPage'
+import states from '../../GridPage/states_list.json'
 
 class SnapshotsPage extends React.Component {
   constructor(props) {
@@ -16,10 +17,18 @@ class SnapshotsPage extends React.Component {
   }
 
   render() {
+    let stateOptions = [];
+    states.forEach(state => {
+      stateOptions.push({"value": state, "label": state})
+    });
+    let filterables = {};
+    let sortables=['views'];
     return (
         <GridPage endpoint="snapshots"
                   //imageHeight={"300px"}
-                  page={this.state.page}/>
+                  page={this.state.page}
+                  filterables={filterables}
+                  sortables={sortables}/>
     );
   }
 }

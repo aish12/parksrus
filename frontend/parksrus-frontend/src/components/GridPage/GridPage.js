@@ -14,34 +14,65 @@ class GridPage extends React.Component {
   constructor(props) {
     super(props);
     let curPage = parseInt(this.props.page);
-    let path = this.getAPIPath(this.props.endpoint, curPage);
+    let path = this.getBasicAPIPath();
     this.state = {
       entities: [],
       page: curPage,
       apiPath: path,
-      pagination: []
+      pagination: [],
+      order_by: null,
+      direction: 'desc',
+      filters: Object.keys(this.props.filterables)
     }
   }
 
-  buildQuery(newSelectedOptions) {
-    let s = [];
-    if (newSelectedOptions) {
-      for (let i in Object.keys(newSelectedOptions)) {
-        let key = Object.keys(newSelectedOptions)[i];
-        let filter = this.props.filterables[key];
-        for (let j in newSelectedOptions[key]) {
-          let selection = newSelectedOptions[key][j]["value"];
-          s.push({"name": filter.field, "op": filter.op, "val": selection})
+  getBasicAPIPath() {
+    const BASE_URL = "http://parksr.us/api/";
+    return BASE_URL + this.props.endpoint;
+  }
+
+  getActiveFilters() {
+    let query = [];
+    for (let filter of this.state.filters) {
+      if (this.state.hasOwnProperty(filter)) {
+        let meta = this.props.filterables[filter];
+        for (let selection of this.state[filter]) {
+          query.push({"name": meta.field, "op": meta.op, "val": selection['value']})
         }
       }
     }
-
-    return JSON.stringify({"filters": s})
+    return query;
   }
 
-  getAPIPath(endpoint, curPage, newSelectedOptions) {
-    const BASE_URL = "http://parksr.us/api/";
-    return BASE_URL + this.props.endpoint + "?q=" + this.buildQuery(newSelectedOptions) + "&page=" + curPage;
+  getActiveSort() {
+    if (this.state.order_by) {
+      return [{"field": this.state.order_by, "direction": this.state.direction}];
+    } else {
+      return [];
+    }
+  }
+
+  getActivePageQuery(complexQuery) {
+    let query = "";
+    if (complexQuery) {
+      query += "&";
+    } else {
+      query += "?";
+    }
+    query += "page=";
+    query += this.state.page;
+    return query;
+  }
+
+  getAPIPath() {
+    console.log("getAPIPath");
+    console.log("state", this.state);
+    let apiPath = this.getBasicAPIPath();
+    let activeFilters = this.getActiveFilters();
+    let activeSort = this.getActiveSort();
+    let complexQuery = activeFilters != null || activeSort != null;
+    let activePageQuery = this.getActivePageQuery(complexQuery);
+    return apiPath + "?q=" + JSON.stringify({"filters":activeFilters, "order_by": activeSort}) + activePageQuery;
   }
 
   getPagination(curPage, numPages, pageRange) {
@@ -94,11 +125,11 @@ class GridPage extends React.Component {
     return pagination;
   }
 
-  getData(curPage, apiPath) {
-    axios.get(apiPath).then(response => {
+  getData() {
+    axios.get(this.state.apiPath).then(response => {
       console.assert(response.hasOwnProperty('data'));
       console.assert(response.data.hasOwnProperty('objects'));
-      let pagination = this.getPagination(curPage, response.data.total_pages, 2);
+      let pagination = this.getPagination(this.state.page, response.data.total_pages, 2);
       this.setState({
         entities: response.data.objects,
         numPages: response.data.total_pages,
@@ -113,45 +144,84 @@ class GridPage extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(this.state.page, this.state.apiPath);
+    this.getData();
   }
 
   componentWillReceiveProps(props) {
     this.props = props;
     let curPage = parseInt(this.props.page);
-    let path = this.getAPIPath(this.props.endpoint, curPage);
-    this.setState(
-        {
+    this.setState({
           page: curPage,
-          pagination: [],
-          apiPath: path
-        });
-    this.getData(curPage, path);
+          pagination: []
+    }, function() {
+      let path = this.getAPIPath();
+      this.setState({ apiPath: path }, function() {
+        this.getData();
+      });
+    });
+
   }
 
-  handleChange(filterable, selectedOptions) {
-    this.setState({ [filterable]: selectedOptions });
-    let newSelectedOptions = { [filterable]: selectedOptions };
-    let path = this.getAPIPath(this.props.endpoint, this.state.page, newSelectedOptions);
-    this.setState({ apiPath: path });
-    this.getData(1, path);
+  updateData() {
+    let path = this.getAPIPath();
+    this.setState({
+      apiPath: path
+    }, function() {
+      console.log("updated path:", this.state.apiPath);
+      this.getData()
+    })
   }
 
+  handleFilterChange(filterable, selections) {
+    const RESET_PAGE = 1;
+    this.setState({
+      [filterable]: selections,
+      page: RESET_PAGE
+    }, function() {this.updateData()});
+  }
+
+  handleSortChange(selectedOption) {
+    const RESET_PAGE = 1;
+    if (selectedOption) {
+      this.setState({
+        "order_by": selectedOption['value'],
+        page: RESET_PAGE
+      }, function() {this.updateData()});
+    } else {
+      this.setState({"order_by": null}, function() {this.updateData()})
+    }
+  }
+  
   render() {
     let selections = Object.keys(this.props.filterables).map(selection => this.props.filterables[selection])
     let selects = selections.map(filterable =>
-      <Select
+      <Select className={"Filter"}
           name={filterable.field}
           value={this.state[filterable.field]}
-          onChange={this.handleChange.bind(this, filterable.field)}
+          onChange={this.handleFilterChange.bind(this, filterable.field)}
           options={filterable.options}
-          multi={filterable.multi}>
+          multi={filterable.multi}
+          placeholder={"Filter by state..."}>
       </Select>
     );
+    let sortables = this.props.sortables;
+    let sortingOptions  = [];
+    sortables.forEach(sortable => {
+      sortingOptions.push({"value": sortable, "label": sortable});
+    });
+    let sort = <Select className={"Sort"}
+                   name={"sort"}
+                   value={this.state["order_by"]}
+                   onChange={this.handleSortChange.bind(this)}
+                   options={sortingOptions}
+                   multi={false}
+                   placeholder={"Sort"}>
+               </Select>;
     return (
         <div>
           <Page>
             <div>{selects}</div>
+            <div>{sort}</div>
             <CardGrid entities={this.state.entities}
                       endpoint={this.props.endpoint}
                       page={this.state.page}
