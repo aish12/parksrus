@@ -65,3 +65,39 @@ describe('AboutPage Component', () => {
         expect(wrapper.find('ProjectReports').exists()).to.eql(true);
     });
 });
+
+describe('Cities GridPage Component', () => {
+    const wrapperC = shallow(<GridPage endpoint={"cities"} page={1}/>);
+
+    it('Renders Cities CardGrid', () => {
+        expect(wrapperC.find('CardGrid').exists()).to.eql(true);
+    });
+
+    it('Renders Cities Pagination', () => {
+        expect(wrapperC.find('Pagination').exists()).to.eql(true);
+    });
+});
+
+describe('Parks GridPage Component', () => {
+    const wrapperP = shallow(<GridPage endpoint={"parks"} page={1}/>);
+
+    it('Renders Parks CardGrid', () => {
+        expect(wrapperP.find('CardGrid').exists()).to.eql(true);
+    });
+
+    it('Renders Parks Pagination', () => {
+        expect(wrapperP.find('Pagination').exists()).to.eql(true);
+    });
+});
+
+describe('Snapshots GridPage Component', () => {
+    const wrapperS = shallow(<GridPage endpoint={"snapshots"} page={1}/>);
+
+    it('Renders Snapshots CardGrid', () => {
+        expect(wrapperS.find('CardGrid').exists()).to.eql(true);
+    });
+
+    it('Renders Snapshots Pagination', () => {
+        expect(wrapperS.find('Pagination').exists()).to.eql(true);
+    });
+});
