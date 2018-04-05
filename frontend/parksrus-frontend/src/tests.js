@@ -15,6 +15,8 @@ import { configure, mount, shallow } from 'enzyme';
 import SplashPage from './components/Pages/SplashPage/SplashPage';
 import NavBar from './components/NavigationBar/NavigationBar'
 import AboutPage from './components/Pages/AboutPage/AboutPage';
+import states from './components/GridPage/states_list';
+import GridPage from './components/GridPage/GridPage';
 
 
 describe('SplashPage Component', () => {
@@ -67,7 +69,21 @@ describe('AboutPage Component', () => {
 });
 
 describe('Cities GridPage Component', () => {
-    const wrapperC = shallow(<GridPage endpoint={"cities"} page={1}/>);
+    let stateOptions = [];
+    states.forEach(state => {
+        stateOptions.push({"value": state, "label": state})
+    });
+
+    let filterables = {
+        "state": {
+            "multi": true,
+            "options": stateOptions,
+            "op": "like",
+            "field": "state"
+        }
+    };
+    let sortables=['num_parks']
+    const wrapperC = shallow(<GridPage endpoint={"cities"} page={1} filterables={filterables} sortables={sortables} />);
 
     it('Renders Cities CardGrid', () => {
         expect(wrapperC.find('CardGrid').exists()).to.eql(true);
@@ -79,7 +95,21 @@ describe('Cities GridPage Component', () => {
 });
 
 describe('Parks GridPage Component', () => {
-    const wrapperP = shallow(<GridPage endpoint={"parks"} page={1}/>);
+    let stateOptions = [];
+    states.forEach(state => {
+        stateOptions.push({"value": state, "label": state})
+    });
+
+    let filterables = {
+        "state": {
+            "multi": true,
+            "options": stateOptions,
+            "op": "like",
+            "field": "state"
+        }
+    };
+    let sortables = ['review_data'];
+    const wrapperP = shallow(<GridPage endpoint={"parks"} page={1} filterables={filterables} sortables={sortables} />);
 
     it('Renders Parks CardGrid', () => {
         expect(wrapperP.find('CardGrid').exists()).to.eql(true);
@@ -91,7 +121,14 @@ describe('Parks GridPage Component', () => {
 });
 
 describe('Snapshots GridPage Component', () => {
-    const wrapperS = shallow(<GridPage endpoint={"snapshots"} page={1}/>);
+    let stateOptions = [];
+    states.forEach(state => {
+        stateOptions.push({"value": state, "label": state})
+    });
+    let filterables = {};
+    let sortables=['views'];
+
+    const wrapperS = shallow(<GridPage endpoint={"snapshots"} page={1} filterables={filterables} sortables={sortables} />);
 
     it('Renders Snapshots CardGrid', () => {
         expect(wrapperS.find('CardGrid').exists()).to.eql(true);
