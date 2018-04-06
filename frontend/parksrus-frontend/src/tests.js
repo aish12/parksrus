@@ -137,4 +137,8 @@ describe('Snapshots GridPage Component', () => {
     it('Renders Snapshots Pagination', () => {
         expect(wrapperS.find('Pagination').exists()).to.eql(true);
     });
+
+    it('Renders Snapshots Selecting', () => {
+        expect(wrapperS.find('Select').hasClass('Sort')).to.eql(true);
+    });
 });
