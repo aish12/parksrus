@@ -28,6 +28,9 @@ class NavigationBar extends Component {
               <NavItem eventKey={4}>
                 <Link to="/snapshots/pages/1">Snapshots</Link>
               </NavItem>
+              <NavItem eventKey={5}>
+                <Link to="/search">Search</Link>
+              </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

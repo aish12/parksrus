@@ -9,19 +9,22 @@ import CitiesPage from '../Pages/CitiesPage/CitiesPage';
 import CityPage from '../Pages/CityPage/CityPage'
 import SnapshotsPage from '../Pages/SnapshotsPage/SnapshotsPage';
 import SnapshotPage from '../Pages/SnapshotPage/SnapshotPage';
+import SearchPage from '../Pages/SearchPage/SearchPage';
 
 class Main extends Component {
   render() {
     return (
         <Switch>
-          <Route exact path='/' component={SplashPage}/>
-          <Route exact path='/about' component={AboutPage}/>
-          <Route exact path='/parks/' component={ParksPage}/>
-          <Route exact path='/cities' component={CitiesPage}/>
-          <Route exact path='/snapshots' component={SnapshotsPage}/>
+          <Route exact path='/' component={SplashPage} />
+          <Route exact path='/about' component={AboutPage} />
+          <Route exact path='/parks/' component={ParksPage} />
+          <Route exact path='/cities' component={CitiesPage} />
+          <Route exact path='/snapshots' component={SnapshotsPage} />
+          <Route exact path='/search' component={SearchPage} />
           <Route path="/parks/pages/:page" component={ParksPage} />
           <Route path="/cities/pages/:page" component={CitiesPage} />
           <Route path="/snapshots/pages/:page" component={SnapshotsPage} />
+          <Route path="/search/pages/:page" component={SearchPage} />
           <Route path="/parks/:id" component={ParkPage} />
           <Route path="/cities/:id" component={CityPage} />
           <Route path="/snapshots/:id" component={SnapshotPage} />

@@ -16,3 +16,16 @@ a {
     width: 100px;
     margin-left: 25%;
 }
+
+.Menu {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Direction {
+    margin-left: 1em;
+}
