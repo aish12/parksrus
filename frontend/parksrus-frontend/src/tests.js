@@ -9,7 +9,7 @@
 // });
 
 import React from 'react';
-import { expect, assert } from 'chai';
+import { expect, assert, have } from 'chai';
 import { configure, mount, shallow } from 'enzyme';
 // importing compenents for all the pages
 import SplashPage from './components/Pages/SplashPage/SplashPage';
@@ -93,7 +93,7 @@ describe('Cities GridPage Component', () => {
         expect(wrapperC.find('Pagination').exists()).to.eql(true);
     });
     it('Renders Cities Select', () => {
-        expect(wrapperC.find('Select').exists()).to.eql(true);
+        expect(wrapperC.find('Select')).to.have.length(2);
     });
 });
 
@@ -115,7 +115,7 @@ describe('Parks GridPage Component', () => {
     const wrapperP = shallow(<GridPage endpoint={"parks"} page={1} filterables={filterables} sortables={sortables} />);
 
     it('Renders Parks CardGrid', () => {
-        expect(wrapperP.find('CardGrid').exists()).to.eql(true);
+        expect(wrapperP.find('Select')).to.have.length(2);
     });
 
     it('Renders Parks Pagination', () => {
@@ -145,11 +145,7 @@ describe('Snapshots GridPage Component', () => {
         expect(wrapperS.find('Pagination').exists()).to.eql(true);
     });
 
-    it('Renders Snapshots Selecting', () => {
+    it('Renders Snapshots Select', () => {
         expect(wrapperS.find('Select').hasClass('Sort')).to.eql(true);
-    });
-
-    it('Renders Snapshots Selecting', () => {
-        expect(wrapperS.find('Select').hasClass('Filter')).to.eql(true);
     });
 });
