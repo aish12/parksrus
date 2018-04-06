@@ -11,7 +11,7 @@ const developers = new Map([
         "avatarUrl": "./images/avatars/aish.jpg",
         "biography": "Aish Shashidhar is a Junior majoring in Computer Science at The University of Texas at Austin. She loves hiking andteaching, and is also a henna artist.",
         "responsibilities": "Back-End Developer",
-        "unittests": 0
+        "unittests": 1
       }
     ],
     [14853878,
@@ -21,7 +21,7 @@ const developers = new Map([
         "avatarUrl": "./images/avatars/ben.jpg",
         "biography": "Benjamin Chen is Junior majoring in Computer Science at UT Austin. His interests outside of academics include videogames and fishing. ",
         "responsibilities": "Front-End Developer",
-        "unittests": 0
+        "unittests": 20
       }
     ],
     [15369024,
@@ -31,7 +31,7 @@ const developers = new Map([
         "avatarUrl": "./images/avatars/daniel.png",
         "biography": "Daniel Zheng is a Junior studying Computer Science at the University of Texas Austin. Aside from academia, he enjoys spending his time playing videogames, and watching the occasional show or movie. He also has a newfound passion for playing squash (the sport, not the vegetable).",
         "responsibilities": "Front-End Developer",
-        "unittests": 0
+        "unittests": 18
       }
     ],
     [12850078,
@@ -41,7 +41,7 @@ const developers = new Map([
       "avatarUrl": "./images/avatars/denalex.jpg",
       "biography": "Denalex Orakwue is a Junior majoring in Computer Science at The University of Texas at Austin.",
       "responsibilities": "Back-End Developer",
-      "unittests": 0
+      "unittests": 13
       }
     ],
     [23325303,
