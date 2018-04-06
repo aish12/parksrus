@@ -29,7 +29,7 @@ class ProjectStatistics extends Component {
     this.state = {
       commits: 0,
       issues: 0,
-      unittests: 21 // hardcoded
+      unittests: 52 // hardcoded
     }
   }
 
