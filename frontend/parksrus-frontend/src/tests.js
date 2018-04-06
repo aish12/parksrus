@@ -92,6 +92,9 @@ describe('Cities GridPage Component', () => {
     it('Renders Cities Pagination', () => {
         expect(wrapperC.find('Pagination').exists()).to.eql(true);
     });
+    it('Renders Cities Select', () => {
+        expect(wrapperC.find('Select').exists()).to.eql(true);
+    });
 });
 
 describe('Parks GridPage Component', () => {
@@ -118,6 +121,10 @@ describe('Parks GridPage Component', () => {
     it('Renders Parks Pagination', () => {
         expect(wrapperP.find('Pagination').exists()).to.eql(true);
     });
+
+    it('Renders Snapshots Select', () => {
+        expect(wrapperP.find('Select').exists()).to.eql(true);
+    });
 });
 
 describe('Snapshots GridPage Component', () => {
@@ -140,5 +147,9 @@ describe('Snapshots GridPage Component', () => {
 
     it('Renders Snapshots Selecting', () => {
         expect(wrapperS.find('Select').hasClass('Sort')).to.eql(true);
+    });
+
+    it('Renders Snapshots Selecting', () => {
+        expect(wrapperS.find('Select').hasClass('Filter')).to.eql(true);
     });
 });
