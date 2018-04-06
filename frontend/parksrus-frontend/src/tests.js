@@ -122,8 +122,12 @@ describe('Parks GridPage Component', () => {
         expect(wrapperP.find('Pagination').exists()).to.eql(true);
     });
 
-    it('Renders Snapshots Select', () => {
+    it('Renders Parks Select', () => {
         expect(wrapperP.find('Select').exists()).to.eql(true);
+    });
+
+    it('Renders Parks Select', () => {
+        expect(wrapperP.find('Select')).to.have.length(2);
     });
 });
 
@@ -147,5 +151,9 @@ describe('Snapshots GridPage Component', () => {
 
     it('Renders Snapshots Select', () => {
         expect(wrapperS.find('Select').hasClass('Sort')).to.eql(true);
+    });
+
+    it('Renders Snapshots Select', () => {
+        expect(wrapperP.find('Select')).to.have.length(2);
     });
 });
