@@ -13,7 +13,7 @@ class SearchPage extends React.Component {
     let path = this.getBasicAPIPath();
     this.state = {
       entities: [],
-      page: this.props.match.params.page || 1,
+      page: 1,
       pagination: [],
       value: "",
       endpoints: ['cities', 'parks', 'snapshots']
@@ -22,7 +22,7 @@ class SearchPage extends React.Component {
 
   componentWillReceiveProps(props) {
     this.props = props;
-    this.setState({'page': props.match.params.page});
+    //this.setState({'page': props.match.params.page});
   }
 
   getBasicAPIPath() {
@@ -51,13 +51,16 @@ class SearchPage extends React.Component {
   }
 
   handlePaginationChange(page) {
-    this.setState({ page: page });
+    console.log(page)
+    this.setState({ page: page }, function() {
+      this.search();
+    });
   }
 
   getPagination(curPage, numPages, pageRange) {
     let pagination = [];
-    pagination.push(<Pagination.First onClick={this.handlePaginationChange(1)}>{"<<"}</Pagination.First>);
-    pagination.push(<Pagination.Prev onClick={this.handlePaginationChange(curPage - 1)}>{"<"}</Pagination.Prev>);
+    pagination.push(<Pagination.First onClick={this.handlePaginationChange.bind(this, 1)}>{"<<"}</Pagination.First>);
+    pagination.push(<Pagination.Prev onClick={this.handlePaginationChange.bind(this, curPage - 1)}>{"<"}</Pagination.Prev>);
     if (numPages > 0) {
       let className = "";
       if (curPage == 1) {
@@ -74,20 +77,20 @@ class SearchPage extends React.Component {
       while (prevPage != curPage && pRange < pageRange) {
         console.log(prevPage > 0)
         let k = prevPage;
-        pagination.push(<Pagination.Item onClick={this.handlePaginationChange(prevPage)}>{prevPage}</Pagination.Item>)
+        pagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, prevPage)}>{prevPage}</Pagination.Item>)
         prevPage += 1;
         pRange += 1;
       }
     }
     if (curPage > 1) {
-      pagination.push(<Pagination.Item className={"active"} onClick={this.handlePaginationChange(curPage)}>{curPage}</Pagination.Item>);
+      pagination.push(<Pagination.Item className={"active"} onClick={this.handlePaginationChange.bind(this, curPage)}>{curPage}</Pagination.Item>);
     }
     if (curPage < numPages) {
       let nextPage = curPage + 1;
       let pRange = 0;
       while (nextPage != numPages && pRange < pageRange) {
         let k = nextPage;
-        pagination.push(<Pagination.Item onClick={this.handlePaginationChange(nextPage)}>{nextPage}</Pagination.Item>);
+        pagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, nextPage)}>{nextPage}</Pagination.Item>);
         nextPage += 1;
         pRange += 1;
       }
@@ -96,10 +99,10 @@ class SearchPage extends React.Component {
       pagination.push(<Pagination.Ellipsis />);
     }
     if (curPage != numPages) {
-      pagination.push(<Pagination.Item onClick={this.handlePaginationChange(numPages)}>{numPages}</Pagination.Item>);
+      pagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, numPages)}>{numPages}</Pagination.Item>);
     }
-    pagination.push(<Pagination.Next onClick={this.handlePaginationChange(curPage + 1)}>></Pagination.Next>);
-    pagination.push(<Pagination.Last onClick={this.handlePaginationChange(numPages)}>>></Pagination.Last>);
+    pagination.push(<Pagination.Next onClick={this.handlePaginationChange.bind(this, curPage + 1)}>></Pagination.Next>);
+    pagination.push(<Pagination.Last onClick={this.handlePaginationChange.bind(this, numPages)}>>></Pagination.Last>);
     return pagination;
   }
 
@@ -171,11 +174,13 @@ class SearchPage extends React.Component {
         }
         numPages.push(r.data.total_pages);
       }
-      //let pagination = scope.getPagination(scope.state.page, Math.min(...numPages), 2);
+      let maxPages = Math.max(...numPages);
+      console.log(scope.state.page, maxPages, 2)
+      let pagination = scope.getPagination(scope.state.page, maxPages, 2);
       scope.setState({
         entities: entities,
-        numPages: Math.min(...numPages),
-        //pagination: pagination
+        numPages: maxPages,
+        pagination: pagination
       }, function() {
         console.log(scope.state);
       })
@@ -198,7 +203,7 @@ class SearchPage extends React.Component {
         fields.push(<img src={entity['image_uri']} />)
       }
       for (let field of searchFields) {
-        if (entity.hasOwnProperty(field) && entity[field].includes(this.state.value)) {
+        if (entity.hasOwnProperty(field) && entity[field].toLowerCase().includes(this.state.value.toLowerCase())) {
           fields.push(<p className={"mark"}>{entity[field]}</p>)
         } else {
           fields.push(<p>{entity[field]}</p>)
@@ -221,9 +226,9 @@ class SearchPage extends React.Component {
               </FormGroup>
             </Form>
             <div>{results}</div>
-            {/*<Pagination classes={"Pagination"}>*/}
-              {/*{this.state.pagination}*/}
-            {/*</Pagination>*/}
+            <Pagination classes={"Pagination"}>
+              {this.state.pagination}
+            </Pagination>
           </Page>
         </div>
     );
