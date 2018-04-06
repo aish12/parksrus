@@ -123,10 +123,6 @@ describe('Parks GridPage Component', () => {
     });
 
     it('Renders Parks Select', () => {
-        expect(wrapperP.find('Select').exists()).to.eql(true);
-    });
-
-    it('Renders Parks Select', () => {
         expect(wrapperP.find('Select')).to.have.length(2);
     });
 });
@@ -150,10 +146,6 @@ describe('Snapshots GridPage Component', () => {
     });
 
     it('Renders Snapshots Select', () => {
-        expect(wrapperS.find('Select').hasClass('Sort')).to.eql(true);
-    });
-
-    it('Renders Snapshots Select', () => {
-        expect(wrapperP.find('Select')).to.have.length(2);
+        expect(wrapperS.find('Select')).to.have.length(2);
     });
 });
