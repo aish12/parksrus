@@ -7,9 +7,11 @@ import axios from 'axios'
 import Card from '../../Card/Card'
 import PageSection from '../../PageSection/PageSection'
 import CardGrid from '../../CardGrid/CardGrid'
-import { Panel, Button, Glyphicon } from 'react-bootstrap'
+import { Panel, Button, Glyphicon, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import GoogleMapReact from 'google-map-react'
+
+const MapMarker = ({text}) => <div className={"MapMarker"}>{text}</div>
 
 class SnapshotPage extends React.Component {
   constructor(props) {
@@ -40,8 +42,14 @@ class SnapshotPage extends React.Component {
 
   render() {
     if (this.state.isLoaded) {
+      let FLICKR_BASE = "https://www.flickr.com/search/?text=";
       const snapshot = this.state.snapshot;
       const location = { lat: parseFloat(snapshot.latitude.valueOf()), lng: parseFloat(snapshot.longitude.valueOf()) };
+
+      console.log(location)
+      //image scaling
+      snapshot.image_uri = snapshot.image_uri.split('=')[0] + "=w2000-h500";
+      let hashtags = snapshot.tags.split(',').map(hashtag => <a href={FLICKR_BASE + hashtag}><Badge>{"#" + hashtag}</Badge></a>);
       return (
           <div>
             <Page>
@@ -55,8 +63,8 @@ class SnapshotPage extends React.Component {
               <div className="SnapshotDescription">
                 <Panel className="DescriptionPanel">
                   <div className="DescriptionContent">
-                    <h1>Hashtags</h1>
-                    <p className="DescriptionParagraph">{snapshot.tags}</p>
+                    <h1>#Hashtags</h1>
+                    <p className="DescriptionParagraph">{hashtags}</p>
                   </div>
                 </Panel>
               </div>
@@ -64,7 +72,11 @@ class SnapshotPage extends React.Component {
                 <div className="MapWrapper">
                   <GoogleMapReact bootstrapURLKeys={{ key: "AIzaSyBFObWyqlbpObdkdNE0k4JwX9AB66cTGKw"}}
                                   defaultCenter={location}
-                                  defaultZoom={10} />
+                                  defaultZoom={15} />
+                    {/*<MapMarker lat={location.lat}*/}
+                               {/*lng={location.lng}*/}
+                               {/*text={""}*/}
+                    {/*/>*/}
                 </div>
               </PageSection>
               <PageSection header={"Explore the Park"}>
