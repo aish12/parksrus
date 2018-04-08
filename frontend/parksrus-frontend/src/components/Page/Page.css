@@ -19,3 +19,11 @@
 .pagination {
     align-self: center;
 }
+
+.MapMarker {
+    background-color: springgreen;
+    opacity: 0.8;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+}

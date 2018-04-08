@@ -38,6 +38,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.2.0",
+    "react-highlighter": "^0.4.2",
     "react-router-dom": "^4.2.2",
     "react-select": "^1.2.1",
     "react-toggle": "^4.0.2",
