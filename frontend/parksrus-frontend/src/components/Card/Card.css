@@ -11,12 +11,14 @@
 }
 
 .CardImage {
-    height: 350px;
+    height: 100%;
     min-width: 100%;
 }
 
-.Card:hover .CardImage {
-    height: 200px;
+.Card:hover .CardHover {
+    position: absolute;
+    top: 0;
+    color: white;
 }
 
 .CardContent {
@@ -32,6 +34,8 @@
     color: black !important;
     text-align: center;
     word-wrap: break-word;
+    position: relative;
+    height: 100%;
 }
 
 .CardLink p {
@@ -46,7 +50,10 @@
 }
 
 .CardHover {
-    padding-top: 2em;
+    background: rgba(0,0,0,0.5);
+    height: 100%;
+    width: 100%;
+    padding-top: 10%;
 }
 
 @media(max-width: 480px) {
