@@ -11,6 +11,8 @@ import { Panel, Button, Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import GoogleMapReact from 'google-map-react'
 
+const MapMarker = ({text}) => <div className={"MapMarker"}>{text}</div>
+
 class CityPage extends React.Component {
   constructor(props) {
     super(props);
@@ -42,6 +44,8 @@ class CityPage extends React.Component {
     if (this.state.isLoaded) {
       const city = this.state.city;
       const location = { lat: parseFloat(city.latitude.valueOf()), lng: parseFloat(city.longitude.valueOf()) };
+      //image scaling
+      city.image_uri = city.image_uri.split('=')[0] + "=w2000-h500";
       return (
           <div>
             <Page>
@@ -65,12 +69,15 @@ class CityPage extends React.Component {
                   <GoogleMapReact bootstrapURLKeys={{ key: "AIzaSyBFObWyqlbpObdkdNE0k4JwX9AB66cTGKw"}}
                                   defaultCenter={location}
                                   defaultZoom={15} />
+                    {/*<MapMarker lat={location.lat}*/}
+                               {/*lng={location.lng}*/}
+                               {/*text={""}*/}
+                    {/*/>*/}
                 </div>
               </PageSection>
               <PageSection header={"Snapshots"}>
                 <CardGrid entities={city.snapshots}
-                          endpoint={'snapshots'}
-                          imageHeight={'450px'}/>
+                          endpoint={'snapshots'}/>
               </PageSection>
               <PageSection header={"Nearby Park Attractions"}>
                 <CardGrid entities={city.parks}

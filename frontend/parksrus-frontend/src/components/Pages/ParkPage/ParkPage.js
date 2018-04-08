@@ -12,6 +12,8 @@ import { Panel, Button, Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import GoogleMapReact from 'google-map-react'
 
+const MapMarker = ({text}) => <div className={"MapMarker"}>{text}</div>
+
 class ParkPage extends React.Component {
   constructor(props) {
     super(props);
@@ -44,6 +46,10 @@ class ParkPage extends React.Component {
       const park = this.state.park;
       //TODO: Why is parseFloat(park.latitude) evaluating to NaN?
       const location = { lat: parseFloat(park.latitude.valueOf()), lng: parseFloat(park.longitude.valueOf()) };
+
+      // image scaling
+      park.image_uri = park.image_uri.split('=')[0] + "=w2000-h500";
+
       return (
           <div>
             <Page>
@@ -71,7 +77,12 @@ class ParkPage extends React.Component {
                 <div className="MapWrapper">
                   <GoogleMapReact bootstrapURLKeys={{ key: "AIzaSyBFObWyqlbpObdkdNE0k4JwX9AB66cTGKw"}}
                                   defaultCenter={location}
-                                  defaultZoom={15} />
+                                  defaultZoom={15}>
+                    <MapMarker lat={location.lat}
+                               lng={location.lng}
+                               text={""}
+                    />
+                  </GoogleMapReact>
                 </div>
               </PageSection>
               <PageSection header={"Snapshots"}>
