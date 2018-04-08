@@ -37,7 +37,7 @@ describe('NavigationBar Component', () => {
     });
 
     it('Renders Navigation Bar links', () => {
-        expect(wrapper.find('NavItem')).to.length(4);
+        expect(wrapper.find('NavItem')).to.length(5);
     });
 });
 
@@ -146,6 +146,6 @@ describe('Snapshots GridPage Component', () => {
     });
 
     it('Renders Snapshots Select', () => {
-        expect(wrapperS.find('Select')).to.have.length(2);
+        expect(wrapperS.find('Select').exists()).to.eql(true);
     });
 });

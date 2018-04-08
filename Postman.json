@@ -1,8 +1,10 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "0bf8a972-2469-e1b9-b5a1-7cc10434fa60",
 		"name": "Parks R Us",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "0bf8a972-2469-e1b9-b5a1-7cc10434fa60",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -11,7 +13,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "979c407d-e7db-4d12-a696-fdc39c2bd5b9",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Body contains 'num_results'\", function () {",
@@ -43,20 +44,11 @@
 				}
 			],
 			"request": {
+				"url": "api.parksr.us/parks",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "api.parksr.us/parks",
-					"host": [
-						"api",
-						"parksr",
-						"us"
-					],
-					"path": [
-						"parks"
-					]
-				}
+				"description": null
 			},
 			"response": []
 		},
@@ -66,7 +58,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e41e989c-e6e8-4690-839b-03718720536e",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Body contains 'num_results'\", function () {",
@@ -98,20 +89,11 @@
 				}
 			],
 			"request": {
+				"url": "api.parksr.us/snapshots",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "api.parksr.us/snapshots",
-					"host": [
-						"api",
-						"parksr",
-						"us"
-					],
-					"path": [
-						"snapshots"
-					]
-				}
+				"description": null
 			},
 			"response": []
 		},
@@ -121,7 +103,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "06c6e606-4792-4343-a72c-fe5b3d19dd3e",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Body contains 'num_results'\", function () {",
@@ -153,20 +134,11 @@
 				}
 			],
 			"request": {
+				"url": "api.parksr.us/cities",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "api.parksr.us/cities",
-					"host": [
-						"api",
-						"parksr",
-						"us"
-					],
-					"path": [
-						"cities"
-					]
-				}
+				"description": null
 			},
 			"response": []
 		},
@@ -176,7 +148,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "88c8cd71-8bc5-484c-aae8-f872fd187e48",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
@@ -204,21 +175,11 @@
 				}
 			],
 			"request": {
+				"url": "api.parksr.us/parks/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "api.parksr.us/parks/1",
-					"host": [
-						"api",
-						"parksr",
-						"us"
-					],
-					"path": [
-						"parks",
-						"1"
-					]
-				}
+				"description": null
 			},
 			"response": []
 		},
@@ -228,7 +189,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d0a947d6-d52b-4251-ab9a-06c0e35350df",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
@@ -256,21 +216,11 @@
 				}
 			],
 			"request": {
+				"url": "api.parksr.us/snapshots/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "api.parksr.us/snapshots/1",
-					"host": [
-						"api",
-						"parksr",
-						"us"
-					],
-					"path": [
-						"snapshots",
-						"1"
-					]
-				}
+				"description": null
 			},
 			"response": []
 		},
@@ -280,7 +230,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f0725e1f-5f85-4ece-bf62-7c4b91a8bc72",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
@@ -308,21 +257,11 @@
 				}
 			],
 			"request": {
+				"url": "api.parksr.us/cities/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "api.parksr.us/cities/1",
-					"host": [
-						"api",
-						"parksr",
-						"us"
-					],
-					"path": [
-						"cities",
-						"1"
-					]
-				}
+				"description": null
 			},
 			"response": []
 		},
@@ -332,7 +271,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "89a28cfe-1722-4990-bf7a-ee715693b611",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 404\", function () {",
@@ -347,21 +285,334 @@
 				}
 			],
 			"request": {
+				"url": "api.parksr.us/snapshots/432423",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/search/parks?query=\"Houston\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body contains 'num_results'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"num_results\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
 				"url": {
-					"raw": "api.parksr.us/snapshots/432423",
+					"raw": "api.parksr.us/search/parks?query=\"Houston\"",
 					"host": [
 						"api",
 						"parksr",
 						"us"
 					],
 					"path": [
-						"snapshots",
-						"432423"
-					]
+						"search",
+						"parks"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "\"Houston\"",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/search/cities?query=\"Texas\"&page=2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body contains 'num_results'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"num_results\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Returns at least 3 Results\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.objects.length).to.gt(2);",
+							"});"
+						]
+					}
 				}
+			],
+			"request": {
+				"url": {
+					"raw": "api.parksr.us/search/cities?query=\"Texas\"&page=1",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"search",
+						"cities"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "\"Texas\"",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "api.parksr.us/search/snapshots?query=\"losangeles\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body contains 'num_results'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"num_results\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "api.parksr.us/search/snapshots?query=\"losangeles\"",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"search",
+						"snapshots"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "\"losangeles\"",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://parksr.us/api/parks?q={\"filters\":[{\"and\":[{\"name\":\"state\",\"op\":\"like\",\"val\":\"California\"},{\"name\":\"city\",\"op\":\"has\",\"val\":{\"name\":\"name\",\"op\":\"like\",\"val\":\"%San Francisco%\"}}]}],\"order_by\":[]}&page=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body contains 'num_results'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"num_results\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "api.parksr.us/parks?q={\"filters\":[{\"and\":[{\"name\":\"state\",\"op\":\"like\",\"val\":\"California\"},{\"name\":\"city\",\"op\":\"has\",\"val\":{\"name\":\"name\",\"op\":\"like\",\"val\":\"%San Francisco%\"}}]}],\"order_by\":[]}&page=1",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"parks"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"and\":[{\"name\":\"state\",\"op\":\"like\",\"val\":\"California\"},{\"name\":\"city\",\"op\":\"has\",\"val\":{\"name\":\"name\",\"op\":\"like\",\"val\":\"%San Francisco%\"}}]}],\"order_by\":[]}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://parksr.us/api/parks?q={\"filters\":[{\"or\":[{\"name\":\"state\",\"op\":\"like\",\"val\":\"California\"},{\"name\":\"city\",\"op\":\"has\",\"val\":{\"name\":\"name\",\"op\":\"like\", \"val\":\"%San Francisco%\"}}]}],\"order_by\":[]}&page=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body contains 'num_results'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"num_results\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms (in most cases)\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "api.parksr.us/parks?q={\"filters\":[{\"or\":[{\"name\":\"state\",\"op\":\"like\",\"val\":\"California\"},{\"name\":\"city\",\"op\":\"has\",\"val\":{\"name\":\"name\",\"op\":\"like\", \"val\":\"%San Francisco%\"}}]}],\"order_by\":[]}&page=1",
+					"host": [
+						"api",
+						"parksr",
+						"us"
+					],
+					"path": [
+						"parks"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"or\":[{\"name\":\"state\",\"op\":\"like\",\"val\":\"California\"},{\"name\":\"city\",\"op\":\"has\",\"val\":{\"name\":\"name\",\"op\":\"like\", \"val\":\"%San Francisco%\"}}]}],\"order_by\":[]}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
 			},
 			"response": []
 		}
