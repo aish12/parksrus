@@ -79,53 +79,75 @@ class GridPage extends React.Component {
     return apiPath + "?q=" + JSON.stringify({"filters": [{"or": activeFilters}], "order_by": activeSort}) + activePageQuery;
   }
 
-  getPagination(curPage, numPages, pageRange) {
-    let endpoint = this.props.endpoint;
-    let pagination = [];
-    pagination.push(<Pagination.First><Link to={'/' + endpoint + '/pages/' + 1}/>{"<<"}</Pagination.First>);
-    pagination.push(<Pagination.Prev><Link to={'/' + endpoint + '/pages/' + (curPage - 1)}/>{"<"}</Pagination.Prev>);
-    if (numPages > 0) {
-      let className = "";
-      if (curPage == 1) {
-        className = "active";
-      }
-    }
-    if (curPage >= 5) {
-      pagination.push(<Pagination.Ellipsis />);
-    }
+  getFirstPagination() {
+    return [<Pagination.First><Link to={'/' + this.props.endpoint + '/pages/' + 1}/>{"<<"}</Pagination.First>];
+  }
+
+  getPrevPagination(curPage) {
+    return (curPage - 1 > 0) ? [<Pagination.Prev><Link to={'/' + this.props.endpoint + '/pages/' + (curPage - 1)}/>{"<"}</Pagination.Prev>] : []
+  }
+
+  getLeftEllipsisPagination(curPage) {
+    return (curPage >= 5) ? [<Pagination.Ellipsis />] : [];
+  }
+
+  getLeftPagination(curPage, pageRange) {
+    let leftPagination = [];
     if (curPage > 1) {
       let prevPage = curPage - pageRange;
       let pRange = 0;
-
-      while (prevPage != curPage && pRange < pageRange) {
-        console.log(prevPage > 0)
-        let k = prevPage;
-        pagination.push(<Pagination.Item><Link to={'/' + endpoint + '/pages/' + prevPage}>{prevPage}</Link></Pagination.Item>)
+      while (prevPage !== curPage && pRange < pageRange) {
+        if (prevPage > 0) {
+          leftPagination.push(<Pagination.Item><Link to={'/' + this.props.endpoint + '/pages/' + prevPage}>{prevPage}</Link></Pagination.Item>)
+        }
         prevPage += 1;
         pRange += 1;
       }
     }
-    if (curPage > 1) {
-      pagination.push(<Pagination.Item className={"active"}><Link to={'/' + endpoint + '/pages/' + curPage}>{curPage}</Link></Pagination.Item>);
-    }
+    return leftPagination;
+  }
+
+  getActivePagination(curPage) {
+    return (curPage > 1) ? [<Pagination.Item className={"active"}><Link to={'/' + this.props.endpoint + '/pages/' + curPage}>{curPage}</Link></Pagination.Item>] : []
+  }
+
+  getRightPagination(curPage, numPages, pageRange) {
+    let rightPagination = [];
     if (curPage < numPages) {
       let nextPage = curPage + 1;
       let pRange = 0;
-      while (nextPage != numPages && pRange < pageRange) {
-        let k = nextPage;
-        pagination.push(<Pagination.Item><Link to={'/' + endpoint + '/pages/' + nextPage}>{nextPage}</Link></Pagination.Item>);
+      while (nextPage !== numPages && pRange < pageRange) {
+        rightPagination.push(<Pagination.Item><Link to={'/' + this.props.endpoint + '/pages/' + nextPage}>{nextPage}</Link></Pagination.Item>);
         nextPage += 1;
         pRange += 1;
       }
     }
-    if (numPages - curPage >= 5) {
-      pagination.push(<Pagination.Ellipsis />);
-    }
-    if (curPage != numPages) {
-      pagination.push(<Pagination.Item><Link to={'/' + endpoint + '/pages/' + numPages}>{numPages}</Link></Pagination.Item>);
-    }
-    pagination.push(<Pagination.Next><Link to={'/' + endpoint + '/pages/' + (curPage + 1)}>></Link></Pagination.Next>);
-    pagination.push(<Pagination.Last><Link to={'/' + endpoint + '/pages/' + numPages}>>></Link></Pagination.Last>);
+    return rightPagination;
+  }
+
+  getRightEllipsisPagination(curPage, numPages) {
+    return (numPages - curPage >= 5) ? [<Pagination.Ellipsis />] : []
+  }
+
+  getNextPagination(curPage, numPages) {
+    return (curPage + 1 <= numPages) ? [<Pagination.Next><Link to={'/' + this.props.endpoint + '/pages/' + (curPage + 1)}>></Link></Pagination.Next>] : []
+  }
+
+  getLastPagination(numPages) {
+    return [<Pagination.Last><Link to={'/' + this.props.endpoint + '/pages/' + numPages}>>></Link></Pagination.Last>]
+  }
+
+  getPagination(curPage, numPages, pageRange) {
+    let pagination = [];
+    pagination.push(...this.getFirstPagination());
+    pagination.push(...this.getPrevPagination(curPage));
+    pagination.push(...this.getLeftEllipsisPagination(curPage));
+    pagination.push(...this.getLeftPagination(curPage, pageRange));
+    pagination.push(...this.getActivePagination(curPage));
+    pagination.push(...this.getRightPagination(curPage, numPages, pageRange));
+    pagination.push(...this.getRightEllipsisPagination(curPage, numPages));
+    pagination.push(...this.getNextPagination(curPage, numPages));
+    pagination.push(...this.getLastPagination(numPages));
     return pagination;
   }
 
@@ -223,7 +245,7 @@ class GridPage extends React.Component {
     let sortables = this.props.sortables;
     let sortingOptions  = [];
     sortables.forEach(sortable => {
-      sortingOptions.push({"value": sortable, "label": sortable});
+      sortingOptions.push({"value": sortable, "label": sortable.replace('_', ' ')});
     });
     let sort = <Select className={"Sort"}
                    name={"sort"}
