@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 
-import './SearchPage.css'
 
+import './SearchPage.css'
 import { Pagination, Form, FormGroup, FormControl, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Page from '../../Page/Page'
 import axios from 'axios'
 
+const Highlight = require('react-highlighter');
+
 class SearchPage extends React.Component {
   constructor(props) {
     super(props);
-    let path = this.getBasicAPIPath();
     this.state = {
       entities: [],
       page: 1,
@@ -20,182 +21,159 @@ class SearchPage extends React.Component {
     }
   }
 
-  componentWillReceiveProps(props) {
-    this.props = props;
-    //this.setState({'page': props.match.params.page});
-  }
-
   getBasicAPIPath() {
     return "http://parksr.us/api/search";
   }
 
   getActivePageQuery(complexQuery) {
-    let query = "";
-    if (complexQuery) {
-      query += "&";
-    } else {
-      query += "?";
-    }
-    query += "page=";
-    query += this.state.page;
-    return query;
-  }
-
-  getAPIPath() {
-    console.log("getAPIPath");
-    console.log("state", this.state);
-    let apiPath = this.getBasicAPIPath();
-    //let searchQuery = this.getActiveSearchQuery();
-    //let activePageQuery = this.getActivePageQuery(true);
-    return apiPath //+ activePageQuery;
+    return (complexQuery ? "&":"?") + "page=" + this.state.page;
   }
 
   handlePaginationChange(page) {
-    console.log(page)
-    this.setState({ page: page }, function() {
-      this.search();
-    });
+    this.setState({ page: page }, function() { this.search(); });
   }
 
-  getPagination(curPage, numPages, pageRange) {
-    let pagination = [];
-    pagination.push(<Pagination.First onClick={this.handlePaginationChange.bind(this, 1)}>{"<<"}</Pagination.First>);
-    pagination.push(<Pagination.Prev onClick={this.handlePaginationChange.bind(this, curPage - 1)}>{"<"}</Pagination.Prev>);
-    if (numPages > 0) {
-      let className = "";
-      if (curPage == 1) {
-        className = "active";
-      }
-    }
-    if (curPage >= 5) {
-      pagination.push(<Pagination.Ellipsis />);
-    }
+  getFirstPagination() {
+    return [<Pagination.First onClick={this.handlePaginationChange.bind(this, 1)}>{"<<"}</Pagination.First>];
+  }
+
+  getPrevPagination(curPage) {
+    return (curPage - 1 > 0) ? [<Pagination.Prev onClick={this.handlePaginationChange.bind(this, curPage - 1)}>{"<"}</Pagination.Prev>] : []
+  }
+
+  getLeftEllipsisPagination(curPage) {
+    return (curPage >= 5) ? [<Pagination.Ellipsis />] : [];
+  }
+
+  getLeftPagination(curPage, pageRange) {
+    let leftPagination = [];
     if (curPage > 1) {
       let prevPage = curPage - pageRange;
       let pRange = 0;
-
-      while (prevPage != curPage && pRange < pageRange) {
-        console.log(prevPage > 0)
-        let k = prevPage;
-        pagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, prevPage)}>{prevPage}</Pagination.Item>)
+      while (prevPage !== curPage && pRange < pageRange) {
+        if (prevPage > 0) {
+          leftPagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, prevPage)}>{prevPage}</Pagination.Item>)
+        }
         prevPage += 1;
         pRange += 1;
       }
     }
-    if (curPage > 1) {
-      pagination.push(<Pagination.Item className={"active"} onClick={this.handlePaginationChange.bind(this, curPage)}>{curPage}</Pagination.Item>);
-    }
+    return leftPagination;
+  }
+
+  getActivePagination(curPage) {
+    return (curPage > 1) ? [<Pagination.Item className={"active"} onClick={this.handlePaginationChange.bind(this, curPage)}>{curPage}</Pagination.Item>] : []
+  }
+
+  getRightPagination(curPage, numPages, pageRange) {
+    let rightPagination = [];
     if (curPage < numPages) {
       let nextPage = curPage + 1;
       let pRange = 0;
-      while (nextPage != numPages && pRange < pageRange) {
-        let k = nextPage;
-        pagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, nextPage)}>{nextPage}</Pagination.Item>);
+      while (nextPage !== numPages && pRange < pageRange) {
+        rightPagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, nextPage)}>{nextPage}</Pagination.Item>);
         nextPage += 1;
         pRange += 1;
       }
     }
-    if (numPages - curPage >= 5) {
-      pagination.push(<Pagination.Ellipsis />);
-    }
-    if (curPage != numPages) {
-      pagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, numPages)}>{numPages}</Pagination.Item>);
-    }
-    pagination.push(<Pagination.Next onClick={this.handlePaginationChange.bind(this, curPage + 1)}>></Pagination.Next>);
-    pagination.push(<Pagination.Last onClick={this.handlePaginationChange.bind(this, numPages)}>>></Pagination.Last>);
+    return rightPagination;
+  }
+
+  getRightEllipsisPagination(curPage, numPages) {
+    return (numPages - curPage >= 5) ? [<Pagination.Ellipsis />] : []
+  }
+
+  getNextPagination(curPage, numPages) {
+    return (curPage + 1 <= numPages) ? [<Pagination.Next onClick={this.handlePaginationChange.bind(this, curPage + 1)}>></Pagination.Next>] : []
+  }
+
+  getLastPagination(numPages) {
+    return [<Pagination.Last onClick={this.handlePaginationChange.bind(this, numPages)}>>></Pagination.Last>]
+  }
+
+  getPagination(curPage, numPages, pageRange) {
+    let pagination = [];
+    pagination.push(...this.getFirstPagination());
+    pagination.push(...this.getPrevPagination(curPage));
+    pagination.push(...this.getLeftEllipsisPagination(curPage));
+    pagination.push(...this.getLeftPagination(curPage, pageRange));
+    pagination.push(...this.getActivePagination(curPage));
+    pagination.push(...this.getRightPagination(curPage, numPages, pageRange));
+    pagination.push(...this.getRightEllipsisPagination(curPage, numPages));
+    pagination.push(...this.getNextPagination(curPage, numPages));
+    pagination.push(...this.getLastPagination(numPages));
     return pagination;
   }
 
-  getData() {
-    axios.get(this.state.apiPath).then(response => {
-      console.assert(response.hasOwnProperty('data'));
-      console.assert(response.data.hasOwnProperty('objects'));
-      let pagination = this.getPagination(this.state.page, response.data.total_pages, 2);
-      this.setState({
-        entities: response.data.objects,
-        numPages: response.data.total_pages,
-        pagination: pagination
-      });
-    }).catch(error => {
-      console.error(error);
-      this.setState({
-        error: error
-      });
-    })
-  }
-
-  updateData() {
-    console.log("updateData()")
-    let path = this.getAPIPath();
-    this.setState({
-      apiPath: path
-    }, function() {
-      console.log("updated path:", this.state.apiPath);
-      this.getData()
-    })
-  }
-
-  componentDidMount() {
-    this.getData();
-  }
-
   getSearchAPIQuery(endpoint) {
-    let path = this.getBasicAPIPath();
-    path += "/" + endpoint + "?query=" + '"' + this.state.value + '"';
-    path += this.getActivePageQuery(true);
-    return path
+    return this.getBasicAPIPath() + "/"
+        + endpoint
+        + "?query="
+        + '"'
+        + this.state.value
+        + '"'
+        + this.getActivePageQuery(true);
   }
 
   getSearchAPIQueries() {
-    let queries = [];
-    for (let endpoint of this.state.endpoints) {
-      let searchPath = this.getSearchAPIQuery(endpoint);
-      queries.push(searchPath);
+    return this.state.endpoints.map(endpoint => this.getSearchAPIQuery(endpoint));
+  }
+
+  appendModelTypeToEntities(entities) {
+    for (let v in entities) {
+      if (entities[v].num_parks) {
+        entities[v].type = "cities";
+      } else if (entities[v].views) {
+        entities[v].type = "snapshots";
+      } else if (entities[v].review_data) {
+        entities[v].type = "parks";
+      }
     }
-    return queries;
   }
 
   search() {
-    let searchQueries = this.getSearchAPIQueries();
     let entities = [];
     let numPages = [];
     const scope = this;
-    axios.all(searchQueries.map(query => axios.get(query))).then(axios.spread(function(... response) {
-      for (let r of response) {
-        entities = entities.concat(r.data.objects);
-        for (let v in entities) {
-          if (entities[v].num_parks) {
-            entities[v].type = "cities";
-          } else if (entities[v].views) {
-            entities[v].type = "snapshots";
-          } else if (entities[v].review_data) {
-            entities[v].type = "parks";
-          }
-        }
-        numPages.push(r.data.total_pages);
+    let searchQueries = this.getSearchAPIQueries();
+    axios.all(searchQueries.map(query => axios.get(query))).then(axios.spread(function(... responses) {
+      for (let response of responses) {
+        entities = entities.concat(response.data.objects);
+        scope.appendModelTypeToEntities(entities);
+        numPages.push(response.data.total_pages);
       }
+
       let maxPages = Math.max(...numPages);
-      console.log(scope.state.page, maxPages, 2)
       let pagination = scope.getPagination(scope.state.page, maxPages, 2);
       scope.setState({
         entities: entities,
         numPages: maxPages,
         pagination: pagination
-      }, function() {
-        console.log(scope.state);
       })
     }))
   }
 
   handleSearchChange(e) {
-    this.setState({ value: e.target.value }, function() {
-      this.search();
+    this.setState({ value: e.target.value }, function() { this.search(); });
+  }
 
-    });
+  getSubstring(input, n, search_val) {
+    let start = input.search(search_val);
+    let end = start + search_val.length;
+
+    if (start - n > 0) {
+      start = start - n;
+    }
+
+    if (end + n < input.length) {
+      end = end + n;
+    }
+
+    return ".... " + input.substring(start, end) +  " .....";
   }
 
   render() {
-    let searchFields = ['description', 'name', 'state', 'tags'];
+    let searchFields = ['name', 'state', 'description', 'tags'];
     let searchCards = [];
     for (let entity of this.state.entities) {
       let fields = [];
@@ -203,17 +181,22 @@ class SearchPage extends React.Component {
         fields.push(<img src={entity['image_uri']} />)
       }
       for (let field of searchFields) {
-        if (entity.hasOwnProperty(field) && entity[field].toLowerCase().includes(this.state.value.toLowerCase())) {
-          fields.push(<p className={"mark"}>{entity[field]}</p>)
-        } else {
-          fields.push(<p>{entity[field]}</p>)
+        if (entity.hasOwnProperty(field)) {
+          if (field === 'description') {
+            fields.push(<Highlight search={this.state.value}>{this.getSubstring(entity[field].toLowerCase(), this.state.value.toLowerCase(), 1)}</Highlight>)
+          } else if (field === 'name') {
+            fields.push(<h3><Highlight search={this.state.value}>{entity[field]}</Highlight></h3>)
+          } else if (field === 'state') {
+            fields.push(<h4><Highlight search={this.state.value}>{entity[field]}</Highlight></h4>)
+          } else {
+            fields.push(<Highlight search={this.state.value}>{entity[field]}</Highlight>)
+          }
         }
       }
       let card = <Panel className={"SearchResult"}><Link to={'/' + entity.type + '/' + entity.id} className={"CardLink"}>{fields}</Link></Panel>
 
       searchCards.push(card);
     }
-    let results = <div className={"SearchResults"}>{searchCards}</div>;
     return (
         <div>
           <Page>
@@ -222,10 +205,11 @@ class SearchPage extends React.Component {
                 <FormControl type={"text"}
                              onChange={this.handleSearchChange.bind(this)}
                              value={this.state.value}
+                             autoFocus={true}
                 />
               </FormGroup>
             </Form>
-            <div>{results}</div>
+            <div className={"SearchResults"}>{searchCards}</div>
             <Pagination classes={"Pagination"}>
               {this.state.pagination}
             </Pagination>
