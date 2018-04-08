@@ -268,9 +268,6 @@ class SeleniumTests(unittest.TestCase):
 
         time.sleep(1)
 
-        #driver.find_element_by_link_text('<').click()
-        #self.assertEqual("http://parksr.us/#/cities/pages/1", driver.current_url)
-
     def test_pagination_snapshots(self):
         driver = self.driver
         driver.get(self.site)
@@ -288,10 +285,7 @@ class SeleniumTests(unittest.TestCase):
 
         time.sleep(1)
 
-        #driver.find_element_by_link_text('<').click()
-        #self.assertEqual("http://parksr.us/#/snapshots/pages/1", driver.current_url)
-
-    def test_filter_parks(self):
+    def test_filter_parks_by_state(self):
         driver = self.driver
         driver.get(self.site)
         driver.find_element_by_link_text('Parks').click()
@@ -398,11 +392,11 @@ class SeleniumTests(unittest.TestCase):
 
         time.sleep(1)
 
-        driver.find_element_by_xpath("//div[@class='Select-placeholder']").click()
+        driver.find_element_by_xpath("(//div[@class='Select-placeholder'])[2]").click()
 
         time.sleep(1)
 
-        sort_element = driver.find_element_by_xpath("//input")
+        sort_element = driver.find_element_by_xpath("(//input)[2]")
         sort_element = sort_element
         sort_element.send_keys('views')
         sort_element.send_keys(Keys.RETURN)

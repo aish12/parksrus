@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+
+import Toggle from 'react-toggle'
 import Select from 'react-select'
 
 import './GridPage.css';
+import 'react-toggle/style.css'
 import 'react-select/dist/react-select.css'
 
 import Page from '../Page/Page'
@@ -22,6 +25,7 @@ class GridPage extends React.Component {
       pagination: [],
       order_by: null,
       direction: 'desc',
+      directionToggleState: 'true',
       filters: Object.keys(this.props.filterables)
     }
   }
@@ -72,7 +76,7 @@ class GridPage extends React.Component {
     let activeSort = this.getActiveSort();
     let complexQuery = activeFilters != null || activeSort != null;
     let activePageQuery = this.getActivePageQuery(complexQuery);
-    return apiPath + "?q=" + JSON.stringify({"filters":activeFilters, "order_by": activeSort}) + activePageQuery;
+    return apiPath + "?q=" + JSON.stringify({"filters": [{"or": activeFilters}], "order_by": activeSort}) + activePageQuery;
   }
 
   getPagination(curPage, numPages, pageRange) {
@@ -191,6 +195,18 @@ class GridPage extends React.Component {
       this.setState({"order_by": null}, function() {this.updateData()})
     }
   }
+
+  handleDirectionChange() {
+    if (this.state.direction === 'desc') {
+      this.setState({ direction: 'asc' }, function() {
+        this.updateData();
+      });
+    } else {
+      this.setState({ direction: 'desc' }, function() {
+        this.updateData();
+      })
+    }
+  }
   
   render() {
     let selections = Object.keys(this.props.filterables).map(selection => this.props.filterables[selection])
@@ -201,7 +217,7 @@ class GridPage extends React.Component {
           onChange={this.handleFilterChange.bind(this, filterable.field)}
           options={filterable.options}
           multi={filterable.multi}
-          placeholder={"Filter by state..."}>
+          placeholder={"Filter by " + filterable.field + "..."}>
       </Select>
     );
     let sortables = this.props.sortables;
@@ -217,11 +233,14 @@ class GridPage extends React.Component {
                    multi={false}
                    placeholder={"Sort"}>
                </Select>;
+    let direction = <Toggle defaultChecked={this.state.directionToggleState}
+                            onChange={this.handleDirectionChange.bind(this)}
+                            className={"Direction"}/>
     return (
         <div>
           <Page>
             <div>{selects}</div>
-            <div>{sort}</div>
+            <div className={"Menu"}>{sort}{direction}</div>
             <CardGrid entities={this.state.entities}
                       endpoint={this.props.endpoint}
                       page={this.state.page}

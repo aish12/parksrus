@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import cities from '../../GridPage/cities.json'
 import states from '../../GridPage/states_list.json'
 import GridPage from '../../GridPage/GridPage'
 
@@ -17,21 +18,31 @@ class ParksPage extends React.Component {
   }
 
   render() {
+    let cityOptions = [];
     let stateOptions = [];
     states.forEach(state => {
       stateOptions.push({"value": state, "label": state})
     });
+    cities.forEach(city => {
+      cityOptions.push({"value": city, "label": city})
+    })
 
-    console.log(stateOptions)
+    console.log(stateOptions);
     let filterables = {
       "state": {
         "multi": true,
         "options": stateOptions,
         "op": "like",
         "field": "state"
+      },
+      "city": {
+        "multi": true,
+        "options": cityOptions,
+        "op": "has",
+        "field": "city"
       }
     };
-    let sortables = ['review_data'];
+    let sortables = ['review_data', 'state', 'name', 'country'];
     return (
         <GridPage endpoint="parks"
                   page={this.state.page}

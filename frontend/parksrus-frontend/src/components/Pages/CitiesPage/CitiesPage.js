@@ -33,7 +33,7 @@ class CitiesPage extends React.Component {
         "field": "state"
       }
     };
-    let sortables=['num_parks']
+    let sortables=['num_parks', 'state', 'name', 'country']
     return (
         <GridPage endpoint="cities"
                   page={this.state.page}

@@ -18,11 +18,23 @@ class SnapshotsPage extends React.Component {
 
   render() {
     let stateOptions = [];
+    let viewBins = [10, 100, 1000, 10000]
+    let viewOptions = [];
     states.forEach(state => {
       stateOptions.push({"value": state, "label": state})
     });
-    let filterables = {};
-    let sortables=['views'];
+    viewBins.forEach(bin => {
+      viewOptions.push({"value": bin, "label": bin})
+    });
+    let filterables = {
+      "views": {
+        "multi": true,
+        "options": viewOptions,
+        "op": "gt",
+        "field": "views"
+      },
+    };
+    let sortables=['views', 'state', 'country'];
     return (
         <GridPage endpoint="snapshots"
                   //imageHeight={"300px"}
