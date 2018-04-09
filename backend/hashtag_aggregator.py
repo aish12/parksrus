@@ -27,7 +27,7 @@ def filter_tags():
 		db.session.merge(snapshot)
         db.session.commit()
 
-def omit():
+def omit(tag):
 	omitted =frozenset("uploaded:by=instagram", "instagram", "foursquare", "square", "flickstagram")
 	for word in omitted:
 		if word in tag:
