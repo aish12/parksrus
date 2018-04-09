@@ -28,7 +28,7 @@ def filter_tags():
         db.session.commit()
 
 def omit(tag):
-	omitted = ["uploaded:by=instagram", "instagram", "foursquare", "square", "flickstagram", "iphone"]
+	omitted = ["uploaded:by=instagram", "flickr", "instagram", "foursquare", "square", "flickstagram", "iphone"]
 	for word in omitted:
 		if word in tag:
 			return True
