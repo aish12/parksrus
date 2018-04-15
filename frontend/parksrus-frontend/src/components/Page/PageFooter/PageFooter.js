@@ -6,7 +6,7 @@ class PageFooter extends Component {
   render() {
     return (
         <div className="PageFooter">
-          @ 2018 <Link to="/about">Winter is Not Coming</Link>
+          © 2018 <Link to="/about">Winter is Not Coming</Link>
         </div>
     );
   }

@@ -172,6 +172,10 @@ class SearchPage extends React.Component {
     return ".... " + input.substring(start, end) +  " .....";
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+  }
+
   render() {
     let searchFields = ['name', 'state', 'description', 'tags'];
     let searchCards = [];
@@ -183,7 +187,7 @@ class SearchPage extends React.Component {
       for (let field of searchFields) {
         if (entity.hasOwnProperty(field)) {
           if (field === 'description') {
-            fields.push(<Highlight search={this.state.value}>{this.getSubstring(entity[field].toLowerCase(), this.state.value.toLowerCase(), 1)}</Highlight>)
+            fields.push(<Highlight search={this.state.value}>{this.getSubstring(entity[field].toLowerCase(), 15, this.state.value.toLowerCase())}</Highlight>)
           } else if (field === 'name') {
             fields.push(<h3><Highlight search={this.state.value}>{entity[field]}</Highlight></h3>)
           } else if (field === 'state') {
@@ -206,6 +210,7 @@ class SearchPage extends React.Component {
                              onChange={this.handleSearchChange.bind(this)}
                              value={this.state.value}
                              autoFocus={true}
+                             onSubmit={this.handleSubmit}
                 />
               </FormGroup>
             </Form>

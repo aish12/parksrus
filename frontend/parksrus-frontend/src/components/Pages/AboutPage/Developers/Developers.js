@@ -57,7 +57,7 @@ const developers = new Map([
 ]);
 
 function getRepositoryCommits() {
-  return axios.get('http://api.github.com/repos/aish12/parksrus/stats/contributors');
+  return axios.get('https://api.github.com/repos/aish12/parksrus/stats/contributors');
 }
 
 function getRepositoryIssues() {
@@ -79,10 +79,12 @@ function addContributions(developers, commits, issues) {
     console.assert(issue.hasOwnProperty('user'));
     console.assert(issue.user.hasOwnProperty('id'));
     const githubID = issue.user.id;
-    if ('issues' in developers.get(githubID)) {
-      developers.get(githubID).issues++;
+    if (developers.has(githubID)) {
+      if ('issues' in developers.get(githubID)) {
+        developers.get(githubID).issues++;
+      }
+      console.assert(developers.get(githubID).issues > 0);
     }
-    console.assert(developers.get(githubID).issues > 0);
   });
   return developers;
 }
