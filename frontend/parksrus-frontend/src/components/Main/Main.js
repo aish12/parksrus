@@ -10,6 +10,7 @@ import CityPage from '../Pages/CityPage/CityPage'
 import SnapshotsPage from '../Pages/SnapshotsPage/SnapshotsPage';
 import SnapshotPage from '../Pages/SnapshotPage/SnapshotPage';
 import SearchPage from '../Pages/SearchPage/SearchPage';
+import VisualizationPage from '../Pages/VisualizationPage/VisualizationPage';
 
 class Main extends Component {
   render() {
@@ -21,6 +22,7 @@ class Main extends Component {
           <Route exact path='/cities' component={CitiesPage} />
           <Route exact path='/snapshots' component={SnapshotsPage} />
           <Route exact path='/search' component={SearchPage} />
+          <Route exact path='/visualization' component={VisualizationPage} />
           <Route path="/parks/pages/:page" component={ParksPage} />
           <Route path="/cities/pages/:page" component={CitiesPage} />
           <Route path="/snapshots/pages/:page" component={SnapshotsPage} />

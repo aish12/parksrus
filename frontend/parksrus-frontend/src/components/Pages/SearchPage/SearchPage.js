@@ -197,9 +197,14 @@ class SearchPage extends React.Component {
           }
         }
       }
-      let card = <Panel className={"SearchResult"}><Link to={'/' + entity.type + '/' + entity.id} className={"CardLink"}>{fields}</Link></Panel>
 
-      searchCards.push(card);
+      let card = <Panel className={"SearchResult"}><Link to={'/' + entity.type + '/' + entity.id} className={"CardLink"}>{fields}</Link></Panel>
+      if (fields.length > 0) {
+        searchCards.push(card);
+      }
+    }
+    if (searchCards.length === 0 && this.state.value.length > 0) {
+      searchCards.push(<Panel><h4>We were unable to find any results matching your query.</h4></Panel>)
     }
     return (
         <div>
