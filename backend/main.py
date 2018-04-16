@@ -59,7 +59,7 @@ def unpaginated_parks():
         parks_dict['longitude'] = float(park.longitude)
         parks_dict['image_uri'] = park.image_uri
         parks_list.append(parks_dict)
-    return json.dumps(parks_list)
+    return json.dumps(parks_list, indent=4, sort_keys=True)
 
 
 @app.route('/api/unpaginated/cities')
@@ -78,7 +78,7 @@ def unpaginated_cities():
         city_dict['country'] = city.country
         city_dict['image_uri'] = city.image_uri
         cities_list.append(city_dict)
-    return json.dumps(cities_list)
+    return json.dumps(cities_list, indent=4, sort_keys=True)
 
 @app.route('/api/unpaginated/snapshots')
 def unpaginated_snapshots():
@@ -96,7 +96,7 @@ def unpaginated_snapshots():
         snapshot_dict['longitude'] = float(snapshot.longitude)
         snapshot_dict['latitude'] = float(snapshot.latitude)
         snapshots_list.append(snapshot_dict)
-    return json.dumps(snapshots_list)
+    return json.dumps(snapshots_list, indent=4, sort_keys=True)
 
 # search method
 def search(model, query_val):
