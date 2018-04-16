@@ -51,6 +51,8 @@ def unpaginated_parks():
         parks_dict['address'] = park.address
         parks_dict['state'] = park.state
         parks_dict['country'] = park.country
+        if len(park.review_data) < 2:
+            park.review_data = "0.0"
         parks_dict['rating'] = float(park.review_data)
         parks_dict['phone_number'] = park.phone_number
         parks_dict['latitude'] = float(park.latitude)
@@ -90,7 +92,7 @@ def unpaginated_snapshots():
         snapshot_dict['park_id'] = snapshot.park_id
         snapshot_dict['city_id'] = snapshot.city_id
         snapshot_dict['tags'] = snapshot.tags
-        snapshot_dict['date'] = snapshot.date
+        snapshot_dict['date'] = snapshot.date.isoformat()
         snapshot_dict['longitude'] = float(snapshot.longitude)
         snapshot_dict['latitude'] = float(snapshot.latitude)
         snapshots_list.append(snapshot_dict)
