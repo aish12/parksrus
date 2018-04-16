@@ -38,7 +38,7 @@ with app.app_context():
 # unpaginated API endpoints
 
 
-@app.route('api/unpaginated/parks')
+@app.route('/api/unpaginated/parks')
 def unpaginated_parks():
     parks_list = []
     parks = db.session.query(Park).all()
@@ -60,7 +60,7 @@ def unpaginated_parks():
     return json.dumps(parks_list)
 
 
-@app.route('api/unpaginated/cities')
+@app.route('/api/unpaginated/cities')
 def unpaginated_cities():
     cities_list = []
     cities = db.session.query(City).all()
@@ -78,7 +78,7 @@ def unpaginated_cities():
         cities_list.append(city_dict)
     return json.dumps(cities_list)
 
-@app.route('api/unpaginated/snapshots')
+@app.route('/api/unpaginated/snapshots')
 def unpaginated_snapshots():
     snapshots_list = []
     snapshots = db.session.query(Snapshot).all()
