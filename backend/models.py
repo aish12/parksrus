@@ -8,7 +8,8 @@ from flask_cors import CORS
 from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
 from flask_restless.views import API, get_relations
 
-app = Flask(__name__, static_folder="../frontend/parksrus-frontend/build/static")
+app = Flask(
+    __name__, static_folder="../frontend/parksrus-frontend/build/static")
 
 CORS(app)
 
@@ -18,7 +19,7 @@ elif os.environ['DB_MODE'] == 'DEVELOPMENT':
     app.config.from_object(DevelopmentConfig)
 else:
     app.config.from_object(ProductionConfig)
-    
+
 
 app.config['WHOOSH_BASE'] = os.path.join(BASE_DIR, 'whoosh_index')
 

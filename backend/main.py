@@ -59,7 +59,7 @@ def unpaginated_parks():
         parks_dict['longitude'] = float(park.longitude)
         parks_dict['image_uri'] = park.image_uri
         parks_list.append(parks_dict)
-    final_dict = {"num_results":len(parks_list), "objects":parks_list}
+    final_dict = {"num_results": len(parks_list), "objects": parks_list}
     return json.dumps(final_dict, indent=4, sort_keys=True)
 
 
@@ -79,8 +79,9 @@ def unpaginated_cities():
         city_dict['country'] = city.country
         city_dict['image_uri'] = city.image_uri
         cities_list.append(city_dict)
-    final_dict = {"num_results":len(cities_list), "objects":cities_list}
+    final_dict = {"num_results": len(cities_list), "objects": cities_list}
     return json.dumps(final_dict, indent=4, sort_keys=True)
+
 
 @app.route('/api/unpaginated/snapshots')
 def unpaginated_snapshots():
@@ -98,10 +99,13 @@ def unpaginated_snapshots():
         snapshot_dict['longitude'] = float(snapshot.longitude)
         snapshot_dict['latitude'] = float(snapshot.latitude)
         snapshots_list.append(snapshot_dict)
-    final_dict = {"num_results":len(snapshots_list), "objects":snapshots_list}
+    final_dict = {
+        "num_results": len(snapshots_list), "objects": snapshots_list}
     return json.dumps(final_dict, indent=4, sort_keys=True)
 
 # search method
+
+
 def search(model, query_val):
     response = model.query.whoosh_search(query_val).all()
     api = API(db.session, model)
@@ -110,15 +114,18 @@ def search(model, query_val):
 
 # search endpoints
 
+
 @app.route('/api/search/parks')
 def search_cities():
     query = request.args.get('query')
     return search(Park, query)
 
+
 @app.route('/api/search/cities')
 def search_parks():
     query = request.args.get('query')
     return search(City, query)
+
 
 @app.route('/api/search/snapshots')
 def search_snapshots():
@@ -126,6 +133,8 @@ def search_snapshots():
     return search(Snapshot, query)
 
 # serve the React app
+
+
 @app.route('/', defaults={'path': ''})
 @app.route("/<string:path>")
 @app.route('/<path:path>')

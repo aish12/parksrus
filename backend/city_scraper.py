@@ -40,6 +40,7 @@ def search_for_city(name):
 
     return (str(place.name), str(longitude), str(latitude), str(photo.url))
 
+
 def get_wikipedia_description(name):
     """
     get description of a city from the Wikipedia api
@@ -49,13 +50,15 @@ def get_wikipedia_description(name):
 
     name = format_name_for_wikipedia(name)
 
-    querystring = {"action":"query","prop":"extracts","exintro":"","explaintext":"","format":"json","redirects":"","titles":name}
+    querystring = {"action": "query", "prop": "extracts", "exintro": "",
+                   "explaintext": "", "format": "json", "redirects": "", "titles": name}
 
     headers = {
         'cache-control': "no-cache",
-        }
+    }
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
+    response = requests.request(
+        "GET", url, headers=headers, params=querystring)
 
     json_data = response.json()
 
@@ -67,14 +70,17 @@ def get_wikipedia_description(name):
     description = description.replace(")", "")
     return description
 
+
 def format_name_for_wikipedia(name):
     name = name.replace(" ", "_")
     name = name.replace("\n", "")
     return name
 
+
 def add_city_to_database(city):
     db.session.merge(city)
     db.session.commit()
+
 
 def cities_scrape():
     """
@@ -100,7 +106,8 @@ def cities_scrape():
         print(state)
         print("\n\n")
 
-        city_model = City(name=name, longitude=longitude, latitude=latitude, image_uri=uri, description=description, state=state, country="United States")
+        city_model = City(name=name, longitude=longitude, latitude=latitude,
+                          image_uri=uri, description=description, state=state, country="United States")
 
         add_city_to_database(city_model)
 

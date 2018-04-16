@@ -7,23 +7,29 @@ from config import BASE_DIR
 
 DATA_DIR = os.path.join(BASE_DIR, "app", "data")
 
+
 def serialize_parks():
-	pass
+    pass
+
 
 def serialize_cities():
-	pass
+    pass
+
 
 def serialize_snapshots():
-	pass
+    pass
+
 
 def save_data():
-	pass
+    pass
+
 
 def load_data():
-	pass
+    pass
+
 
 def main():
-	pass
+    pass
 
 if __name__ == '__main__':
-	main()
+    main()

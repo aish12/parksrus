@@ -14,6 +14,7 @@ GOOGLE_API_KEY = os.environ['GOOGLE_PLACES_KEY']
 
 google_places = GooglePlaces(GOOGLE_API_KEY)
 
+
 def search_parks(location_name):
     park_list = []
 
@@ -39,13 +40,16 @@ def search_parks(location_name):
         park_phone_number = place.international_phone_number.encode("UTF8")
         website = place.website.encode("UTF8")
         address = place.formatted_address.encode("UTF8")
-        
-        park = Park(name=park_name, address=address, longitude=str(lon), latitude=str(lat), phone_number=park_phone_number, review_data=str(place.rating), image_uri = str(photo.url), website = website)
+
+        park = Park(
+            name=park_name, address=address, longitude=str(lon), latitude=str(lat),
+                    phone_number=park_phone_number, review_data=str(place.rating), image_uri=str(photo.url), website=website)
 
         park_list.append(park)
         time.sleep(1)
 
     return park_list
+
 
 def get_parks_for_cities():
     cities = db.session.query(City).all()
@@ -61,6 +65,7 @@ def get_parks_for_cities():
                 db.session.merge(park)
                 db.session.commit()
             time.sleep(1)
+
 
 def main():
     park_list = search_parks("Orlando, Florida")
