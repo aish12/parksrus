@@ -29,3 +29,7 @@ a {
 .Direction {
     margin-left: 1em;
 }
+
+.SortLabel {
+    margin: 10px;
+}

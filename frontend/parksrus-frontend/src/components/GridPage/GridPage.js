@@ -262,7 +262,7 @@ class GridPage extends React.Component {
         <div>
           <Page>
             <div>{selects}</div>
-            <div className={"Menu"}>{sort}{direction}</div>
+            <div className={"Menu"}>{sort}{direction}<p className={"SortLabel"}>asc | desc</p></div>
             <CardGrid entities={this.state.entities}
                       endpoint={this.props.endpoint}
                       page={this.state.page}
