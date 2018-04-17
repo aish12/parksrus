@@ -44,7 +44,7 @@ github:
 	@echo "https://github.com/aish12/parksrus"
 
 stories:
-	@echo ""
+	@echo "https://github.com/aish12/parksrus/labels/story"
 
 postman:
 	- npm install -g newman
