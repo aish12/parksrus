@@ -11,6 +11,8 @@ from models import Snapshot, Park, City, db, app
 
 FLICKR_API_KEY = os.environ['FLICKR_API_KEY']
 
+# constructs a valid Flickr URI given certain parameters
+
 
 def construct_uri(id, farm, server, secret):
     return "http://farm{}.staticflickr.com/{}/{}_{}.jpg".format(farm, server, id, secret)
@@ -30,6 +32,8 @@ def get_photos_geo(lat, lon, max_num=1):
         "GET", url, headers=headers, params=querystring)
 
     xml = xmltodict.parse(response.content)
+
+    # convert xml to json
     json_string = json.dumps(xml)
     json_data = json.loads(json_string)
 
@@ -85,6 +89,8 @@ def get_photo_metadata(id):
 
         response = requests.request(
             "GET", url, headers=headers, params=querystring)
+
+        # convert xml to json
         xml = xmltodict.parse(response.content)
         json_string = json.dumps(xml)
         json_data = json.loads(json_string)

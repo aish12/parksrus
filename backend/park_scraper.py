@@ -27,12 +27,14 @@ def search_parks(location_name):
         lon = place.geo_location['lng']
         lat = place.geo_location['lat']
 
+        # only go further if the place has > 0 images
         if len(place.photos) < 1:
             continue
 
         photo = place.photos[0]
         photo.get(maxheight=500, maxwidth=500)
 
+        # values we do not allow to be N/A
         if place.international_phone_number == None or place.website == None or place.formatted_address == None:
             continue
 
@@ -46,6 +48,8 @@ def search_parks(location_name):
                     phone_number=park_phone_number, review_data=str(place.rating), image_uri=str(photo.url), website=website)
 
         park_list.append(park)
+
+        # thread sleep to avoid rate limits
         time.sleep(1)
 
     return park_list
@@ -64,6 +68,7 @@ def get_parks_for_cities():
                 park.set_country(city.country)
                 db.session.merge(park)
                 db.session.commit()
+            # thread sleep to avoid rate limits
             time.sleep(1)
 
 

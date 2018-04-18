@@ -8,11 +8,14 @@ from flask_cors import CORS
 from config import REACT_FILES, BASE_DIR, ProductionConfig, DevelopmentConfig
 from flask_restless.views import API, get_relations
 
+# create app
 app = Flask(
     __name__, static_folder="../frontend/parksrus-frontend/build/static")
 
+# enable cross origin requests
 CORS(app)
 
+# change DB settings based on environment
 if os.environ['DB_MODE'] == 'TESTING':
     app.config.from_object(TestingConfig)
 elif os.environ['DB_MODE'] == 'DEVELOPMENT':
@@ -20,9 +23,10 @@ elif os.environ['DB_MODE'] == 'DEVELOPMENT':
 else:
     app.config.from_object(ProductionConfig)
 
-
+# configure whoosh base (where index files are kept)
 app.config['WHOOSH_BASE'] = os.path.join(BASE_DIR, 'whoosh_index')
 
+# initialize db
 db = SQLAlchemy(app)
 
 

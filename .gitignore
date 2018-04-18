@@ -9,3 +9,4 @@ collatz-tests
 Icon?
 node_modules
 .idea
+*.log
