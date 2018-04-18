@@ -125,7 +125,6 @@ other:
 	@echo "https://aish12.gitbooks.io/report/content/critiques.html"
 
 travis: backend frontend
-	make setup
 	make clean
 	ls -al
 	make backend
