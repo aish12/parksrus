@@ -15,7 +15,7 @@ import re
 class SeleniumTests(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path=r'chromedriver.exe')
+        self.driver = webdriver.Chrome()
         self.site = "http://parksr.us"
 
     def test_parks_page(self):
