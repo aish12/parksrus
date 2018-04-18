@@ -124,7 +124,7 @@ self:
 other:
 	@echo "https://aish12.gitbooks.io/report/content/critiques.html"
 
-travis: backend frontend
+travis: backend frontend Postman.json
 	make clean
 	ls -al
 	make backend
