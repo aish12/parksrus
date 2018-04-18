@@ -133,4 +133,9 @@ travis: backend frontend
 	ls -al
 	make postman
 	ls -al
+	make report
+	make website
+	make stories
+	make github
+	make issues
 	make -r check
