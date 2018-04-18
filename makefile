@@ -105,8 +105,8 @@ report:
 
 # make mocha - runs mocha tests
 mocha:
-	cd frontend && npm install
-	cd frontend && npm test
+	cd frontend/parksrus-frontend && npm install
+	cd frontend/parksrus-frontend/src && npm test
 
 # make backend  - runs backend tests
 backend: backend/tests.py
