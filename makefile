@@ -15,10 +15,20 @@ FILES1 :=                \
 	backend/tests.py     \
 	frontend/tests.js	 \
 	Postman.json		 \
+	backend				 \
+	frontend			 \
 
 GithubID = aish12
 RepoName = parksrus
-SHA = 1234567890
+SHA = 00000000000000000
+
+all:
+
+clean:
+	rm -f  *.log
+	rm -f  backend/*.pyc
+	rm -f  frontend/*.pyc
+	rm -rf backend/__pycache__
 
 # make sha
 sha:
@@ -58,6 +68,7 @@ setup:
 	
 # make status - prints git status
 status:
+	make clean
 	@echo
 	git branch
 	git remote -v
@@ -112,3 +123,15 @@ self:
 # make other    - prints link to other critique
 other:
 	@echo "https://aish12.gitbooks.io/report/content/critiques.html"
+
+travis: backend frontend
+	make setup
+	make clean
+	ls -al
+	make backend
+	ls -al
+	make mocha
+	ls -al
+	make postman
+	ls -al
+	make -r check
