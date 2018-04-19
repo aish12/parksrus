@@ -18,14 +18,19 @@ class ParksPage extends React.Component {
   }
 
   render() {
+    const reviewBins = [1, 2, 3, 4, 5];
     let cityOptions = [];
     let stateOptions = [];
+    let reviewOptions = [];
     states.forEach(state => {
       stateOptions.push({"value": state, "label": state})
     });
     cities.forEach(city => {
       cityOptions.push({"value": city, "label": city})
-    })
+    });
+    reviewBins.forEach(bin => {
+      reviewOptions.push({"value": bin, "label": bin + "+"})
+    });
 
     console.log(stateOptions);
     let filterables = {
@@ -40,6 +45,12 @@ class ParksPage extends React.Component {
         "options": cityOptions,
         "op": "has",
         "field": "city"
+      },
+      "review_data": {
+        "multi": false,
+        "options": reviewOptions,
+        "op": "gt",
+        "field": "review_data"
       }
     };
     let sortables = ['review_data', 'state', 'name', 'country'];
