@@ -179,7 +179,7 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    let searchFields = ['name', 'park', 'city', 'state', 'description', 'tags'];
+    let searchFields = ['name', 'park', 'city', 'state', 'description', 'tags', 'num_parks', 'review_data', 'views'];
     let searchCards = [];
 
     for (let entity of this.state.entities) {
@@ -200,8 +200,12 @@ class SearchPage extends React.Component {
             fields.push(<h4><Highlight search={this.state.value}>{entity[field]}</Highlight></h4>)
           } else if (field === 'park') {
             fields.push(<h4><Highlight search={this.state.value}>{entity[field].name}</Highlight></h4>)
-          } else {
-            fields.push(<Highlight search={this.state.value}>{entity[field]}</Highlight>)
+          } else if (field === 'num_parks') {
+            fields.push(<div><h3>{entity[field]}</h3><p>Total Parks</p></div>);
+          } else if (field === 'review_data') {
+            fields.push(<div><h3>{entity[field]}</h3><p>Avg. Rating</p></div>);
+          } else if (field === 'views') {
+            fields.push(<div><h3>{entity[field]}</h3><p>Views</p></div>);
           }
         }
       }
