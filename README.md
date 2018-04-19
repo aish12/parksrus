@@ -83,6 +83,7 @@ We want to connect theme park enthusiasts, trendy urbanites, and travel aficiona
       ├── makefile
       └── requirements.txt
       
+
 ## Setup and Running
 make setup    - sets up environment
 
@@ -109,6 +110,26 @@ make selenium - runs selenium tests
 make self     - prints link to self critique
 
 make other    - prints link to other critique
+
+make clean    - cleans up direcory of log and cache files
+
+make sha      - prints the latest SHA
+
+make githubid - prints Github ID of owner of repository
+
+make reponame - prints Github repository name
+
+make uml      - prints link to UML image
+
+make check    - check if all files specified are present
+
+make config   - runs git config -l
+
+make format   - formats all Python code
+
+make travis   - for Travis CI
+
+make run      - runs the react app with npm start (http://localhost:3000)
 
 
 ### Image on Mobile

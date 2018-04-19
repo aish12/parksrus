@@ -16,11 +16,14 @@ app = Flask(
 CORS(app)
 
 # change DB settings based on environment
-if os.environ['DB_MODE'] == 'TESTING':
-    app.config.from_object(TestingConfig)
-elif os.environ['DB_MODE'] == 'DEVELOPMENT':
-    app.config.from_object(DevelopmentConfig)
-else:
+try:
+    if os.environ['DB_MODE'] == 'TESTING':
+        app.config.from_object(TestingConfig)
+    elif os.environ['DB_MODE'] == 'DEVELOPMENT':
+        app.config.from_object(DevelopmentConfig)
+    else:
+        app.config.from_object(ProductionConfig)
+except:
     app.config.from_object(ProductionConfig)
 
 # configure whoosh base (where index files are kept)

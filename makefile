@@ -24,35 +24,36 @@ SHA = 00000000000000000
 
 all:
 
+# make clean - cleans up direcory of log and cache files
 clean:
 	rm -f  *.log
 	rm -f  backend/*.pyc
 	rm -f  frontend/*.pyc
 	rm -rf backend/__pycache__
 
-# make sha
+# make sha - prints the latest SHA
 sha:
 	@echo "${SHA}"
 
-# make githubid
+# make githubid - prints Github ID of owner of repository
 githubid:
 	@echo "${GithubID}"
 
-# make reponame
+# make reponame - prints Github repository name
 reponame:
 	@echo "${RepoName}"
 
-# make uml
+# make uml - prints link to UML image
 uml:
 	@echo "https://imgur.com/pzR2jbG"
 
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-# make check
+# make check - check if all files specified are present
 check: $(FILES)
 	
-# make config
+# make config - runs git config -l
 config:
 	git config -l
 
@@ -65,6 +66,10 @@ format:
 setup:
 	pip install -r requirements.txt
 	npm install -g newman
+
+# runs the react app with npm start (http://localhost:3000)
+run:
+	cd frontend/parksrus-frontend && npm start
 	
 # make status - prints git status
 status:
@@ -124,6 +129,7 @@ self:
 other:
 	@echo "https://aish12.gitbooks.io/report/content/critiques.html"
 
+# make travis	- for Travis CI
 travis: backend frontend Postman.json
 	make clean
 	ls -al

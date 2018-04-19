@@ -12,7 +12,11 @@ REACT_FILES = os.path.join(BASE_DIR, '../frontend/parksrus-frontend/build')
 
 class Config(object):
     # get database url from environmental variable
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    SQLALCHEMY_DATABASE_URI = ""
+    try:
+        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    except:
+        SQLALCHEMY_DATABASE_URI = "postgresql://test:test@localhost:5432/test"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     DEBUG = True
     TESTING = False
