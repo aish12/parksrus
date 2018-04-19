@@ -40,8 +40,12 @@ class GridPage extends React.Component {
     for (let filter of this.state.filters) {
       if (this.state.hasOwnProperty(filter)) {
         let meta = this.props.filterables[filter];
-        for (let selection of this.state[filter]) {
-          query.push({"name": meta.field, "op": meta.op, "val": selection['value']})
+        if (this.state[filter] != null && typeof this.state[filter][Symbol.iterator] === 'function') {
+          for (let selection of this.state[filter]) {
+            query.push({"name": meta.field, "op": meta.op, "val": selection['value']})
+          }
+        } else if (this.state[filter]){
+          query.push({"name": meta.field, "op": meta.op, "val": this.state[filter].value})
         }
       }
     }
