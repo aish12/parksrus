@@ -9,7 +9,7 @@ const developers = new Map([
         "name": "Aishwarya Shashidhar",
         "githubUsername": "aish12",
         "avatarUrl": "./images/avatars/aish.jpg",
-        "biography": "Aish Shashidhar is a Junior majoring in Computer Science at The University of Texas at Austin. She loves hiking andteaching, and is also a henna artist.",
+        "biography": "Aish Shashidhar is a Junior majoring in Computer Science at The University of Texas at Austin. She loves hiking and teaching, and is also a henna artist.",
         "responsibilities": "Back-End Developer",
         "unittests": 1
       }
