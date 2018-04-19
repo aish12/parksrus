@@ -4,3 +4,15 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.BlueBadge {
+    background-color: #2ec4b6;
+}
+
+.OrangeBadge {
+    background-color: #ff9f1c;
+}
+
+.RedBadge {
+    background-color: #e71d36;
+}
