@@ -391,11 +391,11 @@ class SeleniumTests(unittest.TestCase):
         time.sleep(1)
 
         driver.find_element_by_xpath(
-            "(//div[@class='Select-placeholder'])[2]").click()
+            "(//div[@class='Select-placeholder'])[4]").click()
 
         time.sleep(1)
 
-        sort_element = driver.find_element_by_xpath("(//input)[2]")
+        sort_element = driver.find_element_by_xpath("(//input)[4]")
         sort_element = sort_element
         sort_element.send_keys('review_data')
         sort_element.send_keys(Keys.RETURN)
@@ -419,11 +419,11 @@ class SeleniumTests(unittest.TestCase):
         time.sleep(1)
 
         driver.find_element_by_xpath(
-            "(//div[@class='Select-placeholder'])[2]").click()
+            "(//div[@class='Select-placeholder'])[3]").click()
 
         time.sleep(1)
 
-        sort_element = driver.find_element_by_xpath("(//input)[2]")
+        sort_element = driver.find_element_by_xpath("(//input)[3]")
         sort_element = sort_element
         sort_element.send_keys('num_parks')
         sort_element.send_keys(Keys.RETURN)

@@ -92,7 +92,7 @@ class GridPage extends React.Component {
   }
 
   getLeftEllipsisPagination(curPage) {
-    return (curPage >= 5) ? [<Pagination.Ellipsis />] : [];
+    return (curPage >= 4) ? [<Pagination.Ellipsis />] : [];
   }
 
   getLeftPagination(curPage, pageRange) {
@@ -120,7 +120,7 @@ class GridPage extends React.Component {
     if (curPage < numPages) {
       let nextPage = curPage + 1;
       let pRange = 0;
-      while (nextPage !== numPages && pRange < pageRange) {
+      while (nextPage <= numPages && pRange < pageRange) {
         rightPagination.push(<Pagination.Item><Link to={'/' + this.props.endpoint + '/pages/' + nextPage}>{nextPage}</Link></Pagination.Item>);
         nextPage += 1;
         pRange += 1;
@@ -130,7 +130,7 @@ class GridPage extends React.Component {
   }
 
   getRightEllipsisPagination(curPage, numPages) {
-    return (numPages - curPage >= 5) ? [<Pagination.Ellipsis />] : []
+    return (numPages - curPage >= 3) ? [<Pagination.Ellipsis />] : []
   }
 
   getNextPagination(curPage, numPages) {
