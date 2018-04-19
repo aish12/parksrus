@@ -160,11 +160,11 @@ describe('Snapshots GridPage Component', () => {
 describe('SearchPage Component', () => {
     const wrapper = shallow(<SearchPage />);
 
-    it('Renders Snapshots CardGrid', () => {
+    it('Renders Searchbar', () => {
         expect(wrapper.find('Form').exists()).to.eql(true);
     });
 
-    it('Renders Snapshots Pagination', () => {
+    it('Renders Pagination', () => {
         expect(wrapper.find('Pagination').exists()).to.eql(true);
     });
 });
