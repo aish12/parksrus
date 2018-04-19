@@ -17,22 +17,23 @@ class SnapshotsPage extends React.Component {
   }
 
   render() {
-    let stateOptions = [];
-    let viewBins = [10, 100, 1000, 10000]
+    const viewBins = [10, 100, 1000, 10000];
+    const numTagBins = [1, 2, 4, 6, 8, 10];
     let viewOptions = [];
+    let stateOptions = [];
     states.forEach(state => {
       stateOptions.push({"value": state, "label": state})
     });
     viewBins.forEach(bin => {
-      viewOptions.push({"value": bin, "label": bin})
+      viewOptions.push({"value": bin, "label": bin + "+"})
     });
     let filterables = {
       "views": {
-        "multi": true,
+        "multi": false,
         "options": viewOptions,
         "op": "gt",
         "field": "views"
-      },
+      }
     };
     let sortables=['views', 'state', 'country'];
     return (

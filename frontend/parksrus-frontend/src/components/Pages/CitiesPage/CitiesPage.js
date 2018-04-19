@@ -21,9 +21,14 @@ class CitiesPage extends React.Component {
   }
 
   render() {
+    const numParksBins = [1, 5, 10, 15, 20];
     let stateOptions = [];
+    let numParksOptions = [];
     states.forEach(state => {
       stateOptions.push({"value": state, "label": state})
+    });
+    numParksBins.forEach(bin => {
+      numParksOptions.push({"value": bin, "label": bin + "+"})
     });
     let filterables = {
       "state": {
@@ -31,6 +36,12 @@ class CitiesPage extends React.Component {
         "options": stateOptions,
         "op": "like",
         "field": "state"
+      },
+      "num_parks": {
+        "multi": false,
+        "options": numParksOptions,
+        "op": "gt",
+        "field": "num_parks"
       }
     };
     let sortables=['num_parks', 'state', 'name', 'country']

@@ -1,1 +1,4 @@
-{ "presets": ["react", "env", "airbnb"] }
+{
+  "presets": ["react", "env", "airbnb"],
+  "plugins": ["emotion"]
+}
