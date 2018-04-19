@@ -13,18 +13,29 @@ We want to connect theme park enthusiasts, trendy urbanites, and travel aficiona
 [Flickr](https://www.flickr.com/services/api/)
 
 ### Tools
+
 [Flask](http://flask.pocoo.org/)
+
 [React-Bootstrap](https://react-bootstrap.github.io/)
+
 [React](https://reactjs.org/)
+
 [AWS EC2](https://aws.amazon.com/ec2/)
+
 [Nginx](https://www.nginx.com/welcome-to-nginx/)
+
 [TravisCI](https://travis-ci.org/)
+
 [Gunicorn](http://gunicorn.org/)
+
 [Create-React-App](https://github.com/facebook/create-react-app)
+
 [Postman](https://www.getpostman.com/)
 
 ### Testing
+
 [Mocha](https://mochajs.org/)
+
 [Selenium](https://www.seleniumhq.org/)
 
 
@@ -32,4 +43,4 @@ We want to connect theme park enthusiasts, trendy urbanites, and travel aficiona
 - 
 
 ### Image on Mobile
-![ ](https://github.com/aish12/parksrus/images/mobile-hero.png)
+![ ](https://github.com/aish12/parksrus/blob/master/images/mobile-hero.jpg)
