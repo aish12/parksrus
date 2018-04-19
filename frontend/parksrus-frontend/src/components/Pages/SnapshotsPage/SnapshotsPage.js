@@ -21,15 +21,11 @@ class SnapshotsPage extends React.Component {
     const numTagBins = [1, 2, 4, 6, 8, 10];
     let viewOptions = [];
     let stateOptions = [];
-    let numTagOptions = [];
     states.forEach(state => {
       stateOptions.push({"value": state, "label": state})
     });
     viewBins.forEach(bin => {
       viewOptions.push({"value": bin, "label": bin + "+"})
-    });
-    numTagBins.forEach(bin => {
-      numTagOptions.push({"value": bin, "label": bin + "+"})
     });
     let filterables = {
       "views": {
@@ -37,13 +33,7 @@ class SnapshotsPage extends React.Component {
         "options": viewOptions,
         "op": "gt",
         "field": "views"
-      },
-      "num_tags": {
-        "multi": false,
-        "options": numTagOptions,
-        "op": "gt",
-        "field": "num_tags"
-      },
+      }
     };
     let sortables=['views', 'state', 'country'];
     return (

@@ -179,29 +179,34 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    let searchFields = ['name', 'state', 'description', 'tags'];
+    let searchFields = ['name', 'park', 'city', 'state', 'description', 'tags'];
     let searchCards = [];
 
     for (let entity of this.state.entities) {
-      let fields = [];
+      let attributes = [];
       if (entity.hasOwnProperty('image_uri')) {
-        fields.push(<img src={entity['image_uri']} />)
+        attributes.push(<img src={entity['image_uri']} />)
       }
+      let fields = [];
       for (let field of searchFields) {
         if (entity.hasOwnProperty(field)) {
           if (field === 'description') {
-            fields.push(<Highlight search={this.state.value}>{this.getSubstring(entity[field].toLowerCase(), 15, this.state.value.toLowerCase())}</Highlight>)
+            fields.push(<Highlight search={this.state.value}>{this.getSubstring(entity[field].toLowerCase(), 50, this.state.value.toLowerCase())}</Highlight>)
           } else if (field === 'name') {
             fields.push(<h3><Highlight search={this.state.value}>{entity[field]}</Highlight></h3>)
+          } else if (field === 'city') {
+            fields.push(<h3><Highlight search={this.state.value}>{entity[field].name}</Highlight></h3>)
           } else if (field === 'state') {
             fields.push(<h4><Highlight search={this.state.value}>{entity[field]}</Highlight></h4>)
+          } else if (field === 'park') {
+            fields.push(<h4><Highlight search={this.state.value}>{entity[field].name}</Highlight></h4>)
           } else {
             fields.push(<Highlight search={this.state.value}>{entity[field]}</Highlight>)
           }
         }
       }
-
-      let card = <Panel className={"SearchResult"}><Link to={'/' + entity.type + '/' + entity.id} className={"CardLink"}>{fields}</Link></Panel>
+      attributes.push(<div className={"SearchFields"}>{fields}</div>);
+      let card = <Panel className={"SearchResult"}><Link to={'/' + entity.type + '/' + entity.id} className={"CardLink"}>{attributes}</Link></Panel>
       if (fields.length > 0) {
         searchCards.push(card);
       }
