@@ -82,6 +82,34 @@ We want to connect theme park enthusiasts, trendy urbanites, and travel aficiona
       ├── UML.png
       ├── makefile
       └── requirements.txt
+      
+## Setup and Running
+make setup    - sets up environment
+
+make issues   - prints link to current phase's issues
+
+make github   - prints link to github repo
+
+make stories  - prints link to current phase's stories
+
+make postman  - makes postman tests
+
+make website  - prints link to a website
+
+make apidoc   - prints link to api documentation
+
+make report   - prints link to technical report
+
+make mocha    - runs mocha tests
+
+make backend  - runs backend tests
+
+make selenium - runs selenium tests
+
+make self     - prints link to self critique
+
+make other    - prints link to other critique
+
 
 ### Image on Mobile
 ![ ](https://github.com/aish12/parksrus/blob/master/images/mobile-hero.jpg)
