@@ -38,9 +38,61 @@ We want to connect theme park enthusiasts, trendy urbanites, and travel aficiona
 
 [Selenium](https://www.seleniumhq.org/)
 
-
-### Features
-- 
+## Core Structure 
+    code
+      ├── backend
+      │   ├── cities.txt
+      │   ├── city_scraper.py
+      │   ├── config.py
+      │   ├── flickr_scraper.py
+      │   ├── hashtag_aggregator.py
+      │   ├── main.py
+      │   ├── models.py
+      │   ├── park_scraper.py
+      |   ├── scrape_tools.py
+      │   └── tests.py
+      │
+      ├── frontend
+      │   ├── parksrus-frontend
+      │   │   ├── build
+      │   │   ├── config
+      │   │   ├── public
+      │   │   ├── scripts
+      │   │   └── src
+      │   │   |
+      │   │   ├── .babelrc
+      │   │   ├── README.md
+      │   │   ├── package-lock.json
+      │   │   ├── package.json
+      │   │   └── testSetup.js
+      │   │
+      |   ├── guitests.py
+      |   ├── index.js
+      │   └── tests.js
+      │
+      ├── images
+      │   └── mobile-hero.jpg
+      │
+      ├── .coverage
+      ├── .gitignore
+      ├── .pylintrc
+      ├── .travis.yml
+      ├── Postman.json
+      ├── README.md
+      ├── UML.png
+      ├── makefile
+      └── requirements.txt
 
 ### Image on Mobile
 ![ ](https://github.com/aish12/parksrus/blob/master/images/mobile-hero.jpg)
+
+### Authors
+Aishwarya Shashidhar - [GitHub](https://github.com/aish12)
+Benjamin Chen - [GitHub](https://github.com/b-chen)
+Daniel Zheng - [GitHub](https://github.com/danielczheng)
+Denalex Orakwue - [GitHub](https://github.com/ChimdinduDenalexOrakwue)
+Trenton Beckendorff - [GitHub](https://github.com/trentonbeckendorff)
+
+## License
+Copyright (c) 2018 Winter is Not Coming
+
