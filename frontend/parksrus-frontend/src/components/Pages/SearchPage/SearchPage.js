@@ -6,6 +6,7 @@ import { Pagination, Form, FormGroup, FormControl, Panel } from 'react-bootstrap
 import { Link } from 'react-router-dom';
 import Page from '../../Page/Page'
 import axios from 'axios'
+import { RingLoader } from 'react-spinners';
 
 const Highlight = require('react-highlighter');
 
@@ -17,7 +18,8 @@ class SearchPage extends React.Component {
       page: 1,
       pagination: [],
       value: "",
-      endpoints: ['cities', 'parks', 'snapshots']
+      endpoints: ['cities', 'parks', 'snapshots'],
+      loading: false
     }
   }
 
@@ -109,9 +111,7 @@ class SearchPage extends React.Component {
     return this.getBasicAPIPath() + "/"
         + endpoint
         + "?query="
-        + '"'
         + this.state.value
-        + '"'
         + this.getActivePageQuery(true);
   }
 
@@ -132,6 +132,7 @@ class SearchPage extends React.Component {
   }
 
   search() {
+    this.setState({ loading: true});
     let entities = [];
     let numPages = [];
     const scope = this;
@@ -148,9 +149,10 @@ class SearchPage extends React.Component {
       scope.setState({
         entities: entities,
         numPages: maxPages,
-        pagination: pagination
+        pagination: pagination,
+        loading: false
       })
-    }))
+    }));
   }
 
   handleSearchChange(e) {
@@ -179,6 +181,7 @@ class SearchPage extends React.Component {
   render() {
     let searchFields = ['name', 'state', 'description', 'tags'];
     let searchCards = [];
+
     for (let entity of this.state.entities) {
       let fields = [];
       if (entity.hasOwnProperty('image_uri')) {
@@ -203,8 +206,8 @@ class SearchPage extends React.Component {
         searchCards.push(card);
       }
     }
-    if (searchCards.length === 0 && this.state.value.length > 0) {
-      searchCards.push(<Panel><h4>We were unable to find any results matching your query.</h4></Panel>)
+    if (!this.state.loading && searchCards.length === 0 && this.state.value.length > 0) {
+      searchCards.push(<Panel className={"NoResults"}><i className={"material-icons"}>error</i><h4>Oops! Looks like our database ran off the rails...we couldn't find any results for the provided query.</h4></Panel>)
     }
     return (
         <div>
@@ -219,7 +222,13 @@ class SearchPage extends React.Component {
                 />
               </FormGroup>
             </Form>
-            <div className={"SearchResults"}>{searchCards}</div>
+            <div className={"SearchResults"}>
+              {searchCards}
+              <RingLoader color={"red"}
+                          loading={this.state.loading}
+                          className={"LoadingAnimation"}
+              />
+            </div>
             <Pagination classes={"Pagination"}>
               {this.state.pagination}
             </Pagination>

@@ -28,3 +28,15 @@
 .highlight {
     background-color: yellow;
 }
+
+.SearchAnimation {
+
+}
+
+.NoResults {
+    padding: 5em;
+    background-color: orange;
+    color: white;
+    margin: 1em;
+    width: 500px;
+}
