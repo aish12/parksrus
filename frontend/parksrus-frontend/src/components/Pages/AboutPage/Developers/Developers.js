@@ -29,9 +29,9 @@ const developers = new Map([
         "name": "Daniel Zheng",
         "githubUsername": "danielczheng",
         "avatarUrl": "./images/avatars/daniel.png",
-        "biography": "Daniel Zheng is a Junior studying Computer Science at the University of Texas Austin. Aside from academia, he enjoys spending his time playing videogames, and watching the occasional show or movie. He also has a newfound passion for playing squash (the sport, not the vegetable).",
+        "biography": "Daniel Zheng is a Junior studying Computer Science at the University of Texas Austin. Aside from academia, he enjoys spending his time playing video-games, and watching the occasional show or movie.",
         "responsibilities": "Front-End Developer",
-        "unittests": 18
+        "unittests": 20
       }
     ],
     [12850078,

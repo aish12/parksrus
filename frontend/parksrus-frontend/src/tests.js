@@ -17,8 +17,9 @@ import NavBar from './components/NavigationBar/NavigationBar'
 import AboutPage from './components/Pages/AboutPage/AboutPage';
 import states from './components/GridPage/states_list';
 import GridPage from './components/GridPage/GridPage';
+import SearchPage from "./components/Pages/SearchPage/SearchPage";
 
-
+// Tests the components for the Splash/Main Page
 describe('SplashPage Component', () => {
     const wrapper = shallow(<SplashPage />);
     it('Renders HeroCarousel', () => {
@@ -30,6 +31,7 @@ describe('SplashPage Component', () => {
     });
 });
 
+// Tests the components on the Navigation Bar
 describe('NavigationBar Component', () => {
     const wrapper = shallow(<NavBar />);
     it('Renders Navigation Bar', () => {
@@ -41,6 +43,7 @@ describe('NavigationBar Component', () => {
     });
 });
 
+// Tests the components on the About Page
 describe('AboutPage Component', () => {
     const wrapper = shallow(<AboutPage />);
     it('Renders Developers', () => {
@@ -68,6 +71,7 @@ describe('AboutPage Component', () => {
     });
 });
 
+// Tests the Cities GridPage components
 describe('Cities GridPage Component', () => {
     let stateOptions = [];
     states.forEach(state => {
@@ -97,6 +101,7 @@ describe('Cities GridPage Component', () => {
     });
 });
 
+// Tests the Parks GridPage components
 describe('Parks GridPage Component', () => {
     let stateOptions = [];
     states.forEach(state => {
@@ -127,6 +132,7 @@ describe('Parks GridPage Component', () => {
     });
 });
 
+// Tests the Snapshots GridPage components
 describe('Snapshots GridPage Component', () => {
     let stateOptions = [];
     states.forEach(state => {
@@ -147,5 +153,18 @@ describe('Snapshots GridPage Component', () => {
 
     it('Renders Snapshots Select', () => {
         expect(wrapperS.find('Select').exists()).to.eql(true);
+    });
+});
+
+// Tests the Search Page components
+describe('SearchPage Component', () => {
+    const wrapper = shallow(<SearchPage />);
+
+    it('Renders Snapshots CardGrid', () => {
+        expect(wrapper.find('Form').exists()).to.eql(true);
+    });
+
+    it('Renders Snapshots Pagination', () => {
+        expect(wrapper.find('Pagination').exists()).to.eql(true);
     });
 });
