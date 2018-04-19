@@ -1,13 +1,6 @@
 .DEFAULT_GOAL := all
 .PHONY: backend
 
-PYLINT_VERSION = $(shell pylint --version | grep Python)
-ifneq (, $(findstring Python 2, $(PYLINT_VERSION)))
-	PYLINT = pylint3
-else
-	PYLINT = pylint
-endif
-
 FILES1 :=                \
 	backend/main.py      \
 	backend/config.py    \
@@ -46,9 +39,6 @@ reponame:
 # make uml - prints link to UML image
 uml:
 	@echo "https://imgur.com/pzR2jbG"
-
-.pylintrc:
-	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
 # make check - check if all files specified are present
 check: $(FILES)
