@@ -84,11 +84,11 @@ class GridPage extends React.Component {
   }
 
   getFirstPagination() {
-    return [<Pagination.First><Link to={'/' + this.props.endpoint + '/pages/' + 1}/>{"<<"}</Pagination.First>];
+    return [<Pagination.First><Link to={'/' + this.props.endpoint + '/pages/' + 1}>&lt;&lt;</Link></Pagination.First>];
   }
 
   getPrevPagination(curPage) {
-    return (curPage - 1 > 0) ? [<Pagination.Prev><Link to={'/' + this.props.endpoint + '/pages/' + (curPage - 1)}/>{"<"}</Pagination.Prev>] : []
+    return (curPage - 1 > 0) ? [<Pagination.Prev><Link to={'/' + this.props.endpoint + '/pages/' + (curPage - 1)}>&lt;</Link></Pagination.Prev>] : []
   }
 
   getLeftEllipsisPagination(curPage) {
@@ -112,7 +112,7 @@ class GridPage extends React.Component {
   }
 
   getActivePagination(curPage) {
-    return (curPage > 1) ? [<Pagination.Item className={"active"}><Link to={'/' + this.props.endpoint + '/pages/' + curPage}>{curPage}</Link></Pagination.Item>] : []
+    return (curPage >= 1) ? [<Pagination.Item className={"active"}><Link to={'/' + this.props.endpoint + '/pages/' + curPage}>{curPage}</Link></Pagination.Item>] : []
   }
 
   getRightPagination(curPage, numPages, pageRange) {
