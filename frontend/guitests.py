@@ -18,6 +18,7 @@ class SeleniumTests(unittest.TestCase):
         self.driver = webdriver.Chrome()
         self.site = "http://parksr.us"
 
+    # test park link from home page
     def test_parks_page(self):
         driver = self.driver
         driver.get(self.site)
@@ -26,6 +27,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(
             "http://parksr.us/#/parks/pages/1", driver.current_url)
 
+    # test one instance of parks model
     def test_parks_instance(self):
         driver = self.driver
         driver.get(self.site)
@@ -53,6 +55,7 @@ class SeleniumTests(unittest.TestCase):
         driver.forward()
         self.assertEqual("http://parksr.us/#/parks/1", driver.current_url)
 
+    # test city link from home page
     def test_cities_page(self):
         driver = self.driver
         driver.get(self.site)
@@ -61,6 +64,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(
             "http://parksr.us/#/cities/pages/1", driver.current_url)
 
+    # test one instance of cities model
     def test_cities_instance(self):
         driver = self.driver
         driver.get(self.site)
@@ -88,6 +92,7 @@ class SeleniumTests(unittest.TestCase):
         driver.forward()
         self.assertEqual("http://parksr.us/#/cities/1", driver.current_url)
 
+    # test snapshot link from home page
     def test_snapshots_page(self):
         driver = self.driver
         driver.get(self.site)
@@ -96,6 +101,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(
             "http://parksr.us/#/snapshots/pages/1", driver.current_url)
 
+    # test one instance of snapshots model
     def test_snapshots_instance(self):
         driver = self.driver
         driver.get(self.site)
@@ -123,6 +129,7 @@ class SeleniumTests(unittest.TestCase):
         driver.forward()
         self.assertEqual("http://parksr.us/#/snapshots/1", driver.current_url)
 
+    # test about page link from home page
     def test_about_page(self):
         driver = self.driver
         driver.get(self.site)
@@ -130,6 +137,7 @@ class SeleniumTests(unittest.TestCase):
         driver.find_element_by_link_text('About').click()
         self.assertEqual("http://parksr.us/#/about", driver.current_url)
 
+    # test navigation bar links
     def test_navigation_bar(self):
         driver = self.driver
         driver.get(self.site)
@@ -157,6 +165,7 @@ class SeleniumTests(unittest.TestCase):
         driver.find_element_by_link_text('About').click()
         self.assertEqual("http://parksr.us/#/about", driver.current_url)
 
+    # test general navigation from parks page
     def test_back_and_forward_parks(self):
         driver = self.driver
         driver.get(self.site)
@@ -182,6 +191,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(
             "http://parksr.us/#/parks/pages/1", driver.current_url)
 
+    # test general navigation from cities page
     def test_back_and_forward_cities(self):
         driver = self.driver
         driver.get(self.site)
@@ -207,6 +217,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(
             "http://parksr.us/#/cities/pages/1", driver.current_url)
 
+    # test general navigation from snapshots page
     def test_back_and_forward_snapshots(self):
         driver = self.driver
         driver.get(self.site)
@@ -232,6 +243,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(
             "http://parksr.us/#/snapshots/pages/1", driver.current_url)
 
+    # test general navigation from about page
     def test_back_and_forward_about(self):
         driver = self.driver
         driver.get(self.site)
@@ -254,6 +266,7 @@ class SeleniumTests(unittest.TestCase):
         driver.refresh()
         self.assertEqual("http://parksr.us/#/about", driver.current_url)
 
+    # test pagination using next/prev/first/last for parks
     def test_pagination_parks(self):
         driver = self.driver
         driver.get(self.site)
@@ -273,10 +286,7 @@ class SeleniumTests(unittest.TestCase):
 
         time.sleep(1)
 
-        # driver.find_element_by_link_text('<').click()
-        # self.assertEqual("http://parksr.us/#/parks/pages/1",
-        # driver.current_url)
-
+    # test pagination for cities
     def test_pagination_cities(self):
         driver = self.driver
         driver.get(self.site)
@@ -296,6 +306,7 @@ class SeleniumTests(unittest.TestCase):
 
         time.sleep(1)
 
+    # test pagination for snapshots
     def test_pagination_snapshots(self):
         driver = self.driver
         driver.get(self.site)
@@ -315,6 +326,7 @@ class SeleniumTests(unittest.TestCase):
 
         time.sleep(1)
 
+    # test filtering parks by state using Arizona
     def test_filter_parks_by_state(self):
         driver = self.driver
         driver.get(self.site)
@@ -341,6 +353,7 @@ class SeleniumTests(unittest.TestCase):
 
         self.assertEqual("http://parksr.us/#/parks/58", driver.current_url)
 
+    # test filtering cities by state using Arizona
     def test_filter_cities(self):
         driver = self.driver
         driver.get(self.site)
@@ -369,6 +382,7 @@ class SeleniumTests(unittest.TestCase):
 
         self.assertEqual("http://parksr.us/#/cities/4", driver.current_url)
 
+    # test sorting parks by reviews
     def test_sort_parks(self):
         driver = self.driver
         driver.get(self.site)
@@ -396,6 +410,7 @@ class SeleniumTests(unittest.TestCase):
 
         self.assertEqual("http://parksr.us/#/parks/197", driver.current_url)
 
+    # test sorting cities by number of parks
     def test_sort_cities(self):
         driver = self.driver
         driver.get(self.site)
@@ -423,6 +438,7 @@ class SeleniumTests(unittest.TestCase):
 
         self.assertEqual("http://parksr.us/#/cities/18", driver.current_url)
 
+    # test sorting snapshots by number of views
     def test_sort_snapshots(self):
         driver = self.driver
         driver.get(self.site)
