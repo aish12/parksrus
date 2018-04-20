@@ -40,6 +40,11 @@ class SnapshotPage extends React.Component {
     })
   }
 
+  getBadgeColorClassName() {
+    const badgeClasses = ['OrangeBadge', 'RedBadge', 'BlueBadge'];
+    return badgeClasses[Math.floor(Math.random() * badgeClasses.length)];
+  }
+
   render() {
     if (this.state.isLoaded) {
       let FLICKR_BASE = "https://www.flickr.com/search/?text=";
@@ -49,7 +54,7 @@ class SnapshotPage extends React.Component {
       console.log(location)
       //image scaling
       snapshot.image_uri = snapshot.image_uri.split('=')[0] + "=w2000-h500";
-      let hashtags = snapshot.tags.split(',').map(hashtag => <a href={FLICKR_BASE + hashtag}><Badge>{"#" + hashtag}</Badge></a>);
+      let hashtags = snapshot.tags.split(',').map(hashtag => <a href={FLICKR_BASE + hashtag}><Badge className={this.getBadgeColorClassName()}>{"#" + hashtag}</Badge></a>);
       return (
           <div>
             <Page>
