@@ -155,9 +155,13 @@ class SearchPage extends React.Component {
     }));
   }
 
-  getBadgeColorClassName() {
+  getBadgeColorClassName(tag) {
     const badgeClasses = ['OrangeBadge', 'RedBadge', 'BlueBadge'];
-    return badgeClasses[Math.floor(Math.random() * badgeClasses.length)];
+    if (this.state.value === tag) {
+      return "YellowBadge"
+    } else {
+      return badgeClasses[Math.floor(Math.random() * badgeClasses.length)];
+    }
   }
 
   handleSearchChange(e) {
@@ -212,7 +216,7 @@ class SearchPage extends React.Component {
           } else if (field === 'views') {
             fields.push(<div><h3>{entity[field]}</h3><p>Views</p></div>);
           } else if (field === 'tags') {
-            fields.push(<p>{entity[field].split(',').map(tag => <Badge className={this.getBadgeColorClassName()}>{"#" + tag}</Badge>)}</p>);
+            fields.push(<p>{entity[field].split(',').map(tag => <Badge className={this.getBadgeColorClassName(tag)}>{"#" + tag}</Badge>)}</p>);
           }
         }
       }
