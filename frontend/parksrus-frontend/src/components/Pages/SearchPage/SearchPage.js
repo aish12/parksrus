@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 import './SearchPage.css'
-import { Pagination, Form, FormGroup, FormControl, Panel } from 'react-bootstrap';
+import { Pagination, Form, FormGroup, FormControl, Panel, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Page from '../../Page/Page'
 import axios from 'axios'
@@ -155,6 +155,11 @@ class SearchPage extends React.Component {
     }));
   }
 
+  getBadgeColorClassName() {
+    const badgeClasses = ['OrangeBadge', 'RedBadge', 'BlueBadge'];
+    return badgeClasses[Math.floor(Math.random() * badgeClasses.length)];
+  }
+
   handleSearchChange(e) {
     this.setState({ value: e.target.value }, function() { this.search(); });
   }
@@ -206,6 +211,8 @@ class SearchPage extends React.Component {
             fields.push(<div><h3>{entity[field]}</h3><p>Avg. Rating</p></div>);
           } else if (field === 'views') {
             fields.push(<div><h3>{entity[field]}</h3><p>Views</p></div>);
+          } else if (field === 'tags') {
+            fields.push(<p>{entity[field].split(',').map(tag => <Badge className={this.getBadgeColorClassName()}>{"#" + tag}</Badge>)}</p>);
           }
         }
       }
