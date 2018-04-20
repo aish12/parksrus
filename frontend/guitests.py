@@ -353,6 +353,34 @@ class SeleniumTests(unittest.TestCase):
 
         self.assertEqual("http://parksr.us/#/parks/58", driver.current_url)
 
+    # test filter parks by city using Los Angeles
+    def test_filter_parks_by_city(self):
+        driver = self.driver
+        driver.get(self.site)
+        driver.find_element_by_link_text('Parks').click()
+
+        time.sleep(1)
+
+        driver.find_element_by_xpath(
+            "(//div[@class='Select-placeholder'])[2]").click()
+
+        time.sleep(1)
+
+        sort_element = driver.find_element_by_xpath("(//input)[2]")
+        sort_element = sort_element
+        sort_element.send_keys('Los Angeles')
+        sort_element.send_keys(Keys.RETURN)
+
+        time.sleep(1)
+
+        park_instance = driver.find_element_by_xpath(
+            "//*[@id='root']/div/div/div/div[1]/div/div[1]/a")
+        park_instance.click()
+
+        time.sleep(1)
+
+        self.assertEqual("http://parksr.us/#/parks/1", driver.current_url)
+
     # test filtering cities by state using Arizona
     def test_filter_cities(self):
         driver = self.driver
@@ -391,11 +419,11 @@ class SeleniumTests(unittest.TestCase):
         time.sleep(1)
 
         driver.find_element_by_xpath(
-            "(//div[@class='Select-placeholder'])[2]").click()
+            "(//div[@class='Select-placeholder'])[4]").click()
 
         time.sleep(1)
 
-        sort_element = driver.find_element_by_xpath("(//input)[2]")
+        sort_element = driver.find_element_by_xpath("(//input)[4]")
         sort_element = sort_element
         sort_element.send_keys('review_data')
         sort_element.send_keys(Keys.RETURN)
@@ -419,11 +447,11 @@ class SeleniumTests(unittest.TestCase):
         time.sleep(1)
 
         driver.find_element_by_xpath(
-            "(//div[@class='Select-placeholder'])[2]").click()
+            "(//div[@class='Select-placeholder'])[3]").click()
 
         time.sleep(1)
 
-        sort_element = driver.find_element_by_xpath("(//input)[2]")
+        sort_element = driver.find_element_by_xpath("(//input)[3]")
         sort_element = sort_element
         sort_element.send_keys('num_parks')
         sort_element.send_keys(Keys.RETURN)
@@ -466,6 +494,29 @@ class SeleniumTests(unittest.TestCase):
 
         self.assertEqual(
             "http://parksr.us/#/snapshots/652", driver.current_url)
+
+    # test search by searching for Arizona
+    def test_search(self):
+        driver = self.driver
+        driver.get(self.site)
+        driver.find_element_by_link_text("Search").click()
+
+        time.sleep(1)
+
+        search_element = driver.find_element_by_class_name("form-control")
+        search_element.click()
+        search_element.send_keys('Arizona')
+
+        time.sleep(1)
+
+        search_instance = driver.find_element_by_xpath(
+            "//*[@id='root']/div/div/div/div[1]/div/div[1]/a")
+        search_instance.click()
+
+        time.sleep(1)
+
+        self.assertEqual(
+            "http://parksr.us/#/cities/32", driver.current_url)
 
     def tearDown(self):
         self.driver.close()

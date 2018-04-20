@@ -32,7 +32,7 @@ class CitiesPage extends React.Component {
     });
     let filterables = {
       "state": {
-        "multi": true,
+        "multi": false,
         "options": stateOptions,
         "op": "like",
         "field": "state"
