@@ -91,7 +91,7 @@ class ParkPage extends React.Component {
                            imageHeight={'450px'}/>
               </PageSection>
               <PageSection header={"Urban Attractions"}>
-                <Card classes={"PageCard"} key={park.city.id}>
+                <Card className={["SnapshotCity","PageCard"].join(' ')} key={park.city.id}>
                   <Link to={'/cities/' + park.city.id} className={"CardLink"}>
                     <img src={park.city.image_uri} className="CardImage" style={{height: "500px"}}/>
                     <h1 className={["CardContent", "CardHeader"].join(' ')}>{park.city.name}</h1>

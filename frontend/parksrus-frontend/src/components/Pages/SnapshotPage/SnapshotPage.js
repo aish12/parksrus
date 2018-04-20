@@ -89,7 +89,7 @@ class SnapshotPage extends React.Component {
                 </Card>
               </PageSection>
               <PageSection header={"Urban Attractions"}>
-                <Card classes={"PageCard"} key={snapshot.city.id}>
+                <Card className={["SnapshotCity","PageCard"].join(' ')} key={snapshot.city.id}>
                   <Link to={'/cities/' + snapshot.city.id} className={"CardLink"}>
                     <img src={snapshot.city.image_uri} className="CardImage" style={{height: "500px"}}/>
                     <h1 className={["CardContent", "CardHeader"].join(' ')}>{snapshot.city.name}</h1>

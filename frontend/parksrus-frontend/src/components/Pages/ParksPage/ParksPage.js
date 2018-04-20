@@ -18,7 +18,7 @@ class ParksPage extends React.Component {
   }
 
   render() {
-    const reviewBins = [1, 2, 3, 4, 5];
+      const reviewBins = [1, 2, 3, 4, 5];
     let cityOptions = [];
     let stateOptions = [];
     let reviewOptions = [];
