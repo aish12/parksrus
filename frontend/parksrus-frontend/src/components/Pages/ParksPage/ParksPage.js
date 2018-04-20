@@ -40,12 +40,6 @@ class ParksPage extends React.Component {
         "op": "like",
         "field": "state"
       },
-      "city": {
-        "multi": false,
-        "options": cityOptions,
-        "op": "has",
-        "field": "city"
-      },
       "review_data": {
         "multi": false,
         "options": reviewOptions,

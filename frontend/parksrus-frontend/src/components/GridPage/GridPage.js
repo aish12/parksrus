@@ -80,7 +80,7 @@ class GridPage extends React.Component {
     let activeSort = this.getActiveSort();
     let complexQuery = activeFilters != null || activeSort != null;
     let activePageQuery = this.getActivePageQuery(complexQuery);
-    return apiPath + "?q=" + JSON.stringify({"filters": [{"and": activeFilters}], "order_by": activeSort}) + activePageQuery;
+    return apiPath + "?q=" + JSON.stringify({"filters": [{"or": activeFilters}], "order_by": activeSort}) + activePageQuery;
   }
 
   getFirstPagination() {
