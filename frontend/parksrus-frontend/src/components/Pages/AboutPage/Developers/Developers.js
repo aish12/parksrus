@@ -65,14 +65,15 @@ function getRepositoryIssues() {
 }
 
 function addContributions(developers, commits, issues) {
-  console.assert(developers.size === commits.length);
   developers.forEach(dev => dev.issues = 0);
   commits.forEach(function attributeCommits(commit) {
     console.assert(commit.hasOwnProperty('author'));
     console.assert(commit.author.hasOwnProperty('id'));
     const githubID = commit.author.id;
-    developers.get(githubID).commits = commit.total;
-    console.assert(developers.get(githubID).commits > 0);
+    if (developers.has(githubID)) {
+      developers.get(githubID).commits = commit.total;
+      console.assert(developers.get(githubID).commits > 0);
+    }
   });
 
   issues.forEach(function attributeIssues(issue) {
