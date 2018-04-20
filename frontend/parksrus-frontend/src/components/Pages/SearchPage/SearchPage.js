@@ -44,7 +44,7 @@ class SearchPage extends React.Component {
   }
 
   getLeftEllipsisPagination(curPage) {
-    return (curPage >= 5) ? [<Pagination.Ellipsis />] : [];
+    return (curPage >= 4) ? [<Pagination.Ellipsis />] : [];
   }
 
   getLeftPagination(curPage, pageRange) {
@@ -64,7 +64,7 @@ class SearchPage extends React.Component {
   }
 
   getActivePagination(curPage) {
-    return (curPage > 1) ? [<Pagination.Item className={"active"} onClick={this.handlePaginationChange.bind(this, curPage)}>{curPage}</Pagination.Item>] : []
+    return (curPage >= 1) ? [<Pagination.Item className={"active"} onClick={this.handlePaginationChange.bind(this, curPage)}>{curPage}</Pagination.Item>] : []
   }
 
   getRightPagination(curPage, numPages, pageRange) {
@@ -72,7 +72,7 @@ class SearchPage extends React.Component {
     if (curPage < numPages) {
       let nextPage = curPage + 1;
       let pRange = 0;
-      while (nextPage !== numPages && pRange < pageRange) {
+      while (nextPage <= numPages && pRange < pageRange) {
         rightPagination.push(<Pagination.Item onClick={this.handlePaginationChange.bind(this, nextPage)}>{nextPage}</Pagination.Item>);
         nextPage += 1;
         pRange += 1;
@@ -82,7 +82,7 @@ class SearchPage extends React.Component {
   }
 
   getRightEllipsisPagination(curPage, numPages) {
-    return (numPages - curPage >= 5) ? [<Pagination.Ellipsis />] : []
+    return (numPages - curPage >= 3) ? [<Pagination.Ellipsis />] : []
   }
 
   getNextPagination(curPage, numPages) {

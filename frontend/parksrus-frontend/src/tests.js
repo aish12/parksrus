@@ -18,6 +18,7 @@ import AboutPage from './components/Pages/AboutPage/AboutPage';
 import states from './components/GridPage/states_list';
 import GridPage from './components/GridPage/GridPage';
 import SearchPage from "./components/Pages/SearchPage/SearchPage";
+import SnapshotPage from "./components/Pages/SnapshotPage/SnapshotPage";
 
 // Tests the components for the Splash/Main Page
 describe('SplashPage Component', () => {
