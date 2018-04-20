@@ -35,13 +35,13 @@ class ParksPage extends React.Component {
     console.log(stateOptions);
     let filterables = {
       "state": {
-        "multi": true,
+        "multi": false,
         "options": stateOptions,
         "op": "like",
         "field": "state"
       },
       "city": {
-        "multi": true,
+        "multi": false,
         "options": cityOptions,
         "op": "has",
         "field": "city"
