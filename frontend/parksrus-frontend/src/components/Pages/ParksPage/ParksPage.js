@@ -29,7 +29,7 @@ class ParksPage extends React.Component {
       cityOptions.push({"value": city, "label": city})
     });
     reviewBins.forEach(bin => {
-      reviewOptions.push({"value": bin, "label": bin + "+"})
+      reviewOptions.push({"value": "" + bin , "label": bin + "+"})
     });
 
     console.log(stateOptions);
@@ -49,7 +49,7 @@ class ParksPage extends React.Component {
       "review_data": {
         "multi": false,
         "options": reviewOptions,
-        "op": "gt",
+        "op": ">=",
         "field": "review_data"
       }
     };
