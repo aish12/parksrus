@@ -1,12 +1,12 @@
 ---?image=http://parksr.us/images/heroes/hero_1.jpg
 # PARKSR.US
 
----?image=http://parksr.us/images/heroes/hero_3.jpg
+---?image=https://images.unsplash.com/photo-1469144430211-3962d4655353?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0815c4d0d171fc1629ab6f13fbdfca31&auto=format&fit=crop&w=1500&q=80
 Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urbanites, and travel aficionados through a comprehensive web application that offers information on nearby amusement parks, rich social media of visitors' experiences at the parks, and descriptions of their host cities.
 
 ---
 
-# Introductions
+## Introductions
 <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/aish.jpg" width=230 height=230/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/ben.jpg" width=230 height=230/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/daniel.png" width=230 height=230/>
 <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/denalex.jpg" width=230 height=230/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/trenton.jpg" width=230 height=230/>
 
