@@ -419,11 +419,11 @@ class SeleniumTests(unittest.TestCase):
         time.sleep(1)
 
         driver.find_element_by_xpath(
-            "(//div[@class='Select-placeholder'])[4]").click()
+            "(//div[@class='Select-placeholder'])[3]").click()
 
         time.sleep(1)
 
-        sort_element = driver.find_element_by_xpath("(//input)[4]")
+        sort_element = driver.find_element_by_xpath("(//input)[3]")
         sort_element = sort_element
         sort_element.send_keys('review_data')
         sort_element.send_keys(Keys.RETURN)
@@ -436,7 +436,7 @@ class SeleniumTests(unittest.TestCase):
 
         time.sleep(1)
 
-        self.assertEqual("http://parksr.us/#/parks/197", driver.current_url)
+        self.assertEqual("http://parksr.us/#/parks/202", driver.current_url)
 
     # test sorting cities by number of parks
     def test_sort_cities(self):
