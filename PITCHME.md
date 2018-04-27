@@ -25,7 +25,7 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
 
 +++
 
-## Technologies
+### Technologies
 
 - Hosting
     - AWS EC2
@@ -40,7 +40,7 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
 
 +++
 
-## Scraping
+### Scraping
 
 - Google Places
 - Flickr
@@ -53,6 +53,10 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
     - Communication, design, GitHub issues, communication between frontend and backend
 - What did we learn?
     - Listening to feedback from others, prioritizing tasks, how to critique others and ourselves
+
++++
+### Self Critique
+
 - What can we do better?
     - Make images on instance page look better, refactoring model components
 - What puzzles us?
@@ -65,6 +69,10 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
     - Beautiful design and theme, professionalism, structure of searching and sorting
 - What did we learn from their API/Website?
     - We could use smaller images and fit more info onto a single web page. 
+
++++
+
+### Other Critique
 - What can they do better?
     - Could clean up data better (sometimes tags on snapshots aren't always actual real tags, EX: #uploaded:by=flickr_mobile) 
 - What puzzles us about their API/Website?
