@@ -113,12 +113,12 @@ class VisualizationPage extends React.Component {
     }, function() {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      let svg = d3.select(this.svg.current)
+      const svg = d3.select(this.svg.current)
       .attr('width', width)
-      .attr('height', height)
-      .on('zoom', function() {
-        svg.attr('transform', d3.event.transform)
-      });
+      .attr('height', height);
+
+      const zoomLayer = d3.select(this.svg.current).append('g').attr('class', 'zoom');
+
       const simulation = d3.forceSimulation()
       .force('link', d3.forceLink()
       .distance(function(d) {return 128; })
@@ -131,11 +131,11 @@ class VisualizationPage extends React.Component {
       .force('radial', d3.forceRadial(10, width / 2, height / 2))
       .force('center', d3.forceCenter(width / 2, height / 2));
 
-      const container = d3.select(this.svg.current)
+      const container = d3.select('.zoom')
       .selectAll('g')
       .data(this.state.nodes);
 
-      const link = d3.select(this.svg.current)
+      const link = d3.select('.zoom')
       .append('g')
       .attr('class', 'links')
       .selectAll('line')
@@ -190,6 +190,13 @@ class VisualizationPage extends React.Component {
       .on('tick', tick);
       simulation.force('link')
       .links(this.state.edges);
+
+      let zoomed = function() {
+        zoomLayer.attr('transform', d3.event.transform);
+
+      };
+
+      svg.call(d3.zoom().scaleExtent([1 / 2], 12).on('zoom', zoomed));
 
       function tick() {
         node.attr('transform', function(d) {
