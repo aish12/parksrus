@@ -5,9 +5,9 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
 ---
 
 # Introductions
-<img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/aish.jpg" width=250 height=250/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/ben.jpg" width=250 height=250/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/daniel.png" width=250 height=250/>
+<img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/aish.jpg" width=220 height=220/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/ben.jpg" width=220 height=220/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/daniel.png" width=220 height=220/>
 
-<img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/denalex.jpg" width=250 height=250/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/trenton.jpg" width=250 height=250/>
+<img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/denalex.jpg" width=220 height=220/> <img src="https://raw.githubusercontent.com/aish12/parksrus/master/frontend/parksrus-frontend/build/images/avatars/trenton.jpg" width=220 height=220/>
 
 
 ---
