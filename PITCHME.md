@@ -1,8 +1,7 @@
----
-?image=http://parksr.us/images/heroes/hero_1.jpg
+---?image=http://parksr.us/images/heroes/hero_1.jpg
 # PARKSR.US
----
-?image=http://parksr.us/images/heroes/hero_3.jpg
+
+---?image=http://parksr.us/images/heroes/hero_3.jpg
 Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urbanites, and travel aficionados through a comprehensive web application that offers information on nearby amusement parks, rich social media of visitors' experiences at the parks, and descriptions of their host cities.
 
 ---
