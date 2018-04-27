@@ -3,6 +3,7 @@ import './ProjectReports.css';
 
 import PageSection from '../../../PageSection/PageSection'
 import { Panel } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 class ProjectReports extends Component {
   render() {
@@ -34,6 +35,12 @@ class ProjectReports extends Component {
               <h4>API Documentation</h4>
             </Panel>
           </a>
+          <Link to={'/Visualization'}>
+            <Panel className="ProjectReport">
+              <img className="ReportLogo" src="./images/api_logos/gitbook.svg"/>
+              <h4>Visualization</h4>
+            </Panel>
+          </Link>
         </PageSection>
     );
   }
