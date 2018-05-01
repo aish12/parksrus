@@ -45,6 +45,10 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
 
 ---
 
+# DEMO
+
+---
+
 ### TESTING
 
 [Travis Tests](https://travis-ci.org/aish12/parksrus)
@@ -82,3 +86,7 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
     - Could clean up data better (sometimes tags on snapshots aren't always actual real tags, EX: #uploaded:by=flickr_mobile) 
 - What puzzles us about their API/Website?
     - Website is very intuitive; however, there are some problems with API connectivity (Coffee Shops vs /shops, multiple API requests when fetching data. 2 fail and 1 succeeds)
+    
+---
+
+# VISUALIZATION
