@@ -59,23 +59,29 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
 
 ### Self Critique
 - What did we do well?
-    - Communication, design, GitHub issues, communication between frontend and backend
+    - Design, GitHub issues, communication between frontend and backend
 - What did we learn?
-    - Listening to feedback from others, prioritizing tasks, how to critique others and ourselves
+    - AWS and DNS
+    - NPM
+    - Mocha (😭)
+    - Developing with the user in mind
 
 +++
 ### Self Critique
 
 - What can we do better?
-    - Make images on instance page look better, refactoring model components
+    - #noregerts
+    - Concrete meeting times
+    - More fields in models with different data types
+    - Use branches instead of pushing to master
 - What puzzles us?
     - How do we automatically filter API content?
-
+    
 ---
 
 ### Other Critique
 - What did they do well?
-    - Beautiful design and theme, professionalism, structure of searching and sorting
+    - Beautiful design and theme, looks professionally done, structure of searching and sorting
 - What did we learn from their API/Website?
     - We could use smaller images and fit more info onto a single web page. 
 
@@ -83,7 +89,7 @@ Parks-R-Us is a website that aims to connect theme park enthusiasts, trendy urba
 
 ### Other Critique
 - What can they do better?
-    - Could clean up data better (sometimes tags on snapshots aren't always actual real tags, EX: #uploaded:by=flickr_mobile) 
+    - Could clean up data better (sometimes tags on snapshots aren't always actual tags, EX: #uploaded:by=flickr_mobile) 
 - What puzzles us about their API/Website?
     - Website is very intuitive; however, there are some problems with API connectivity (Coffee Shops vs /shops, multiple API requests when fetching data. 2 fail and 1 succeeds)
     
