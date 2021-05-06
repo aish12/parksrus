@@ -1,7 +1,7 @@
 blinker==1.4
 certifi==2018.1.18
 chardet==3.0.4
-Flask-Cors==3.0.3
+Flask-Cors==3.0.9
 Flask-Restless==0.17.0
 Flask-SQLAlchemy==2.3.2
 Flask-WhooshAlchemyPlus==0.7.5
