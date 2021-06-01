@@ -26,7 +26,7 @@ selenium==3.11.0
 six==1.11.0
 SQLAlchemy==1.2.2
 supervisor==3.2.0
-urllib3==1.22
+urllib3==1.26.5
 virtualenv==15.0.1
 Whoosh==2.7.4
 xmltodict==0.11.0
